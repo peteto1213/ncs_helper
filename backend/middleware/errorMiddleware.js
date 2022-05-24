@@ -1,3 +1,11 @@
+/**
+ * @author Pete To
+ * Override of the original mongoose error handler
+ * @param {*} err 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
 const errorHandler = (err, req, res, next) =>{
     const statusCode = res.statusCode ? res.statusCode : 500
 
