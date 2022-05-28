@@ -14,10 +14,10 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))  
 
-//error handling that override the default errorHandler in Express
-app.use(errorHandler)
-
 //route - blog
 app.use('/api/blog', require('./routes/blogRoutes'))
+
+//error handling that override the default errorHandler in Express
+app.use(errorHandler)
 
 app.listen(port, () => console.log(`Server running at port ${port}`))
