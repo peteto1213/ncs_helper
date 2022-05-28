@@ -18,7 +18,11 @@ const blogSchema = mongoose.Schema({
     title: String,
     content: String,
     likeCount: Number,
-    blogCategory: String
+    blogCategory: {
+        type: mongoose.Schema.Types.String,
+        required: true,
+        ref: 'BlogCategory'
+    }
 },
 {
     //timestamps will include createdAt and updatedAt time for the blog

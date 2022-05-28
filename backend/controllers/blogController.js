@@ -1,7 +1,7 @@
 const asyncHandler = require('express-async-handler')
-//created Blog Model 
 const Blog = require('../models/blogModel')
 const User = require('../models/userModel')
+const BlogCategory = require('../models/blogCategoryModel')
 
 /**
  * @author Pete To
@@ -47,7 +47,7 @@ const createBlog = asyncHandler( async (req, res) => {
         blogCategory: req.body.blogCategory,
         user: req.user.id,
         author: req.user.nickname,
-        icon: req.user.icon
+        icon: req.user.icon,
     })
 
     res.status(200).json(blog)
