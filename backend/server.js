@@ -16,6 +16,8 @@ app.use(express.urlencoded({extended: false}))
 
 //route - blog
 app.use('/api/blog', require('./routes/blogRoutes'))
+//route - user
+app.use('/api/user', require('./routes/userRoutes'))
 
 //error handling that override the default errorHandler in Express
 app.use(errorHandler)
