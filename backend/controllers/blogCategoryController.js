@@ -23,7 +23,6 @@ const checkPermission = (req, res) => {
 const getBlogCategories = asyncHandler( async (req, res) => {
     checkPermission(req, res)
     const blogCategories = await BlogCategory.find()
-
     res.status(200).json(blogCategories)
 })
 

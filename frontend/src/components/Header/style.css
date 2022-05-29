@@ -1,0 +1,39 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.3rem;
+    font-size: 1.7rem;
+    background-color: #1c8d76;
+}
+
+.header .logo a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header .logo a img{
+    max-height: 5rem;
+}
+
+.header ul{
+    display: flex;
+    flex-direction: row;
+}
+
+.header ul li{
+    padding-right: 1.3rem;
+}
+
+.header .logo a:hover,
+.header ul li a:hover{
+    color: white;
+}
+
+@media(max-width: 600px) {
+    .header{
+        font-size: 1.3rem;
+    }
+}

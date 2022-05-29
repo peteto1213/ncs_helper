@@ -19,7 +19,7 @@ const blogSchema = mongoose.Schema({
     content: String,
     likeCount: Number,
     blogCategory: {
-        type: mongoose.Schema.Types.String,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'BlogCategory'
     }
