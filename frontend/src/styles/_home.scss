@@ -28,7 +28,7 @@
             line-height: 2rem;
         }
         a{
-            @include button();
+            @include button($primaryColor, $secondaryColor);
         }
     }
 }

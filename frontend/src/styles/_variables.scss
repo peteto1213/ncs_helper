@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
-
 // Color variables
 $primaryColor: #1c8d76;
 $primaryColorLighter: #248f79;
@@ -35,16 +33,16 @@ $box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
     justify-content: $justify;
 }
 
-@mixin button {
+@mixin button($backgroundColor, $hoverColor) {
     margin-top: 1rem;
     display: inline-block;
-    background: $black;
+    background: $backgroundColor;
     color: white;
     border-radius: 0.5rem;
     padding: 1.5rem 3rem;
     cursor: pointer;
     font-size: 2rem;
     &:hover {
-        background: $primaryColor;
+        background: $hoverColor;
     } 
 }

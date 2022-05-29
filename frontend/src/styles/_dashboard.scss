@@ -1,0 +1,63 @@
+@import './variables';
+
+.dashboard{
+    .card-container{
+        @include customFlex(row, flex-start, flex-start );
+        flex-wrap: wrap;
+        gap: 2rem;
+
+        .card{
+            @include customFlex(column, flex-start, space-around);
+            width: 31%;
+            height: auto;
+            box-shadow: $box-shadow;
+            border-radius: 0.5rem;
+            padding: 1.2rem 1.5rem;
+
+            img{
+                max-height: 25rem;
+                width: 100%;
+                overflow: hidden;
+                object-fit: cover;
+                margin-bottom: 2rem;
+            }
+
+            h3{
+                font-size: 2.5rem;
+            }
+
+            p{
+                font-size: 1.8rem;
+                padding: 1.2rem 0;
+            }
+
+            a{
+                @include button($primaryColor, $secondaryColor);
+                align-self: center;
+                text-align: center;
+                border: none;
+                width: 90%;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard{
+        .card-container {
+            .card {
+                width: 48%;
+            }
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .dashboard {
+        .card-container {
+            .card {
+                width: 99%;
+            }
+        }
+    }
+}

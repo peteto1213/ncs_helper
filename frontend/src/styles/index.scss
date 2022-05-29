@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
 @import './variables';
 @import './header';
 @import './home';
+@import './dashboard';
 
 *{
     margin: 0;
@@ -31,21 +33,11 @@ html{
             border-radius: 0.5rem;
             color: $black;
             margin-bottom: 1.5rem;
+            @include flexRowCenter();
+            h1{
+                font-size: 4rem;
+            }
         }
-    }
-}
-
-.btn{
-    margin-top: 1rem;
-    display: inline-block;
-    background: $black;
-    color: white;
-    border-radius: 0.5rem;
-    padding: 1.5rem 3rem;
-    cursor: pointer;
-    font-size: 2rem;
-    &:hover {
-        background: $primaryColor;
     }
 }
 

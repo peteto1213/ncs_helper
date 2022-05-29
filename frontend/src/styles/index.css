@@ -1,6 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap");
 .header {
   position: fixed;
   top: 0;
@@ -157,7 +155,7 @@
 .home .content a {
   margin-top: 1rem;
   display: inline-block;
-  background: #111;
+  background: #1c8d76;
   color: white;
   border-radius: 0.5rem;
   padding: 1.5rem 3rem;
@@ -166,12 +164,103 @@
 }
 
 .home .content a:hover {
-  background: #1c8d76;
+  background: #1dae8d;
 }
 
 @media (max-width: 768px) {
   .home .content {
     max-width: 50rem;
+  }
+}
+
+.dashboard .card-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.dashboard .card-container .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 31%;
+  height: auto;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  padding: 1.2rem 1.5rem;
+}
+
+.dashboard .card-container .card img {
+  max-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 2rem;
+}
+
+.dashboard .card-container .card h3 {
+  font-size: 2.5rem;
+}
+
+.dashboard .card-container .card p {
+  font-size: 1.8rem;
+  padding: 1.2rem 0;
+}
+
+.dashboard .card-container .card a {
+  margin-top: 1rem;
+  display: inline-block;
+  background: #1c8d76;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem 3rem;
+  cursor: pointer;
+  font-size: 2rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: center;
+  border: none;
+  width: 90%;
+}
+
+.dashboard .card-container .card a:hover {
+  background: #1dae8d;
+}
+
+@media (max-width: 768px) {
+  .dashboard .card-container .card {
+    width: 48%;
+  }
+}
+
+@media (max-width: 550px) {
+  .dashboard .card-container .card {
+    width: 99%;
   }
 }
 
@@ -207,21 +296,23 @@ html {
   border-radius: 0.5rem;
   color: #111;
   margin-bottom: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.btn {
-  margin-top: 1rem;
-  display: inline-block;
-  background: #111;
-  color: white;
-  border-radius: 0.5rem;
-  padding: 1.5rem 3rem;
-  cursor: pointer;
-  font-size: 2rem;
-}
-
-.btn:hover {
-  background: #1c8d76;
+.container section .heading h1 {
+  font-size: 4rem;
 }
 
 @media (max-width: 991px) {
