@@ -1,25 +1,31 @@
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import Header from './components/Header/Header';
+import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom'
+import Header from './components/Header';
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Home from './pages/Home';
 
 function App() {
   return (
     <>
       <Router>
+        <Header />
+
         <div className="container">
-          <Header />
           <Routes>
-            <Route path='/' element={<Dashboard/>} />
-          </Routes>
-          <Routes>
+            <Route path='/' element={<Home/>} />
+                    
+            <Route path='/dashboard' element={<Dashboard/>} />
+                    
             <Route path='/login' element={<Login/>} />
-          </Routes>
-          <Routes>
+                    
             <Route path='/register' element={<Register/>} />
+
+            {/* Default: Redirect to home */}
+            <Route path="*" element={<Navigate to="/" replace />}/>
           </Routes>
         </div>
+
       </Router>
     </>
   );

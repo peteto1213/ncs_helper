@@ -1,0 +1,87 @@
+@import './variables';
+
+.header{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: linear-gradient(to right, $primaryColor, $secondaryColorLighter);
+    box-shadow: $box-shadow;
+    @include customFlex(row, center, flex-start);
+    padding: 1.2rem 7%;
+    a{
+        color: $textColor;
+        &:hover {
+            color: whitesmoke;
+            background: none;
+        }
+    }
+    .logo{
+        color: $textColor;
+        font-size: 3rem;
+        margin-right: auto;
+        height: 6rem;
+        a{
+            @include customFlex(row, center, center);
+            img {
+                    height: 6rem;
+                }
+        }
+    }
+    .navbar a{
+        margin-right: 2rem;
+        font-size: 2.2rem;
+        text-transform: capitalize;
+    }
+    .icons .icon{
+        height: 3rem;
+        width: 3rem;
+        font-size: 1.2rem;
+        text-align: center;
+        color: $black;
+        margin-left: 0.7rem;
+        cursor: pointer;
+        &:hover{
+            color: #fff;
+            background: none;
+        }
+    }
+    #menu-bars{
+        display: none;
+    }
+}
+
+@media(max-width: 991px) {
+    .header{
+        padding: 1.5rem;
+    }
+}
+
+@media(max-width: 768px) {
+    .header{
+        #menu-bars {
+            display: inline-block;
+        }
+        .navbar {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            border-top: $border;
+            border-bottom: $border;
+            background: $primaryColor;
+            display: none;
+
+            a {
+                display: block;
+                background: $secondaryColor;
+                padding: 1.5rem;
+                margin: 1.5rem;
+                border-radius: 0.5rem;
+                border: $border;
+            }
+        }
+        .navbar.active{
+            display: block;
+        }
+    }
+}

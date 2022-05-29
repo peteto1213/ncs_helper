@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap");
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: -webkit-gradient(linear, left top, right top, from(#1c8d76), to(#21c9a2));
+  background: linear-gradient(to right, #1c8d76, #21c9a2);
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 1.2rem 7%;
+}
+
+.header a {
+  color: #333;
+}
+
+.header a:hover {
+  color: whitesmoke;
+  background: none;
+}
+
+.header .logo {
+  color: #333;
+  font-size: 3rem;
+  margin-right: auto;
+  height: 6rem;
+}
+
+.header .logo a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.header .logo a img {
+  height: 6rem;
+}
+
+.header .navbar a {
+  margin-right: 2rem;
+  font-size: 2.2rem;
+  text-transform: capitalize;
+}
+
+.header .icons .icon {
+  height: 3rem;
+  width: 3rem;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #111;
+  margin-left: 0.7rem;
+  cursor: pointer;
+}
+
+.header .icons .icon:hover {
+  color: #fff;
+  background: none;
+}
+
+.header #menu-bars {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .header {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header #menu-bars {
+    display: inline-block;
+  }
+  .header .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
+    background: #1c8d76;
+    display: none;
+  }
+  .header .navbar a {
+    display: block;
+    background: #1dae8d;
+    padding: 1.5rem;
+    margin: 1.5rem;
+    border-radius: 0.5rem;
+    border: 0.1rem solid rgba(0, 0, 0, 0.2);
+  }
+  .header .navbar.active {
+    display: block;
+  }
+}
+
+.home {
+  min-height: 100vh;
+  background: url("../resources/banner.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.home .content {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  padding: 5rem;
+  max-width: 70rem;
+}
+
+.home .content h3 {
+  font-size: 4.5rem;
+  color: #111;
+  text-transform: capitalize;
+}
+
+.home .content p {
+  font-size: 2rem;
+  color: #333;
+  padding: 1rem 0;
+  line-height: 2rem;
+}
+
+.home .content a {
+  margin-top: 1rem;
+  display: inline-block;
+  background: #111;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem 3rem;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.home .content a:hover {
+  background: #1c8d76;
+}
+
+@media (max-width: 768px) {
+  .home .content {
+    max-width: 50rem;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+.container {
+  padding-top: 5rem;
+}
+
+.container section {
+  padding: 4.5rem 7%;
+}
+
+.container section .heading {
+  text-align: center;
+  padding: 2.5rem 0;
+  font-size: 3.5rem;
+  background: #21c9a2;
+  border-radius: 0.5rem;
+  color: #111;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  margin-top: 1rem;
+  display: inline-block;
+  background: #111;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem 3rem;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.btn:hover {
+  background: #1c8d76;
+}
+
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+}
+/*# sourceMappingURL=index.css.map */

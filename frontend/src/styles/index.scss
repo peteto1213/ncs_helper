@@ -1,0 +1,56 @@
+@import './variables';
+@import './header';
+@import './home';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: $primaryFont;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+}
+
+.container{
+    padding-top: 5rem;
+
+    section {
+        padding: 4.5rem 7%;
+
+        .heading{
+            text-align: center;
+            padding: 2.5rem 0;
+            font-size: 3.5rem;
+            background: $secondaryColorLighter;
+            border-radius: 0.5rem;
+            color: $black;
+            margin-bottom: 1.5rem;
+        }
+    }
+}
+
+.btn{
+    margin-top: 1rem;
+    display: inline-block;
+    background: $black;
+    color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem 3rem;
+    cursor: pointer;
+    font-size: 2rem;
+    &:hover {
+        background: $primaryColor;
+    }
+}
+
+@media(max-width: 991px){
+    html{
+        font-size: 55%;
+    }
+}
