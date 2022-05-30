@@ -7,17 +7,26 @@ const blogSchema = mongoose.Schema({
         required: true,
         ref: 'User'
     },
-    author: {
-        type: mongoose.Schema.Types.String,
-        ref: 'User'
+    author:{
+        type: String,
+        required: true
     },
     icon:{
-        type: mongoose.Schema.Types.String,
-        ref: 'User'
+        type: String,
+        required: true
     },
-    title: String,
-    content: String,
-    likeCount: Number,
+    title:{
+        type: String,
+        required: true
+    },
+    content:{
+        type: String,
+        required: true
+    },
+    likeCount:{
+        type: Number,
+        required: true
+    },
     blogCategory: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,

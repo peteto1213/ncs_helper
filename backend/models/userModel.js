@@ -10,10 +10,16 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please add a password'],
     },
-    nickname: String,
+    nickname:{
+        type: String,
+        required: true
+    },
     icon: String,
     activationStatus: Boolean,
-    userType: String
+    userType:{
+        type: String,
+        required: true
+    }
 },
 {
     timestamps: true

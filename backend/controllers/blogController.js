@@ -47,7 +47,7 @@ const createBlog = asyncHandler( async (req, res) => {
         blogCategory: req.body.blogCategory,
         user: req.user.id,
         author: req.user.nickname,
-        icon: req.user.icon,
+        icon: req.user.icon
     })
 
     res.status(200).json(blog)
@@ -116,10 +116,17 @@ const deleteBlog = asyncHandler( async (req, res) => {
     res.status(200).json({id: req.params.id})
 })
 
+const getBlogsByCategoryId = asyncHandler(async(req, res) => {
+    const blogs = await Blog.find({blogCategory: req.body.id})
+
+    res.status(200).json(blogs)
+})
+
 module.exports = {
     getBlogs,
     getUserBlogs,
     createBlog,
     updateBlog,
-    deleteBlog
+    deleteBlog,
+    getBlogsByCategoryId
 }
