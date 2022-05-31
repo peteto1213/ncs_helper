@@ -3,6 +3,7 @@
 @import './header';
 @import './home';
 @import './dashboard';
+@import './register';
 
 *{
     margin: 0;
@@ -26,6 +27,7 @@ html{
         padding: 4.5rem 7%;
 
         .heading{
+            @include flexRowCenter();
             text-align: center;
             padding: 2.5rem 0;
             font-size: 3.5rem;
@@ -33,7 +35,6 @@ html{
             border-radius: 0.5rem;
             color: $black;
             margin-bottom: 1.5rem;
-            @include flexRowCenter();
             h1{
                 font-size: 4rem;
             }

@@ -32,17 +32,33 @@
         font-size: 2.2rem;
         text-transform: capitalize;
     }
-    .icons .icon{
-        height: 3rem;
-        width: 3rem;
-        font-size: 1.2rem;
-        text-align: center;
-        color: $black;
-        margin-left: 0.7rem;
-        cursor: pointer;
-        &:hover{
-            color: #fff;
-            background: none;
+    .icons{
+        @include customFlex(row, center, center);
+        .icon {
+            height: 3rem;
+            width: 3rem;
+            font-size: 1.2rem;
+            text-align: center;
+            color: $black;
+            margin-left: 0.7rem;
+            cursor: pointer;
+    
+            &:hover {
+                color: #fff;
+                background: none;
+            }
+        }
+        
+        .user-icon{
+            height: 4rem;
+            width: 4rem;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 300ms ease-in-out;
+            &:hover{
+                transform: scale(1.1);
+            }
         }
     }
     #menu-bars{

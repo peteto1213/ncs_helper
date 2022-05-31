@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import {FaRobot, FaGraduationCap, FaCoffee, FaRocket, FaUser, FaRegPaperPlane, FaTimes} from 'react-icons/fa'
+import {FaRobot, FaGraduationCap, FaCoffee, FaRocket, FaUser, FaRegPaperPlane, FaTimes, FaSignOutAlt} from 'react-icons/fa'
 import {Link, useNavigate} from 'react-router-dom'
 import icon from '../resources/header_icon.png'
 
@@ -18,6 +18,16 @@ function Header() {
 
     const navigateLogin = () => {
         navigate('/login')
+    }
+
+    const navigateProfile = () => {
+        navigate('/userProfile')
+    }
+
+    const handleLogout = () => {
+        //handle logout function
+        hideMenu()
+        navigate('/')
     }
 
     const hideMenu = () => {
@@ -38,7 +48,6 @@ function Header() {
         </nav>
 
         <div className="icons">
-            <FaUser className='icon' onClick={navigateLogin}/>
             {menu ?
                 <FaTimes 
                     className='icon' 
@@ -52,6 +61,11 @@ function Header() {
                     onClick={showMenu} 
                 />
             }
+            <FaUser className='icon' onClick={navigateLogin}/>
+
+            <img onClick={navigateProfile} className='user-icon' src="https://scx2.b-cdn.net/gfx/news/2019/3-robot.jpg" alt="user_icon" />
+
+            <FaSignOutAlt onClick={handleLogout} className='icon'/>
         </div>
     </header>
   )

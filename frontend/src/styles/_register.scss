@@ -1,0 +1,26 @@
+@import './variables';
+
+.register{
+    form{
+        padding: 2rem 3rem;
+        box-shadow: $box-shadow;
+        border-radius: 0.5rem;
+        @include customFlex(column, flex-start, flex-start);
+
+        .input-field{
+            @include inputField();
+        }
+
+        .btn{
+            @include button($secondaryColor, $secondaryColorLighter);
+            margin: 0;
+            width: 30%;
+        }
+    }
+}
+
+@media(max-width: 768px){
+    .register form .btn{
+        width: 50%;
+    }
+}

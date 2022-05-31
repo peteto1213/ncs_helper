@@ -42,7 +42,32 @@ $box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
     padding: 1.5rem 3rem;
     cursor: pointer;
     font-size: 2rem;
+    border: none;
     &:hover {
         background: $hoverColor;
     } 
+}
+
+@mixin inputField(){
+    margin-bottom: 2rem;
+    width: 100%;
+    h3{
+        font-size: 2rem;
+        margin-left: 0.5rem;
+        color: $primaryColor;
+
+        span{
+            font-size: 1.5rem;
+            color: $textColor;
+        }
+    }
+    input{
+        margin: 1rem 0;
+        padding: 1.2rem;
+        font-size: 1.7rem;
+        color: $textColor;
+        border-radius: 0.5rem;
+        border: 0.1rem solid $primaryColorLighter;
+        width: 100%;
+    }
 }

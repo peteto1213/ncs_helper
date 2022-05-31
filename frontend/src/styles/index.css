@@ -67,6 +67,22 @@
   text-transform: capitalize;
 }
 
+.header .icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .header .icons .icon {
   height: 3rem;
   width: 3rem;
@@ -80,6 +96,24 @@
 .header .icons .icon:hover {
   color: #fff;
   background: none;
+}
+
+.header .icons .user-icon {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 300ms ease-in-out;
+  transition: -webkit-transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+}
+
+.header .icons .user-icon:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .header #menu-bars {
@@ -161,6 +195,7 @@
   padding: 1.5rem 3rem;
   cursor: pointer;
   font-size: 2rem;
+  border: none;
 }
 
 .home .content a:hover {
@@ -240,6 +275,7 @@
   padding: 1.5rem 3rem;
   cursor: pointer;
   font-size: 2rem;
+  border: none;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -261,6 +297,76 @@
 @media (max-width: 550px) {
   .dashboard .card-container .card {
     width: 99%;
+  }
+}
+
+.register form {
+  padding: 2rem 3rem;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.register form .input-field {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.register form .input-field h3 {
+  font-size: 2rem;
+  margin-left: 0.5rem;
+  color: #1c8d76;
+}
+
+.register form .input-field h3 span {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.register form .input-field input {
+  margin: 1rem 0;
+  padding: 1.2rem;
+  font-size: 1.7rem;
+  color: #333;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #248f79;
+  width: 100%;
+}
+
+.register form .btn {
+  margin-top: 1rem;
+  display: inline-block;
+  background: #1dae8d;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem 3rem;
+  cursor: pointer;
+  font-size: 2rem;
+  border: none;
+  margin: 0;
+  width: 30%;
+}
+
+.register form .btn:hover {
+  background: #21c9a2;
+}
+
+@media (max-width: 768px) {
+  .register form .btn {
+    width: 50%;
   }
 }
 
@@ -289,13 +395,6 @@ html {
 }
 
 .container section .heading {
-  text-align: center;
-  padding: 2.5rem 0;
-  font-size: 3.5rem;
-  background: #21c9a2;
-  border-radius: 0.5rem;
-  color: #111;
-  margin-bottom: 1.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -309,6 +408,13 @@ html {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  text-align: center;
+  padding: 2.5rem 0;
+  font-size: 3.5rem;
+  background: #21c9a2;
+  border-radius: 0.5rem;
+  color: #111;
+  margin-bottom: 1.5rem;
 }
 
 .container section .heading h1 {
