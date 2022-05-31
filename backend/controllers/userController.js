@@ -56,6 +56,8 @@ const registerUser = asyncHandler(async (req, res) => {
             _id: user.id,
             email: user.email,
             nickname: user.nickname,
+            icon: user.icon,
+            userType: user.userType,
             token: generateToken(user._id)
         })
     }else{
@@ -85,6 +87,8 @@ const loginUser = asyncHandler(async (req, res) => {
             _id: user.id,
             email: user.email,
             nickname: user.nickname,
+            icon: user.icon,
+            userType: user.userType,
             token: generateToken(user._id) //token generated
         })
     }else{
@@ -101,13 +105,14 @@ const loginUser = asyncHandler(async (req, res) => {
  * @access Private
  */
 const getUserInfo = asyncHandler(async (req, res) => {
-    const {_id, nickname, email, icon} = await User.findById(req.user.id)
+    const {_id, nickname, email, icon, userType} = await User.findById(req.user.id)
 
     res.status(200).json({
         id: _id,
-        nickname,
-        email,
-        icon
+        nickname: nickname,
+        email: email,
+        icon: icon,
+        userType: userType
     })
 })
 

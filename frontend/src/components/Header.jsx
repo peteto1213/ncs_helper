@@ -3,9 +3,15 @@ import { useState } from 'react'
 import {FaRobot, FaGraduationCap, FaCoffee, FaRocket, FaUser, FaRegPaperPlane, FaTimes, FaSignOutAlt} from 'react-icons/fa'
 import {Link, useNavigate} from 'react-router-dom'
 import icon from '../resources/header_icon.png'
+import {useSelector, useDispatch} from 'react-redux'
+import {logout, reset} from '../features/auth/authSlice'
 
 function Header() {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const {user} = useSelector((state) => state.auth)
+
     const[menu, setMenu] = useState(false)
 
     const showMenu = () => {
@@ -25,7 +31,8 @@ function Header() {
     }
 
     const handleLogout = () => {
-        //handle logout function
+        dispatch(logout())
+        dispatch(reset())
         hideMenu()
         navigate('/')
     }
@@ -61,11 +68,17 @@ function Header() {
                     onClick={showMenu} 
                 />
             }
-            <FaUser className='icon' onClick={navigateLogin}/>
+            {user ?
+                <>
+                    <img onClick={navigateProfile} className='user-icon' src="https://scx2.b-cdn.net/gfx/news/2019/3-robot.jpg" alt="user_icon" />
 
-            <img onClick={navigateProfile} className='user-icon' src="https://scx2.b-cdn.net/gfx/news/2019/3-robot.jpg" alt="user_icon" />
-
-            <FaSignOutAlt onClick={handleLogout} className='icon'/>
+                    <FaSignOutAlt onClick={handleLogout} className='icon'/>
+                </>
+                :
+                <>
+                    <FaUser className='icon' onClick={navigateLogin}/>
+                </>
+            }
         </div>
     </header>
   )

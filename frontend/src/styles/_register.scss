@@ -1,11 +1,18 @@
 @import './variables';
 
 .register{
+    @include flexColumnCenter();
+
+    .heading{
+        width: 100%;
+    }
+
     form{
+        @include customFlex(column, flex-start, flex-start);
         padding: 2rem 3rem;
         box-shadow: $box-shadow;
         border-radius: 0.5rem;
-        @include customFlex(column, flex-start, flex-start);
+        width: 40%;
 
         .input-field{
             @include inputField();
@@ -16,10 +23,17 @@
             margin: 0;
             width: 30%;
         }
+
+        .error{
+            @include errorh2();
+        }
     }
 }
 
 @media(max-width: 768px){
+    .register form{
+        width: 90%;
+    }
     .register form .btn{
         width: 50%;
     }

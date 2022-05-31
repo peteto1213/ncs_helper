@@ -4,6 +4,7 @@ $primaryColorLighter: #248f79;
 $secondaryColor: #1dae8d;
 $secondaryColorLighter: #21c9a2;
 $textColor: #333;
+$errorTextColor: rgb(212, 2, 2);
 $black: #111;
 $transparentWhite: rgba(255,255,255,0.7);
 
@@ -70,4 +71,10 @@ $box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
         border: 0.1rem solid $primaryColorLighter;
         width: 100%;
     }
+}
+
+@mixin errorh2(){
+    color: $errorTextColor;
+    margin-bottom: 1.3rem;
+    font-size: 1.7rem;
 }

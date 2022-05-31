@@ -1,0 +1,76 @@
+@import './variables';
+
+.login{
+    @include flexColumnCenter;
+
+    .heading{
+        width: 100%;
+    }
+
+    .form-container{
+        @include customFlex(column, flex-start, flex-start);
+        width: 40%;
+        padding: 2rem 3rem;
+        box-shadow: $box-shadow;
+
+        img{
+            height: 20rem;
+            width: 20rem;
+            border-radius: 50%;
+            border: 0.4rem solid;
+            border-color: $secondaryColorLighter;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            align-self: center;
+        }
+
+        form{
+            width: 100%;
+
+            .input-field{
+                @include inputField();
+                margin-bottom: 1.2rem;
+                h3{
+                    padding: 0;
+                    margin: 0;
+                }
+                input{
+                    border: 0.2rem solid $primaryColor;
+                }
+            }
+
+            .btn{
+                @include button($primaryColor, $secondaryColor);
+                width: 50%;
+                margin-bottom: 1.5rem;
+                margin-top: 0;
+            }
+        }
+
+        h3{
+            font-size: 1.6rem;
+            margin-bottom: 1.3rem;
+
+            span{
+                color: $secondaryColor;
+                text-decoration: underline;
+                cursor: pointer;
+                &:hover{
+                    color: $secondaryColorLighter;
+                }
+            }
+        }
+
+        .error{
+            @include errorh2();
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .login{
+        .form-container{
+            width: 90%;
+        }
+    }
+}
