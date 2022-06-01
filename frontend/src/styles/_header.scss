@@ -55,6 +55,8 @@
             border-radius: 50%;
             object-fit: cover;
             cursor: pointer;
+            border: $border;
+            border-color: $secondaryColor;
             transition: transform 300ms ease-in-out;
             &:hover{
                 transform: scale(1.1);

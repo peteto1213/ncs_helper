@@ -59,7 +59,7 @@ function Login() {
       setError(message)
     }
     if(isSuccess || user){
-      navigate('/profile')
+      navigate('/dashboard')
     }
     dispatch(reset())
 

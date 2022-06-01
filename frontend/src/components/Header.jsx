@@ -70,7 +70,12 @@ function Header() {
             }
             {user ?
                 <>
-                    <img onClick={navigateProfile} className='user-icon' src="https://scx2.b-cdn.net/gfx/news/2019/3-robot.jpg" alt="user_icon" />
+                    <img 
+                        onClick={navigateProfile} 
+                        className='user-icon' 
+                        src={user.icon? user.icon : "https://scx2.b-cdn.net/gfx/news/2019/3-robot.jpg"} 
+                        alt="user_icon" 
+                    />
 
                     <FaSignOutAlt onClick={handleLogout} className='icon'/>
                 </>
