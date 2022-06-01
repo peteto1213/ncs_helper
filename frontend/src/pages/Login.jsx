@@ -73,7 +73,7 @@ function Login() {
     <section className='login'>
       <div className="heading">
         <FaSignInAlt />
-        <h3>Login</h3>
+        <h3>Login to explore the materials</h3>
       </div>
 
       <div className="form-container">

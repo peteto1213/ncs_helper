@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from './pages/Home';
+import UserProfile from './pages/UserProfile';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
             <Route path='/login' element={<Login/>} />
                     
             <Route path='/register' element={<Register/>} />
+
+            <Route path='/userProfile' element={<UserProfile/>} />
 
             {/* Default: Redirect to home */}
             <Route path="*" element={<Navigate to="/" replace />}/>
