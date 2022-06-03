@@ -5,6 +5,7 @@ import collaboration from '../resources/collaboration.png'
 import blog from '../resources/blog.jpg'
 import feedback from '../resources/feedback.jpg'
 import setting from '../resources/setting.jpg'
+import password from '../resources/password.png'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
@@ -48,14 +49,21 @@ function Dashboard() {
         <div className="card">
           <img src={setting} alt="setting" />
           <h3>Account settings</h3>
-          <p>Manage your account settings, such as changing nickname, profile picture and password</p>
+          <p>Manage your account settings, such as changing nickname, profile picture</p>
           <Link to='/userProfile'>Manage</Link>
+        </div>
+
+        <div className="card">
+          <img src={password} alt="setting" />
+          <h3>Password Changing</h3>
+          <p>Change your password regularly here to protect your account</p>
+          <Link to='/changePassword'>Change</Link>
         </div>
 
         <div className="card">
           <img src={feedback} alt="feedback" />
           <h3>Feedback</h3>
-          <p>Tell us how you feel about this web application!</p>
+          <p>Tell us how you feel about this web application, we are welcome to hear!</p>
           <Link to='/feedback'>Send Feedback</Link>
         </div>
 

@@ -1,0 +1,52 @@
+@import './variables';
+
+.user-profile{
+
+    .profile-container{
+        @include customFlex(row, flex-start, space-around);
+        width: 90%;
+        margin: auto;
+        flex-wrap: wrap;
+
+        form{ 
+            @include customFlex(column, flex-start,center);
+            gap: 2.5rem;
+            margin-top: 2rem;
+
+            .user-info-column{
+                @include customFlex(column, flex-start, flex-start);
+                font-size: 2rem;
+                width: 100%;
+                h3{
+                    color: $primaryColor;
+                }
+                input{
+                    width: 100%;
+                    font-size: 2rem;
+                    padding: 1.5rem 0;
+                    border: none;
+                    border-bottom: $border;
+                    border-color: $secondaryColor;
+                }
+                .disabled-input{
+                    background: rgb(236, 236, 236);
+                }
+            }
+            .btn{
+                @include button($primaryColor, $secondaryColor);
+                width: 50%;
+            }
+        }
+
+        .profile-picture{
+            margin-top: 2rem;
+
+            img{
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                border: $border;
+            }
+        }
+    }
+}
