@@ -73,7 +73,7 @@ function Header() {
                     <img 
                         onClick={navigateProfile} 
                         className='user-icon' 
-                        src={user.icon? user.icon : "https://scx2.b-cdn.net/gfx/news/2019/3-robot.jpg"} 
+                        src={`${process.env.PUBLIC_URL}/userIcons/${user.icon}`} 
                         alt="user_icon" 
                     />
 

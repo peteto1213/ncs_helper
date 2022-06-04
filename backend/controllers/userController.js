@@ -2,6 +2,7 @@ const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
+const multer = require('multer')
 
 /**
  * @author Pete To
@@ -46,7 +47,7 @@ const registerUser = asyncHandler(async (req, res) => {
         email: email,
         password: encryptedPassword,
         nickname: nickname,
-        icon: "https://cdn-icons-png.flaticon.com/512/773/773330.png",
+        icon: "placeholder.png",
         activationStatus: false,
         userType: "student"
     })
@@ -116,8 +117,28 @@ const getUserInfo = asyncHandler(async (req, res) => {
     })
 })
 
+/**
+ * @author Pete To
+ * @description Update user info by user id and request parameters
+ * @router PUT /api/user/info
+ * @access Private
+ */
+const updateUserInfo = asyncHandler(async (req, res) => {
+    const updatedUser = await User.findByIdAndUpdate(req.user.id, {nickname: req.body.nickname, icon: req.file ? req.file.filename : req.user.icon}, {new: true})
+
+    res.status(200).json({
+        _id: updatedUser.id,
+        email: updatedUser.email,
+        nickname: updatedUser.nickname,
+        icon: req.file? req.file.filename : updatedUser.icon,
+        userType: updatedUser.userType,
+        token: generateToken(updatedUser._id) //token generated
+    })
+})
+
 module.exports = {
     registerUser,
     loginUser,
-    getUserInfo
+    getUserInfo,
+    updateUserInfo
 }

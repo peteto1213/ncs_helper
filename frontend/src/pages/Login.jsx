@@ -59,6 +59,7 @@ function Login() {
       setError(message)
     }
     if(isSuccess || user){
+      setError('')
       navigate('/dashboard')
     }
     dispatch(reset())

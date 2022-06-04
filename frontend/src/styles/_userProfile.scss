@@ -32,6 +32,10 @@
                     background: rgb(236, 236, 236);
                 }
             }
+            .error{
+                @include errorh2();
+                margin-bottom: 0;
+            }
             .btn{
                 @include button($primaryColor, $secondaryColor);
                 width: 50%;
@@ -40,6 +44,8 @@
 
         .profile-picture{
             margin-top: 2rem;
+            width: 50rem;
+            height: 50rem;
 
             img{
                 width: 100%;

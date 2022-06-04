@@ -28,10 +28,24 @@ const login = async(userData) => {
     return response.data
 }
 
+//Update Info
+const updateInfo = async(userData, token) => {
+    const config = {
+        headers: {
+            Authorization:`Bearer ${token}`
+        }
+    }
+
+    const response = await axios.put(`${API_URL}/info`, userData, config)
+
+    return response.data
+}
+
 const authService = {
     register,
     logout,
-    login
+    login,
+    updateInfo
 }
 
 export default authService

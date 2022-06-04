@@ -14,7 +14,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    icon: String,
+    icon:{
+        type: String,
+        default:"placeholder.png"
+    },
     activationStatus: Boolean,
     userType:{
         type: String,

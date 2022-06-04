@@ -458,6 +458,13 @@
   background: #ececec;
 }
 
+.user-profile .profile-container form .error {
+  color: #d40202;
+  margin-bottom: 1.3rem;
+  font-size: 1.7rem;
+  margin-bottom: 0;
+}
+
 .user-profile .profile-container form .btn {
   margin-top: 1rem;
   display: inline-block;
@@ -477,6 +484,8 @@
 
 .user-profile .profile-container .profile-picture {
   margin-top: 2rem;
+  width: 50rem;
+  height: 50rem;
 }
 
 .user-profile .profile-container .profile-picture img {
