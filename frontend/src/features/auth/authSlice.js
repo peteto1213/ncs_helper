@@ -57,6 +57,18 @@ export const updateInfo = createAsyncThunk('auth/update', async(userData, thunkA
     }
 })
 
+//change user's password
+export const changePasswordByOldPassword = createAsyncThunk('auth/password', async(userData, thunkAPI) => {
+    try{
+        const token = thunkAPI.getState().auth.user.token
+        return await authService.changePasswordByOldPassword(userData, token)
+    }catch(error){
+        const message = (error.response && error.response.data && error.response.data.message ) || error.message || error.toString()
+
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
@@ -111,6 +123,20 @@ export const authSlice = createSlice({
                 state.user = action.payload
             })
             .addCase(updateInfo.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            })
+            .addCase(changePasswordByOldPassword.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(changePasswordByOldPassword.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.message = action.payload
+                state.user = null //logout upon successful change of password
+            })
+            .addCase(changePasswordByOldPassword.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

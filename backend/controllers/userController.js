@@ -47,11 +47,11 @@ const registerUser = asyncHandler(async (req, res) => {
         email: email,
         password: encryptedPassword,
         nickname: nickname,
-        icon: "placeholder.png",
+        icon: "placeholder.png", //default icon on registration
         activationStatus: false,
         userType: "student"
     })
-
+    //Check if the user creation is successful
     if(user){
         res.status(201).json({
             _id: user.id,
@@ -136,9 +136,44 @@ const updateUserInfo = asyncHandler(async (req, res) => {
     })
 })
 
+/**
+ * @author Pete To
+ * @description Change user password by old password
+ * @router PUT /api/user/password
+ * @access Private
+ */
+const changePasswordByOldPassword = asyncHandler(async (req, res) => {
+    //user info from protected route (authMiddleware)
+    const { id, email } = req.user
+    const { oldPassword, newPassword } = req.body
+    //Check if user exists
+    const user = await User.findOne({email})
+    if(!user){
+        res.status(404)
+        throw new Error('User not found')
+    }
+    //Check if the all the field has been completed
+    if(!oldPassword || !newPassword){
+        res.status(400)
+        throw new Error ('Please complete all the required field to change user password')
+    }
+    //Check if the old password is matching
+    if(!(await bcrypt.compare(oldPassword, user.password))){
+        res.status(400)
+        throw new Error('Old password not matching')
+    }
+    //encrypt the new password using bcrypt
+    const salt = await bcrypt.genSalt(10)
+    const encryptedPassword = await bcrypt.hash(newPassword, salt)
+    //update user's with encrypted new password
+    await User.findByIdAndUpdate(id, {password: encryptedPassword}, {new: true})
+    res.status(200).json("Password updated successfully, please login again!")
+})
+
 module.exports = {
     registerUser,
     loginUser,
     getUserInfo,
-    updateUserInfo
+    updateUserInfo,
+    changePasswordByOldPassword
 }

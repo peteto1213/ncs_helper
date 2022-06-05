@@ -41,11 +41,24 @@ const updateInfo = async(userData, token) => {
     return response.data
 }
 
+//Change Password by old Password
+const changePasswordByOldPassword = async(userData, token) => {
+    const config = {
+        headers: {
+            Authorization:`Bearer ${token}`
+        }
+    }
+    const response = await axios.put(`${API_URL}/password`, userData, config)
+
+    return response.data
+}
+
 const authService = {
     register,
     logout,
     login,
-    updateInfo
+    updateInfo,
+    changePasswordByOldPassword
 }
 
 export default authService

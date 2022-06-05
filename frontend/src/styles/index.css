@@ -495,6 +495,87 @@
   border: 0.1rem solid rgba(0, 0, 0, 0.2);
 }
 
+.change-password {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.change-password .heading {
+  width: 100%;
+}
+
+.change-password form {
+  width: 80%;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  padding: 2rem 2.5rem;
+}
+
+.change-password form .input-field {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.change-password form .input-field h3 {
+  font-size: 2rem;
+  margin-left: 0.5rem;
+  color: #1c8d76;
+}
+
+.change-password form .input-field h3 span {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.change-password form .input-field input {
+  margin: 1rem 0;
+  padding: 1.2rem;
+  font-size: 1.7rem;
+  color: #333;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #248f79;
+  width: 100%;
+}
+
+.change-password form .btn {
+  margin-top: 1rem;
+  display: inline-block;
+  background: #1c8d76;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem 3rem;
+  cursor: pointer;
+  font-size: 2rem;
+  border: none;
+}
+
+.change-password form .btn:hover {
+  background: #1dae8d;
+}
+
+.change-password form .error {
+  color: #d40202;
+  margin-bottom: 1.3rem;
+  font-size: 1.7rem;
+}
+
+@media (max-width: 768px) {
+  .change-password form {
+    width: 95%;
+  }
+}
+
 .header {
   position: fixed;
   top: 0;
