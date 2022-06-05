@@ -74,7 +74,7 @@ const updateBlogCategory = asyncHandler( async (req, res) => {
 /**
  * @author Pete To
  * @description delete a blog category
- * @router DELETE /api/blogCategory
+ * @router DELETE /api/blogCategory/:id
  * @access Private
  */
 const deleteBlogCategory = asyncHandler( async (req, res) => {

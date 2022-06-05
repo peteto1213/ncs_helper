@@ -1,7 +1,6 @@
 const asyncHandler = require('express-async-handler')
 const Blog = require('../models/blogModel')
 const User = require('../models/userModel')
-const BlogCategory = require('../models/blogCategoryModel')
 
 /**
  * @author Pete To
@@ -11,6 +10,8 @@ const BlogCategory = require('../models/blogCategoryModel')
  */
 const getBlogs = asyncHandler( async (req, res) => {
     const blogs = await Blog.find()
+                            .populate('user', 'nickname icon')
+                            .populate('blogCategory', 'name')
 
     res.status(200).json(blogs)
 })
@@ -18,12 +19,14 @@ const getBlogs = asyncHandler( async (req, res) => {
 /**
  * @author Pete To
  * @description Get blogs from a specific user (matched by user id)
- * @router GET /api/blog
+ * @router GET /api/blog/myblogs
  * @access Private
  */
 const getUserBlogs = asyncHandler( async (req, res) => {
     //find all blogs that belong to the userid
     const blogs = await Blog.find({user: req.user.id})
+                            .populate('user', 'nickname icon')
+                            .populate('blogCategory', 'name')
 
     res.status(200).json(blogs)
 })
@@ -46,8 +49,6 @@ const createBlog = asyncHandler( async (req, res) => {
         likeCount: 0,
         blogCategory: req.body.blogCategory,
         user: req.user.id,
-        author: req.user.nickname,
-        icon: req.user.icon
     })
 
     res.status(200).json(blog)
@@ -116,10 +117,46 @@ const deleteBlog = asyncHandler( async (req, res) => {
     res.status(200).json({id: req.params.id})
 })
 
+/**
+ * @author Pete To
+ * @description Get all blogs that belong to a category id
+ * @router GET /api/blog/category
+ * @access Public
+ */
 const getBlogsByCategoryId = asyncHandler(async(req, res) => {
+    //check if id is passed or not
+    if(!req.body.id){
+        res.status(400)
+        throw new Error('Please pass a blog id to search for blogs')
+    }
     const blogs = await Blog.find({blogCategory: req.body.id})
+                            .populate('user', 'nickname icon')
+                            .populate('blogCategory', 'name')
 
+    //check if any blogs for this category 
+    if(!blogs){
+        res.status(200).json("No blogs found for this category")
+    }
     res.status(200).json(blogs)
+})
+
+/**
+ * @author Pete To
+ * @description Get a blog by blog id
+ * @router GET /api/blog/:id
+ * @access Public
+ */
+const getBlogByBlogId = asyncHandler(async (req, res) => {
+    const blog = await Blog.findById(req.params.id)
+                            .populate('user', 'nickname icon')
+                            .populate('blogCategory', 'name')
+    // Check if the blog exists or not
+    if(!blog){
+        res.status(404)
+        throw new Error('Blog not found')
+    }else{
+        res.status(200).json(blog)
+    }
 })
 
 module.exports = {
@@ -128,5 +165,6 @@ module.exports = {
     createBlog,
     updateBlog,
     deleteBlog,
-    getBlogsByCategoryId
+    getBlogsByCategoryId,
+    getBlogByBlogId
 }

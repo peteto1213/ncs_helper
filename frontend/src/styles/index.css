@@ -92,6 +92,15 @@
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
   padding: 1.2rem 1.5rem;
+  -webkit-transition: -webkit-transform 300ms ease-in-out;
+  transition: -webkit-transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+}
+
+.dashboard .card-container .card:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .dashboard .card-container .card img {
@@ -142,7 +151,7 @@
 
 @media (max-width: 550px) {
   .dashboard .card-container .card {
-    width: 99%;
+    width: 95%;
   }
 }
 

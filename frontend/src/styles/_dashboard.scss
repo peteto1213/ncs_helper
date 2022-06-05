@@ -13,6 +13,10 @@
             box-shadow: $box-shadow;
             border-radius: 0.5rem;
             padding: 1.2rem 1.5rem;
+            transition: transform 300ms ease-in-out;
+            &:hover {
+                transform: scale(1.1);
+            }
 
             img{
                 max-height: 25rem;
@@ -56,7 +60,7 @@
     .dashboard {
         .card-container {
             .card {
-                width: 99%;
+                width: 95%;
             }
         }
     }
