@@ -58,7 +58,7 @@ const authService = {
     logout,
     login,
     updateInfo,
-    changePasswordByOldPassword
+    changePasswordByOldPassword,
 }
 
 export default authService

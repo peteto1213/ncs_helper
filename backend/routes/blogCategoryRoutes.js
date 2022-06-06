@@ -1,15 +1,15 @@
 const express = require('express')
 const {getBlogCategories, createBlogCategory, updateBlogCategory, deleteBlogCategory} = require('../controllers/blogCategoryController')
-const {protect} = require('../middleware/authMiddleware')
+const {protect, checkAdminPermission} = require('../middleware/authMiddleware')
 
 const router = express.Router()
 
-router.get('/', protect, getBlogCategories)
+router.get('/', protect, checkAdminPermission, getBlogCategories)
 
-router.post('/', protect, createBlogCategory)
+router.post('/', protect, checkAdminPermission, createBlogCategory)
 
-router.put('/:id', protect, updateBlogCategory)
+router.put('/:id', protect, checkAdminPermission, updateBlogCategory)
 
-router.delete('/:id', protect, deleteBlogCategory)
+router.delete('/:id', protect, checkAdminPermission, deleteBlogCategory)
 
 module.exports = router

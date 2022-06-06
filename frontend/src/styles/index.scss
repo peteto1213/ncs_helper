@@ -26,6 +26,15 @@ html{
     scroll-padding-top: 6rem;
 }
 
+::-webkit-scrollbar{
+    width: 15px;
+}
+::-webkit-scrollbar-thumb{
+    background-image: linear-gradient($primaryColorLighter, $secondaryColorLighter);
+    
+}
+
+
 .container{
     padding-top: 5rem;
 

@@ -143,15 +143,370 @@
   background: #1dae8d;
 }
 
+#menu-btn {
+  width: 4rem;
+  height: 4rem;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  color: white;
+  background: #1c8d76;
+  cursor: pointer;
+  display: none;
+}
+
+#menu-btn:hover {
+  background: #1dae8d;
+}
+
+.admin-dashboard {
+  padding-top: 4.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.admin-dashboard .menu {
+  background: rgba(193, 235, 225, 0.7);
+  width: 40rem;
+  min-height: 100vh;
+  margin: -1.2rem 0;
+  padding: 0 1rem;
+  position: fixed;
+  left: 0;
+}
+
+.admin-dashboard .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  color: gray;
+  padding: 30px 0 0 30px;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.admin-dashboard .logo img {
+  width: 5.5rem;
+}
+
+.admin-dashboard .items {
+  margin-top: 2rem;
+}
+
+.admin-dashboard .items li {
+  list-style: none;
+  padding: 1rem 0;
+  font-size: 2rem;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.admin-dashboard .items li:hover {
+  background: #21c9a2;
+  cursor: pointer;
+}
+
+.admin-dashboard .items li:hover .icon, .admin-dashboard .items li:hover a {
+  color: whitesmoke;
+}
+
+.admin-dashboard .items li:nth-child(1) {
+  border-left: 4px solid lightgray;
+}
+
+.admin-dashboard .items li .icon {
+  color: green;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  margin: 0 1.5rem 0 3rem;
+}
+
+.admin-dashboard .items li a {
+  text-decoration: none;
+  color: darkcyan;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.admin-dashboard .content {
+  width: calc(100% - 40rem);
+  margin-left: 40rem;
+  position: relative;
+}
+
+.admin-dashboard .content .nav {
+  margin-left: 2rem;
+  font-size: 2rem;
+}
+
+.admin-dashboard .content .i-name {
+  color: #1dae8d;
+  padding: 2rem 2rem 0 2rem;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.admin-dashboard .content .values {
+  padding: 2rem 2rem 0 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.admin-dashboard .content .values .val-box {
+  background: white;
+  width: 20rem;
+  padding: 2rem 2.2rem;
+  border-radius: 5px;
+  border: 0.1rem solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  border-color: rgba(193, 235, 225, 0.7);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.admin-dashboard .content .values .val-box:nth-child(odd) .icon {
+  background: #1c8d76;
+}
+
+.admin-dashboard .content .values .val-box:nth-child(even) .icon {
+  background: #1dae8d;
+}
+
+.admin-dashboard .content .values .val-box .icon {
+  font-size: 1.7rem;
+  width: 5rem;
+  height: 5rem;
+  line-height: 5rem;
+  padding: 1rem;
+  border-radius: 50%;
+  text-align: center;
+  color: white;
+  margin-right: 1rem;
+}
+
+.admin-dashboard .content .values .val-box h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.admin-dashboard .content .values .val-box span {
+  font-size: 1.7rem;
+  color: gray;
+}
+
+.admin-dashboard .content .board {
+  width: 95%;
+  margin: 2rem 0 2rem 2rem;
+  overflow: auto;
+  background: #fff;
+  border-radius: 0.5rem;
+  border-color: rgba(193, 235, 225, 0.7);
+}
+
+.admin-dashboard .content .board table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.7rem;
+  margin-bottom: 10rem;
+}
+
+.admin-dashboard .content .board table tr {
+  border-bottom: 0.1rem solid lightgray;
+}
+
+.admin-dashboard .content .board table thead td {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  background: rgba(193, 235, 225, 0.7);
+  padding: 1.2rem;
+}
+
+.admin-dashboard .content .board table tbody tr td {
+  padding: 1.5rem 2rem;
+}
+
+.admin-dashboard .content .board .active p {
+  background: #d7fada;
+  padding: 0.7rem 1.5rem;
+  display: inline-block;
+  border-radius: 2rem;
+  color: #2b2b2b;
+}
+
+.admin-dashboard .content .board .inactive p {
+  background: #9c9c9c;
+  padding: 0.7rem 1.5rem;
+  display: inline-block;
+  border-radius: 2rem;
+  color: whitesmoke;
+}
+
+.admin-dashboard .content .board .edit {
+  padding: 0.7rem 2rem;
+  border-radius: 0.5rem;
+  background: #1c8d76;
+  color: white;
+  margin-right: 1.3rem;
+}
+
+.admin-dashboard .content .board .edit:hover {
+  background: #1dae8d;
+}
+
+.admin-dashboard .content .board .delete {
+  padding: 0.7rem 2rem;
+  border-radius: 0.5rem;
+  background: #c25fc2;
+  color: white;
+}
+
+.admin-dashboard .content .board .delete:hover {
+  background: #c974c9;
+}
+
+.admin-dashboard .content .board img {
+  width: 4rem;
+  height: 4rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  margin-right: 1.5rem;
+}
+
+.admin-dashboard .content .board h5 {
+  font-weight: 600;
+  font-size: 1.7rem;
+}
+
+.admin-dashboard .content .board p {
+  font-weight: 400;
+  font-size: 1.7rem;
+  color: gray;
+}
+
+.admin-dashboard .content .board .people {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  text-align: start;
+}
+
 @media (max-width: 768px) {
   .dashboard .card-container .card {
     width: 48%;
+  }
+  .admin-dashboard .menu {
+    width: 27rem;
+    left: -27rem;
+    position: fixed;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+  }
+  .admin-dashboard .menu .logo h2 {
+    font-size: 2.2rem;
+  }
+  .admin-dashboard .menu.active {
+    left: 0;
+  }
+  .admin-dashboard .menu.active ~ .content {
+    width: calc(100% - 27rem);
+    margin-left: 27rem;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+  }
+  .admin-dashboard .content {
+    width: 100%;
+    margin-left: 0;
+    display: inline-block;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+  }
+  .admin-dashboard .content .values {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .admin-dashboard .content .values .val-box {
+    margin: 10px 20px 10px 0;
+  }
+  .admin-dashboard .content .board {
+    width: 95%;
+    padding: 0;
+    overflow: auto;
+  }
+  .admin-dashboard .content .board table thead td {
+    font-size: 1.6rem;
+  }
+  #menu-btn {
+    display: initial;
   }
 }
 
 @media (max-width: 550px) {
   .dashboard .card-container .card {
     width: 95%;
+  }
+  .admin-dashboard .content .board {
+    margin: 30px 15px 30px 15px;
   }
 }
 
@@ -784,6 +1139,15 @@ html {
   overflow-x: hidden;
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#248f79), to(#21c9a2));
+  background-image: linear-gradient(#248f79, #21c9a2);
 }
 
 .container {

@@ -1,5 +1,6 @@
 @import './variables';
 
+// Student view
 .dashboard{
     .card-container{
         @include customFlex(row, flex-start, flex-start );
@@ -46,6 +47,238 @@
     }
 }
 
+// Admin View
+#menu-btn {
+    width: 4rem; height: 4rem;
+    padding: 1rem;
+    border-radius: 1.5rem;
+    color: white;
+    background: $primaryColor;
+    cursor: pointer;
+    &:hover{
+        background: $secondaryColor;
+    }
+    display: none;
+}
+
+.admin-dashboard{
+    padding-top: 4.5rem;
+    @include customFlex(row, flex-start, flex-start);
+
+    .menu{
+        background: $lightColor;
+        width: 40rem;
+        min-height: 100vh;
+        margin: -1.2rem 0;
+        padding: 0 1rem;
+        position: fixed;
+        left: 0
+    }
+    .logo{
+        @include customFlex(row, center, flex-start);
+        color: gray;
+        padding: 30px 0 0 30px;
+        font-size: 2rem;
+        text-align: center;
+        img{
+            width: 5.5rem;
+        }
+    }
+    .items{
+        margin-top: 2rem;
+        li{
+            list-style: none;
+            padding: 1rem 0;
+            font-size: 2rem;
+            transition: 0.3s ease;
+            &:hover{
+                background: $secondaryColorLighter;
+                cursor: pointer;
+                .icon, a{
+                    color: whitesmoke;
+                }
+            }
+            &:nth-child(1){
+                border-left: 4px solid lightgray;
+            }
+
+            .icon{
+                color: green;
+                width: 2rem; height: 2rem; line-height: 2rem;
+                text-align: center;
+                margin: 0 1.5rem 0 3rem;
+            }
+            a{
+                text-decoration: none;
+                color: darkcyan;
+                transition: 0.3s ease;
+            }
+        }
+    }
+
+    .content{
+        width: calc(100% - 40rem);
+        margin-left: 40rem;
+        position: relative;
+
+        .nav{
+            margin-left: 2rem;
+            font-size: 2rem;
+        }
+
+        .i-name {
+            color: $secondaryColor;
+            padding: 2rem 2rem 0 2rem;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        
+        .values {
+            padding: 2rem 2rem 0 2rem;
+            @include customFlex(row, center, flex-start);
+            flex-wrap: wrap;
+
+            .val-box{
+                background: white;
+                width: 20rem;
+                padding: 2rem 2.2rem;
+                border-radius: 5px;
+                border: $border;
+                box-shadow: $box-shadow;
+                border-color:$lightColor ;
+                @include customFlex(row, center, flex-start);
+                &:nth-child(odd) .icon{
+                    background: $primaryColor;
+                }
+                &:nth-child(even) .icon{
+                    background: $secondaryColor;
+                }
+
+                .icon{
+                    font-size: 1.7rem;
+                    width: 5rem; height: 5rem; line-height: 5rem;
+                    padding: 1rem;
+                    border-radius: 50%;
+                    text-align: center;
+                    color: white;
+                    margin-right: 1rem;
+                }
+
+                h3{
+                    font-size: 2rem;
+                    font-weight: 600;
+                    margin-bottom: 0.5rem;
+                }
+                span{
+                    font-size: 1.7rem;
+                    color: gray;
+                }
+            }
+        }
+
+        .board{
+            width: 95%;
+            margin: 2rem 0 2rem 2rem;
+            overflow: auto;
+            background: #fff;
+            border-radius: 0.5rem;
+            border-color: $lightColor;
+
+            table{
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 1.7rem;
+                margin-bottom: 10rem;
+
+                tr{
+                    border-bottom: 0.1rem solid lightgray;
+                }
+                thead{
+                    td{
+                        font-size: 2rem;
+                        text-transform: uppercase;
+                        font-weight: 400;
+                        background: $lightColor;
+                        padding: 1.2rem;
+                    }
+                }
+                tbody{
+                    tr{
+                        td{
+                            padding: 1.5rem 2rem;
+                        }
+                    }
+                }
+            }
+
+            .active{
+                p{
+                    background: $activeColor;
+                    padding: 0.7rem 1.5rem;
+                    display: inline-block;
+                    border-radius: 2rem;
+                    color: #2b2b2b;
+                }
+            }
+
+            .inactive{
+                p{
+                    background: $inactiveColor;
+                    padding: 0.7rem 1.5rem;
+                    display: inline-block;
+                    border-radius: 2rem;
+                    color: whitesmoke;
+                }
+            }
+
+            .edit{
+                padding: 0.7rem 2rem;
+                border-radius: 0.5rem;
+                background: $primaryColor;
+                color: white;
+                margin-right: 1.3rem;
+                &:hover {
+                    background: $secondaryColor;
+                }
+            }
+
+            .delete{
+                padding: 0.7rem 2rem;
+                border-radius: 0.5rem;
+                background: rgb(194, 95, 194);
+                color: white;
+                &:hover{
+                    background: rgb(201, 116, 201);
+                }
+            }
+
+            img{
+                width: 4rem;
+                height: 4rem;
+                object-fit: cover;
+                border-radius: 50%;
+                margin-right: 1.5rem;
+            }
+
+            h5{
+                font-weight: 600;
+                font-size: 1.7rem;
+            }
+
+            p{
+                font-weight: 400;
+                font-size: 1.7rem;
+                color: gray;
+            }
+
+            .people{
+                @include customFlex(row, center, flex-start);
+                text-align: start;
+            }
+        }
+    }
+}
+
 @media (max-width: 768px) {
     .dashboard{
         .card-container {
@@ -54,6 +287,61 @@
             }
         }
     }
+    .admin-dashboard{
+
+        .menu{
+            width: 27rem;
+            left: -27rem;
+            position: fixed;
+            transition: 0.3s ease;
+            .logo{
+                h2{
+                    font-size: 2.2rem;
+                }
+            }
+        }
+
+        .menu.active{
+            left: 0;
+        }
+        .menu.active~.content{
+            width: calc(100% - 27rem);
+            margin-left: 27rem;
+            transition: 0.3s ease;
+        }
+
+        .content{
+            width: 100%;
+            margin-left: 0;
+            display: inline-block;
+            transition: 0.3s ease;
+
+            .values{
+                justify-content: flex-start;
+                .val-box{
+                    margin: 10px 20px 10px 0;
+                }
+            }
+
+            .board{
+                width: 95%;
+                padding: 0;
+                overflow: auto;
+                table{
+                    thead{
+                        td{
+                            font-size: 1.6rem;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    #menu-btn{
+        display: initial;
+    }
 }
 
 @media (max-width: 550px) {
@@ -61,6 +349,14 @@
         .card-container {
             .card {
                 width: 95%;
+            }
+        }
+    }
+
+    .admin-dashboard{
+        .content{
+            .board{
+                margin: 30px 15px 30px 15px;
             }
         }
     }

@@ -2,7 +2,6 @@ const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
-const multer = require('multer')
 
 /**
  * @author Pete To
@@ -170,10 +169,23 @@ const changePasswordByOldPassword = asyncHandler(async (req, res) => {
     res.status(200).json("Password updated successfully, please login again!")
 })
 
+/**
+ * @author Pete To
+ * @description Admin permission granted - Get all user's info (excluding password)
+ * @router GET /api/user/allUsers
+ * @access Private, Admin
+ */
+const getAllUsers = asyncHandler(async (req, res) => {
+    const allUsers = await User.find().select('-password')
+
+    res.status(200).json(allUsers)
+})
+
 module.exports = {
     registerUser,
     loginUser,
     getUserInfo,
     updateUserInfo,
-    changePasswordByOldPassword
+    changePasswordByOldPassword,
+    getAllUsers
 }

@@ -35,6 +35,16 @@ const protect = asyncHandler(async (req, res, next) => {
     }
 })
 
+const checkAdminPermission = asyncHandler(async (req, res, next) => {
+    if(req.user.userType !== "admin"){
+        res.status(302)
+        throw new Error('Not authorized to get to this page')
+    }
+    
+    next()
+})
+
 module.exports = {
-    protect
+    protect,
+    checkAdminPermission
 }

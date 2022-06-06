@@ -3,25 +3,11 @@ const BlogCategory = require('../models/blogCategoryModel')
 
 /**
  * @author Pete To
- * @description Check if the user type is admin or not
- * @param {*} req 
- * @param {*} res 
- */
-const checkPermission = (req, res) => {
-    if(req.user.userType !== "admin"){
-        res.status(401)
-        throw new Error('Not authorized to get to this page')
-    }
-}
-
-/**
- * @author Pete To
  * @description Get all blog categories
  * @router GET /api/blogCategory
- * @access Private
+ * @access Private, Admin
  */
 const getBlogCategories = asyncHandler( async (req, res) => {
-    checkPermission(req, res)
     const blogCategories = await BlogCategory.find()
     res.status(200).json(blogCategories)
 })
@@ -30,12 +16,9 @@ const getBlogCategories = asyncHandler( async (req, res) => {
  * @author Pete To
  * @description Create a blog category
  * @router POST /api/blogCategory/:id
- * @access Private
+ * @access Private, Admin
  */
 const createBlogCategory = asyncHandler( async (req, res) => {
-
-    checkPermission(req, res)
-
     if(!req.body.name || !req.body.bgColor){
         res.status(400)
         throw new Error('Please add a color and name to the blog category')
@@ -54,10 +37,9 @@ const createBlogCategory = asyncHandler( async (req, res) => {
  * @author Pete To
  * @description update a blog category
  * @router PUT /api/blogCategory/:id
- * @access Private
+ * @access Private, Admin
  */
 const updateBlogCategory = asyncHandler( async (req, res) => {
-    checkPermission(req, res)
     //check if the blog category exists or not
     const blogCategory = await BlogCategory.findById(req.params.id)
     if(!blogCategory){
@@ -75,10 +57,9 @@ const updateBlogCategory = asyncHandler( async (req, res) => {
  * @author Pete To
  * @description delete a blog category
  * @router DELETE /api/blogCategory/:id
- * @access Private
+ * @access Private, Admin
  */
 const deleteBlogCategory = asyncHandler( async (req, res) => {
-    checkPermission(req, res)
     //check if the blog category exists or not
     const blogCategory = await BlogCategory.findById(req.params.id)
     if(!blogCategory){

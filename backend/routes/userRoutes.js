@@ -1,20 +1,23 @@
 const express = require('express')
 const router = express.Router()
-const {registerUser, loginUser, getUserInfo, updateUserInfo, changePasswordByOldPassword} = require('../controllers/userController')
-const {protect} = require('../middleware/authMiddleware')
+const {registerUser, loginUser, getUserInfo, updateUserInfo, changePasswordByOldPassword, getAllUsers} = require('../controllers/userController')
+const {protect, checkAdminPermission} = require('../middleware/authMiddleware')
 const {upload} = require('../middleware/uploadMiddleware')
 
+//Public routes
+//Register a user
 router.post('/', registerUser)
-
+//Login a user
 router.post('/login', loginUser)
 
-//User id is get from the JWT
+//Private routes
+//Get user info by user id - get from the JWT
 router.get('/info', protect, getUserInfo)
-
-//update user information
+//Upon admin permission granted - Get all user's info
+router.get('/allUsers', protect, checkAdminPermission, getAllUsers)
+//Update user information
 router.put('/info', upload.single('icon'), protect, updateUserInfo)
-
-//change user's password by old password
+//Change user's password by old password
 router.put('/password', protect, changePasswordByOldPassword)
 
 module.exports = router
