@@ -19,7 +19,7 @@ const getBlogs = asyncHandler( async (req, res) => {
 /**
  * @author Pete To
  * @description Get blogs from a specific user (matched by user id)
- * @router GET /api/blog/myblogs
+ * @router GET /api/blog/user/myBlogs
  * @access Private
  */
 const getUserBlogs = asyncHandler( async (req, res) => {
@@ -46,10 +46,11 @@ const createBlog = asyncHandler( async (req, res) => {
     const blog = await Blog.create({
         title: req.body.title,
         content: req.body.content,
-        likeCount: 0,
+        likeCount: [],
+        comments: [],
         blogCategory: req.body.blogCategory,
         user: req.user.id,
-    })
+    }).populate('user', 'nickname icon').populate('blogCategory', 'name')
 
     res.status(200).json(blog)
 })
@@ -82,7 +83,8 @@ const updateBlog = asyncHandler( async (req, res) => {
 
     const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, req.body, {
         new: true
-    })
+    }).populate('user', 'nickname icon').populate('blogCategory', 'name')
+
     res.status(200).json(updatedBlog)
 })
 
@@ -120,16 +122,16 @@ const deleteBlog = asyncHandler( async (req, res) => {
 /**
  * @author Pete To
  * @description Get all blogs that belong to a category id
- * @router GET /api/blog/category
+ * @router GET /api/blog/category/:id
  * @access Public
  */
 const getBlogsByCategoryId = asyncHandler(async(req, res) => {
     //check if id is passed or not
-    if(!req.body.id){
+    if(!req.params.id){
         res.status(400)
         throw new Error('Please pass a blog id to search for blogs')
     }
-    const blogs = await Blog.find({blogCategory: req.body.id})
+    const blogs = await Blog.find({blogCategory: req.params.id})
                             .populate('user', 'nickname icon')
                             .populate('blogCategory', 'name')
 
