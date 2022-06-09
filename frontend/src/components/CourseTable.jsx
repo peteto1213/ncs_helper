@@ -21,14 +21,6 @@ function CourseTable(props) {
             <h5>Java first module</h5>
           </td>
 
-          <td className="people">
-            <div className="people-de">
-              <img src="" alt="" />
-              <h5>Red</h5>
-              <p></p>
-            </div>
-          </td>
-
           <td>
             <a className="edit" href="#">
               Edit

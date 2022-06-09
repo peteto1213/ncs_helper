@@ -51,7 +51,7 @@ function Header() {
             <Link to='/dashboard' onClick={hideMenu}><FaRocket />Dashboard</Link>
             <Link to='/course' onClick={hideMenu}><FaGraduationCap />Courses</Link>
             <Link to='/collaboration' onClick={hideMenu}><FaRobot />Collaboration</Link>
-            <Link to='/blog' onClick={hideMenu}><FaCoffee />Blogs</Link>
+            <Link to='/allBlogs' onClick={hideMenu}><FaCoffee />Blogs</Link>
         </nav>
 
         <div className="icons">

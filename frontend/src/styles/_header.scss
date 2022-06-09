@@ -8,8 +8,10 @@
     box-shadow: $box-shadow;
     @include customFlex(row, center, flex-start);
     padding: 1.2rem 7%;
+
     a{
         color: $textColor;
+        transition: 0.1s linear;
         &:hover {
             color: whitesmoke;
             background: none;

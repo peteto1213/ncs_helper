@@ -7,6 +7,7 @@ import {
   FaMicroblog,
   FaLock,
   FaBars,
+  FaFolderPlus
 } from "react-icons/fa";
 import collaboration from "../resources/collaboration.png";
 import blog from "../resources/blog.jpg";
@@ -57,10 +58,12 @@ function Dashboard() {
     }
   }, [isError, message]);
 
+  //admin dashboard menu icon when <768px
   const toggleMenu = () => {
     setMenuClass(!menuClass);
   };
 
+  //if pending state of getting data from backend - return Spinner
   if (isLoading) {
     return <Spinner />;
   }
@@ -174,17 +177,17 @@ function Dashboard() {
                 </div>
               </div>
               <div className="val-box">
-                <FaUserCheck className="icon" />
+                <FaGraduationCap className="icon" />
                 <div>
-                  <h3>{users.length}</h3>
-                  <span>Users</span>
+                  <h3>5</h3>
+                  <span>Courses</span>
                 </div>
               </div>
               <div className="val-box">
-                <FaUserCheck className="icon" />
+                <FaMicroblog className="icon" />
                 <div>
-                  <h3>{users.length}</h3>
-                  <span>Users</span>
+                  <h3>3</h3>
+                  <span>Blog Categories</span>
                 </div>
               </div>
             </div>
@@ -207,6 +210,7 @@ function Dashboard() {
                 ))}
               </table>
 
+              <button className="btn"><FaFolderPlus />Add a New Course</button>
               {/* Course Table */}
               <table id="course">
                 <thead>
@@ -214,7 +218,6 @@ function Dashboard() {
                     <td>Course Code</td>
                     <td>Course Name</td>
                     <td>Description</td>
-                    <td>Background Color</td>
                     <td>Actions</td>
                   </tr>
                 </thead>
@@ -222,13 +225,13 @@ function Dashboard() {
                 <CourseTable />
               </table>
 
+              <button className="btn"><FaFolderPlus />Add a New Blog Category</button>
               {/* Blog Table */}
               <table id="blog">
                 <thead>
                   <tr>
                     <td>Blog category</td>
                     <td>Description</td>
-                    <td>Background Color</td>
                     <td>Actions</td>
                   </tr>
                 </thead>
