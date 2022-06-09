@@ -91,7 +91,7 @@ function ChangePassword() {
             </div>
 
             <div className="input-field">
-                <h3>Confirm your new Password</h3>
+                <h3>Confirm your New Password</h3>
                 <input 
                     type='password'
                     name='newPassword2'

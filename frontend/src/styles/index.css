@@ -285,6 +285,7 @@
           justify-content: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
 .admin-dashboard .content .values .val-box {
@@ -486,7 +487,7 @@
             justify-content: flex-start;
   }
   .admin-dashboard .content .values .val-box {
-    margin: 10px 20px 10px 0;
+    gap: 1.2rem;
   }
   .admin-dashboard .content .board {
     width: 95%;

@@ -137,6 +137,7 @@
             padding: 2rem 2rem 0 2rem;
             @include customFlex(row, center, flex-start);
             flex-wrap: wrap;
+            gap: 1.5rem;
 
             .val-box{
                 background: white;
@@ -319,7 +320,7 @@
             .values{
                 justify-content: flex-start;
                 .val-box{
-                    margin: 10px 20px 10px 0;
+                    gap: 1.2rem;
                 }
             }
 
