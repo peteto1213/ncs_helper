@@ -1,9 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
-import {FaJava, FaStream, FaSearch} from 'react-icons/fa'
+import {useNavigate} from 'react-router-dom'
+import {FaJava, FaStream, FaSearch, FaRegPlusSquare} from 'react-icons/fa'
 import BlogCard from '../components/BlogCard'
 
 function AllBlogs() {
+  const navigate = useNavigate()
   const [menuState, setMenuState] = useState(true)
 
   const toggleMenu = () => {
@@ -12,6 +14,10 @@ function AllBlogs() {
 
   const hideMenu = () => {
     setMenuState(true)
+  }
+
+  const navigateCreateBlog = () => {
+    navigate('/createBlog')
   }
 
   return (
@@ -24,6 +30,7 @@ function AllBlogs() {
 
         <div className="content">
           <div className="blog-container">
+            <button onClick={navigateCreateBlog} className='btn'><FaRegPlusSquare />Create a new blog</button>
             <BlogCard />
           </div>
 

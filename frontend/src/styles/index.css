@@ -1018,6 +1018,30 @@
   margin-right: 1.1rem;
 }
 
+.all-blogs .content .blog-container .btn {
+  margin-top: 1rem;
+  display: inline-block;
+  background: rgba(193, 235, 225, 0.7);
+  color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem 3rem;
+  cursor: pointer;
+  font-size: 2rem;
+  border: none;
+  color: gray;
+  margin-top: 0;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+}
+
+.all-blogs .content .blog-container .btn:hover {
+  background: rgba(119, 175, 162, 0.7);
+}
+
+.all-blogs .content .blog-container .btn:hover {
+  color: whitesmoke;
+}
+
 .all-blogs .content .blog-container .blog-card {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1277,6 +1301,246 @@
   }
 }
 
+.single-blog {
+  padding: 7rem 20%;
+  background: #f5f7f9;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.single-blog .content {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 4.5rem 10rem;
+  margin-bottom: 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.single-blog .content .top-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  font-size: 2.3rem;
+  margin-top: -2rem;
+}
+
+.single-blog .content .top-section .like {
+  margin-left: -4rem;
+  margin-bottom: 2rem;
+}
+
+.single-blog .content .top-section .like .icon {
+  color: #1dae8d;
+  cursor: pointer;
+  margin-right: 1rem;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+
+.single-blog .content .top-section .like .icon:hover {
+  background-color: #21c9a2;
+  color: white;
+  border-radius: 50%;
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+}
+
+.single-blog .content .top-section .category .icon {
+  color: gray;
+}
+
+.single-blog .content .title {
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+  color: #1c8d76;
+  margin-top: 2rem;
+  text-transform: capitalize;
+}
+
+.single-blog .content .details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 1.8rem;
+  gap: 0.7rem;
+  margin-bottom: 2rem;
+}
+
+.single-blog .content .details .icon {
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+}
+
+.single-blog .content .details .author {
+  color: #1c8d76;
+}
+
+.single-blog .content .details .date {
+  font-size: 1.5rem;
+}
+
+.single-blog .content .text {
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+.single-blog .comment-section {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 4.5rem 10rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.single-blog .comment-section .comment-number {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.single-blog .comment-section .add-comment {
+  width: 100%;
+  margin-bottom: 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 0.5rem;
+  font-size: 1.7rem;
+}
+
+.single-blog .comment-section .add-comment h3 {
+  color: gray;
+}
+
+.single-blog .comment-section .add-comment textarea {
+  width: 100%;
+  padding: 1rem 0.5rem;
+  font-size: 1.7rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.2);
+  border-color: rgba(240, 240, 240, 0.863);
+}
+
+.single-blog .comment-section .add-comment button {
+  margin-top: 1rem;
+  display: inline-block;
+  background: #1c8d76;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem 3rem;
+  cursor: pointer;
+  font-size: 2rem;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.single-blog .comment-section .add-comment button:hover {
+  background: #1dae8d;
+}
+
+.single-blog .comment-section .comments {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 1.5rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .single-blog {
+    padding: 7rem 10%;
+  }
+  .single-blog .content, .single-blog .comment-section {
+    padding: 4.5rem 5rem;
+  }
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -1462,6 +1726,65 @@
   border-radius: 50%;
   -webkit-animation: spin 1.2s linear infinite;
           animation: spin 1.2s linear infinite;
+}
+
+.comment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
+  border-color: rgba(193, 235, 225, 0.7);
+  padding-bottom: 1.5rem;
+  width: 100%;
+}
+
+.comment .icon {
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.comment .text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.comment .text .author {
+  font-size: 1.8rem;
+  margin-bottom: 0.7rem;
+}
+
+.comment .text .author span {
+  font-size: 1.3rem;
+  color: gray;
+}
+
+.comment .text p {
+  margin-left: 0.5rem;
+  font-size: 1.8rem;
+  color: #333;
 }
 
 * {

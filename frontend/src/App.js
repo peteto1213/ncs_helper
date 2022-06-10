@@ -7,6 +7,8 @@ import Home from './pages/Home';
 import UserProfile from './pages/UserProfile';
 import ChangePassword from './pages/ChangePassword';
 import AllBlogs from './pages/AllBlogs';
+import SingleBlog from './pages/SingleBlog';
+import CreateBlog from './pages/CreateBlog';
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
             <Route path='/changePassword' element={<ChangePassword/>} />
 
             <Route path='/allBlogs' element={<AllBlogs/>} />
+            <Route path='/singleBlog' element={<SingleBlog/>} />
+            <Route path='/createBlog' element={<CreateBlog/>} />
 
             {/* Default: Redirect to home */}
             <Route path="*" element={<Navigate to="/" replace />}/>

@@ -1,0 +1,131 @@
+@import './variables';
+
+.single-blog{
+    padding: 7rem 20%;
+    background: $blogBgColor;
+    min-height: 100vh;
+    @include customFlex(column, center, flex-start);
+    
+    .content{
+        background: white;
+        border-radius: 0.5rem;
+        padding: 4.5rem 10rem;
+        margin-bottom: 4rem;
+        @include customFlex(column, center, flex-start);
+
+        .top-section{
+            @include customFlex(row, flex-start, space-between);
+            width: 100%;
+            font-size: 2.3rem;
+            margin-top: -2rem;
+            .like {
+                    margin-left: -4rem;
+                    margin-bottom: 2rem;
+            
+                    .icon {
+                        color: $secondaryColor;
+                        cursor: pointer;
+                        margin-right: 1rem;
+                        transition: transform 0.2s ease-in-out;
+                        
+                        &:hover {
+                            background-color: $secondaryColorLighter;
+                            color: white;
+                            border-radius: 50%;
+                            transform: scale(1.3);
+                        }
+                    }
+                }
+            .category{
+                .icon{
+                    color: gray;
+                }
+            }
+        }
+
+        .title{
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: $primaryColor;
+            margin-top: 2rem;
+            text-transform: capitalize;
+        }
+        .details{
+            @include flexColumnCenter();
+            font-size: 1.8rem;
+            gap: 0.7rem;
+            margin-bottom: 2rem;
+
+            .icon{
+                width: 5.5rem; height: 5.5rem;
+                border-radius: 50%;
+            }
+            .author{
+                color: $primaryColor;
+            }
+            .date{
+                font-size: 1.5rem;
+            }
+        }
+        .text{
+            font-size: 2rem;
+            line-height: 2.5rem;
+        }
+    }
+
+    .comment-section{
+        background: white;
+        border-radius: 0.5rem;
+        padding: 4.5rem 10rem;
+        width: 100%;
+        @include customFlex(column, flex-start, flex-start);
+        
+        .comment-number{
+            align-self: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .add-comment{
+            width: 100%;
+            margin-bottom: 4rem;
+            @include customFlex(column, flex-start, flex-start);
+            gap: 0.5rem;
+            font-size: 1.7rem;
+
+            h3{
+                color: gray;
+            }
+            textarea{
+                width: 100%;
+                padding: 1rem 0.5rem;
+                font-size: 1.7rem;
+                border: $border;
+                border-color: $borderColor;
+            }
+            button{
+                @include button($primaryColor, $secondaryColor);
+                padding: 0.7rem 1.5rem;
+                align-self: flex-end;
+            }
+        }
+
+        .comments{
+            @include customFlex(column, flex-start, flex-start);
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .single-blog{
+        padding: 7rem 10%;
+
+        .content, .comment-section{
+            padding: 4.5rem 5rem;
+        }
+    }
+}

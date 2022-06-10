@@ -8,9 +8,11 @@
 @import './userProfile';
 @import './changePassword';
 @import './allBlogs';
+@import './singleBlog';
 // Components import
 @import './header';
 @import './spinner';
+@import './singleComment';
 
 *{
     margin: 0;

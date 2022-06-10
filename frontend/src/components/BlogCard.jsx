@@ -1,8 +1,15 @@
 import React from "react";
 import {FaUser, FaCalendar, FaTag} from 'react-icons/fa'
+import {useNavigate} from 'react-router-dom'
 import image from '../resources/banner.jpg'
 
 function BlogCard() {
+  const navigate = useNavigate()
+
+  const navigateSingleBlog = () => {
+    navigate('/singleBlog')
+  }
+
   return (
     <>
       <div className="blog-card">
@@ -22,7 +29,7 @@ function BlogCard() {
             veritatis laborum nam praesentium facere.
           </p>
 
-          <button className="btn">Read More</button>
+          <button onClick={navigateSingleBlog} className="btn">Read More</button>
         </div>
       </div>
     </>

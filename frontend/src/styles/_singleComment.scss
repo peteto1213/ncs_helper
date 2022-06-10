@@ -1,0 +1,36 @@
+@import './variables';
+
+.comment {
+    @include customFlex(row, flex-start, flex-start);
+    border-bottom: $border;
+    border-color: $lightColor;
+    padding-bottom: 1.5rem;
+    width: 100%;
+
+    .icon {
+        width: 5.5rem;
+        height: 5.5rem;
+        border-radius: 50%;
+        margin-right: 1rem;
+    }
+
+    .text {
+        @include customFlex(column, flex-start, flex-start);
+
+        .author {
+            font-size: 1.8rem;
+            margin-bottom: 0.7rem;
+
+            span {
+                font-size: 1.3rem;
+                color: gray;
+            }
+        }
+
+        p {
+            margin-left: 0.5rem;
+            font-size: 1.8rem;
+            color: #333;
+        }
+    }
+}
