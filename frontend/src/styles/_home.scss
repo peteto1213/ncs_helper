@@ -33,6 +33,12 @@
     }
 }
 
+.home.active{
+    background: url('../resources/success_banner.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 @media (max-width: 768px){
     .home .content{
         max-width: 50rem;

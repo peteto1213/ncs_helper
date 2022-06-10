@@ -33,13 +33,16 @@ function SingleBlog() {
         <div className="comment-section">
             <div className="add-comment">
                 <h3>Add a comment to this blog</h3>
-                <textarea 
-                    name='newComment'
-                    rows="4" 
-                    column="50"
-                    placeholder='type your comments here...'
-                />
-                <button className='btn'>submit</button>
+                <form>
+                    <textarea 
+                        name='newComment'
+                        rows="4" 
+                        column="50"
+                        placeholder='type your comments here...'
+                        required
+                    />
+                    <button className='btn'>submit</button>
+                </form>
             </div>
 
             <h3 className="comment-number">

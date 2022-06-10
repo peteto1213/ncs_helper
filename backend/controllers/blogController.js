@@ -12,6 +12,7 @@ const getBlogs = asyncHandler( async (req, res) => {
     const blogs = await Blog.find()
                             .populate('user', 'nickname icon')
                             .populate('blogCategory', 'name')
+                            .populate('comments.user', 'nickname icon')
 
     res.status(200).json(blogs)
 })

@@ -11,6 +11,7 @@
         border-radius: 0.5rem;
         padding: 4.5rem 10rem;
         margin-bottom: 4rem;
+        box-shadow: $box-shadow;
         @include customFlex(column, center, flex-start);
 
         .top-section{
@@ -78,7 +79,12 @@
         border-radius: 0.5rem;
         padding: 4.5rem 10rem;
         width: 100%;
+        box-shadow: $box-shadow;
         @include customFlex(column, flex-start, flex-start);
+
+        form{
+            width: 100%;
+        }
         
         .comment-number{
             align-self: center;
@@ -94,14 +100,14 @@
             font-size: 1.7rem;
 
             h3{
-                color: gray;
+                color: $secondaryColorLighter;
             }
             textarea{
                 width: 100%;
                 padding: 1rem 0.5rem;
                 font-size: 1.7rem;
                 border: $border;
-                border-color: $borderColor;
+                border-color: $lightColorHover;
             }
             button{
                 @include button($primaryColor, $secondaryColor);
@@ -126,6 +132,25 @@
 
         .content, .comment-section{
             padding: 4.5rem 5rem;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .single-blog {
+        padding: 7rem 7%;
+
+        .content,
+        .comment-section {
+            padding: 4.5rem 4rem;
+        }
+
+        .content{
+            .top-section{
+                .like{
+                    margin-left: -1rem;
+                }
+            }
         }
     }
 }

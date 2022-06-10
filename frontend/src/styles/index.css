@@ -49,6 +49,12 @@
   background: #1dae8d;
 }
 
+.home.active {
+  background: url("../resources/success_banner.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
 @media (max-width: 768px) {
   .home .content {
     max-width: 50rem;
@@ -217,6 +223,7 @@
 .admin-dashboard .items li {
   list-style: none;
   padding: 1rem 0;
+  width: 100%;
   font-size: 2rem;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
@@ -1325,6 +1332,8 @@
   border-radius: 0.5rem;
   padding: 4.5rem 10rem;
   margin-bottom: 4rem;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1437,6 +1446,8 @@
   border-radius: 0.5rem;
   padding: 4.5rem 10rem;
   width: 100%;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1450,6 +1461,10 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+}
+
+.single-blog .comment-section form {
+  width: 100%;
 }
 
 .single-blog .comment-section .comment-number {
@@ -1481,7 +1496,7 @@
 }
 
 .single-blog .comment-section .add-comment h3 {
-  color: gray;
+  color: #21c9a2;
 }
 
 .single-blog .comment-section .add-comment textarea {
@@ -1489,7 +1504,7 @@
   padding: 1rem 0.5rem;
   font-size: 1.7rem;
   border: 0.1rem solid rgba(0, 0, 0, 0.2);
-  border-color: rgba(240, 240, 240, 0.863);
+  border-color: rgba(119, 175, 162, 0.7);
 }
 
 .single-blog .comment-section .add-comment button {
@@ -1538,6 +1553,19 @@
   }
   .single-blog .content, .single-blog .comment-section {
     padding: 4.5rem 5rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .single-blog {
+    padding: 7rem 7%;
+  }
+  .single-blog .content,
+  .single-blog .comment-section {
+    padding: 4.5rem 4rem;
+  }
+  .single-blog .content .top-section .like {
+    margin-left: -1rem;
   }
 }
 
