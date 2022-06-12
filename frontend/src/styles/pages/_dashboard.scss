@@ -1,4 +1,4 @@
-@import './variables';
+@import '../variables';
 
 // Student view
 .dashboard{
@@ -9,7 +9,7 @@
 
         .card{
             @include customFlex(column, flex-start, space-around);
-            width: 31%;
+            width: 32%;
             height: auto;
             box-shadow: $box-shadow;
             border-radius: 0.5rem;
@@ -295,6 +295,16 @@
     }
 }
 
+@media (max-width: 991px) {
+    .dashboard{
+        .card-container{
+            .card{
+                width: 45%;
+            }
+        }
+    }
+}
+
 @media (max-width: 768px) {
     .dashboard{
         .card-container {
@@ -364,7 +374,7 @@
     .dashboard {
         .card-container {
             .card {
-                width: 95%;
+                width: 98%;
             }
         }
     }

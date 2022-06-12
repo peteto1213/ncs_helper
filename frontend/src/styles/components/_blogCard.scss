@@ -1,0 +1,61 @@
+@import '../variables';
+
+.blog-card {
+    @include customFlex(row, flex-start, flex-start);
+    width: 100%;
+    height: 25rem;
+    border: $border;
+    border-radius: 0.5rem;
+    border-color: $borderColor;
+    box-shadow: $box-shadow;
+
+    img {
+        width: 35%;
+        height: 100%;
+        object-fit: cover;
+        margin-right: 1rem
+    }
+
+    .blog-content {
+        @include customFlex(column, flex-start, flex-start);
+        padding: 1.5rem 1rem;
+        height: 100%;
+
+        .title {
+            font-size: 2.3rem;
+            text-transform: capitalize;
+            margin-bottom: 0.7rem;
+        }
+
+        .details {
+            @include customFlex(row, flex-start, flex-start);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+
+            span {
+                margin-right: 1rem;
+
+                .icon {
+                    color: $primaryColor;
+                }
+            }
+        }
+
+        .paragraph {
+            font-size: 2rem;
+            color: gray;
+        }
+
+        .btn {
+            @include button($lightColor, $lightColorHover);
+            color: gray;
+            align-self: flex-end;
+            margin-top: auto;
+            transition: 0.2s;
+
+            &:hover {
+                color: whitesmoke
+            }
+        }
+    }
+}

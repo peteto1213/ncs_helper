@@ -1,0 +1,28 @@
+@import "../variables";
+
+.my-blog {
+  @include customFlex(column, flex-start, flex-start);
+
+  .heading {
+    width: 100%;
+  }
+
+  .create-btn {
+    @include button($lightColor, $lightColorHover);
+    color: gray;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+    transition: all 0.1s linear;
+
+    &:hover {
+      color: whitesmoke;
+    }
+  }
+
+  .myblog-container {
+    @include customFlex(row, flex-start, flex-start);
+    flex-wrap: wrap;
+    gap: 1.8rem;
+    width: 100%;
+  }
+}

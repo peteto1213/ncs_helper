@@ -31,6 +31,7 @@ function AllBlogs() {
         <div className="content">
           <div className="blog-container">
             <button onClick={navigateCreateBlog} className='btn'><FaRegPlusSquare />Create a new blog</button>
+            {/* BlogCard map here */}
             <BlogCard />
           </div>
 

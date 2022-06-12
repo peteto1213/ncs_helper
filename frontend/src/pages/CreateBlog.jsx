@@ -88,6 +88,7 @@ function CreateBlog() {
               id="blogCategory" 
               required
             >
+              <option value="">===Choose a blog category===</option>
               <option value="leisure">Leisure</option>
               <option value="soft-skills">Soft-skills</option>
               <option value="interviews">Interviews</option>

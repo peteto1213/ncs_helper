@@ -1,20 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
 // Pages import
 @import './variables';
-@import './home';
-@import './dashboard';
-@import './register';
-@import './login';
-@import './userProfile';
-@import './changePassword';
-@import './allBlogs';
-@import './singleBlog';
-@import './createBlog';
+@import './pages/home';
+@import './pages/dashboard';
+@import './pages/register';
+@import './pages/login';
+@import './pages/userProfile';
+@import './pages/changePassword';
+@import './pages/allBlogs';
+@import './pages/singleBlog';
+@import './pages/createBlog';
+@import './pages/myBlog';
 
 // Components import
-@import './header';
-@import './spinner';
-@import './singleComment';
+@import './components/header';
+@import './components/spinner';
+@import './components/singleComment';
+@import './components/blogCard';
+@import './components/myBlogCard';
 
 *{
     margin: 0;
