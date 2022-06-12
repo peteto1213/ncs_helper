@@ -1582,6 +1582,144 @@
   }
 }
 
+.create-blog {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+}
+
+.create-blog .heading {
+  width: 100%;
+}
+
+.create-blog form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 2rem;
+  width: 100%;
+  padding: 3rem 10rem;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.create-blog form .input-field {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.create-blog form .input-field h3 {
+  font-size: 2rem;
+  margin-left: 0.5rem;
+  color: #1c8d76;
+}
+
+.create-blog form .input-field h3 span {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.create-blog form .input-field input {
+  margin: 1rem 0;
+  padding: 1.2rem;
+  font-size: 1.7rem;
+  color: #333;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #248f79;
+  width: 100%;
+}
+
+.create-blog form .input-field select {
+  width: 30%;
+  font-size: 2rem;
+  margin-top: 1rem;
+  padding: 1rem 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.create-blog form .rich-text-editor {
+  width: 100%;
+  font-size: 1.7rem;
+}
+
+.create-blog form .rich-text-editor h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #1c8d76;
+}
+
+.create-blog form .preview {
+  width: 100%;
+  font-size: 2rem;
+  margin-top: 1.5rem;
+}
+
+.create-blog form .preview .title {
+  text-align: center;
+  font-size: 3rem;
+  color: #1c8d76;
+}
+
+.create-blog form .preview .preview-wording {
+  margin-bottom: 1rem;
+  color: #1dae8d;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.create-blog form .preview .preview-wording:hover {
+  text-decoration: underline;
+}
+
+.create-blog form .btn {
+  margin-top: 1rem;
+  display: inline-block;
+  background: #1c8d76;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem 3rem;
+  cursor: pointer;
+  font-size: 2rem;
+  border: none;
+}
+
+.create-blog form .btn:hover {
+  background: #1dae8d;
+}
+
+@media (max-width: 768px) {
+  .create-blog form {
+    padding: 3rem 5rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .create-blog form {
+    padding: 3rem 0;
+  }
+}
+
 .header {
   position: fixed;
   top: 0;

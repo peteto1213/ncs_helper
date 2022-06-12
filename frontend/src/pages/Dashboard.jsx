@@ -101,7 +101,7 @@ function Dashboard() {
                 Manage your personal blogs or write a blog for leisure and
                 sharing purposes!
               </p>
-              <Link to="/blog">View</Link>
+              <Link to="/myBlog">View</Link>
             </div>
 
             <div className="card">

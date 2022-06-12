@@ -1,0 +1,83 @@
+@import './variables';
+
+.create-blog{
+    @include customFlex(column, flex-start, flex-start);
+    width: 100%;
+
+    .heading{
+        width: 100%;
+    }
+
+    form{
+        @include customFlex(column, flex-start, flex-start);
+        gap: 2rem;
+        width: 100%;
+        padding: 3rem 10rem;
+        box-shadow: $box-shadow;
+
+        .input-field{
+            @include inputField();
+            select{
+                width: 30%;
+                font-size: 2rem;
+                margin-top: 1rem;
+                padding: 1rem 0.5rem;
+                border-radius: 0.5rem;
+            }
+        }
+
+        .rich-text-editor{
+            width: 100%;
+            font-size: 1.7rem;
+
+            h3{
+                font-size: 2rem;
+                margin-bottom: 1rem;
+                color: $primaryColor;
+            }
+        }
+
+        .preview{
+            width: 100%;
+            font-size: 2rem;
+            margin-top: 1.5rem;
+
+            .title{
+                text-align: center;
+                font-size: 3rem;
+                color: $primaryColor;
+            }
+
+            .preview-wording{
+                margin-bottom: 1rem;
+                color: $secondaryColor;
+                cursor: pointer;
+                font-size: 2rem;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .btn{
+            @include button($primaryColor, $secondaryColor);
+        }
+
+    }
+}
+
+@media (max-width: 768px) {
+    .create-blog{
+        form{
+            padding: 3rem 5rem;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .create-blog {
+        form {
+            padding: 3rem 0;
+        }
+    }
+}
