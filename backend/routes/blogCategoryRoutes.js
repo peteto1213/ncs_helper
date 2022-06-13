@@ -4,8 +4,10 @@ const {protect, checkAdminPermission} = require('../middleware/authMiddleware')
 
 const router = express.Router()
 
-router.get('/', protect, checkAdminPermission, getBlogCategories)
+//public routes
+router.get('/', getBlogCategories)
 
+//private, admin routes
 router.post('/', protect, checkAdminPermission, createBlogCategory)
 
 router.put('/:id', protect, checkAdminPermission, updateBlogCategory)

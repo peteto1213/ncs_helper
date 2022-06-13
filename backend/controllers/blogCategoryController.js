@@ -5,7 +5,7 @@ const BlogCategory = require('../models/blogCategoryModel')
  * @author Pete To
  * @description Get all blog categories
  * @router GET /api/blogCategory
- * @access Private, Admin
+ * @access Public
  */
 const getBlogCategories = asyncHandler( async (req, res) => {
     const blogCategories = await BlogCategory.find()

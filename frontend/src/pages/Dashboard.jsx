@@ -48,8 +48,8 @@ function Dashboard() {
     //Clearer function of useEffect upon leaving the dashboard
     return () => {
       dispatch(reset());
-    };
-  }, []);
+    }
+  }, [])
 
   //render based on conditions
   useEffect(() => {

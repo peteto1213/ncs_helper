@@ -32,6 +32,10 @@
                     color: whitesmoke;
                 }
             }
+
+            .no-wordings{
+                @include no-wordings();
+            }
         }
 
         .sidebar{
