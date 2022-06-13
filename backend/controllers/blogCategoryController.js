@@ -19,15 +19,14 @@ const getBlogCategories = asyncHandler( async (req, res) => {
  * @access Private, Admin
  */
 const createBlogCategory = asyncHandler( async (req, res) => {
-    if(!req.body.name || !req.body.bgColor){
+    if(!req.body.name || !req.body.description){
         res.status(400)
-        throw new Error('Please add a color and name to the blog category')
+        throw new Error('Please add a name and description to the blog category')
     }
 
     const blogCategory = await BlogCategory.create({
         name: req.body.name,
         description: req.body.description,
-        bgColor: req.body.bgColor
     })
 
     res.status(200).json(blogCategory)

@@ -24,6 +24,7 @@ function BlogCard(props) {
       return blogContent
     }else{
       for(let i = 0; i < 14; i++){
+        trimmedText += " "
         trimmedText += text[i]
       }
       return trimmedText
@@ -40,12 +41,12 @@ function BlogCard(props) {
 
           <div className="details">
             <span><FaUser className="icon" />{props.blog.user.nickname}</span>
-            <span><FaCalendar className="icon" />{new Date(props.blog.createdAt).toLocaleString()}</span>
+            <span><FaCalendar className="icon" />{new Date(props.blog.createdAt).toLocaleDateString()}</span>
             <span><FaTag className="icon" />{props.blog.blogCategory.name}</span>
           </div>
 
           <p className="paragraph">
-            {trimContent(props.blog.content)}
+            {trimContent(props.blog.content)}...
           </p>
 
           <button onClick={navigateSingleBlog} className="btn">Read More</button>

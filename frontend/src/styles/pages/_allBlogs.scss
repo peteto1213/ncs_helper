@@ -35,6 +35,7 @@
 
             .no-wordings{
                 @include no-wordings();
+                margin-top: 4rem;
             }
         }
 

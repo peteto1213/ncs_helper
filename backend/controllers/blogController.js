@@ -51,7 +51,7 @@ const createBlog = asyncHandler( async (req, res) => {
         comments: [],
         blogCategory: req.body.blogCategory,
         user: req.user.id,
-    }).populate('user', 'nickname icon').populate('blogCategory', 'name')
+    }).populate('user', 'nickname icon').populate('blogCategory', 'name').populate('comments.user', 'nickname icon')
 
     res.status(200).json(blog)
 })
@@ -84,7 +84,7 @@ const updateBlog = asyncHandler( async (req, res) => {
 
     const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, req.body, {
         new: true
-    }).populate('user', 'nickname icon').populate('blogCategory', 'name')
+    }).populate('user', 'nickname icon').populate('blogCategory', 'name').populate('comments.user', 'nickname icon')
 
     res.status(200).json(updatedBlog)
 })
@@ -135,6 +135,7 @@ const getBlogsByCategoryId = asyncHandler(async(req, res) => {
     const blogs = await Blog.find({blogCategory: req.params.id})
                             .populate('user', 'nickname icon')
                             .populate('blogCategory', 'name')
+                            .populate('comments.user', 'nickname icon')
 
     //check if any blogs for this category 
     if(!blogs){
@@ -153,6 +154,7 @@ const getBlogByBlogId = asyncHandler(async (req, res) => {
     const blog = await Blog.findById(req.params.id)
                             .populate('user', 'nickname icon')
                             .populate('blogCategory', 'name')
+                            .populate('comments.user', 'nickname icon')
     // Check if the blog exists or not
     if(!blog){
         res.status(404)
@@ -162,6 +164,21 @@ const getBlogByBlogId = asyncHandler(async (req, res) => {
     }
 })
 
+/**
+ * @author Pete To
+ * @description Get blogs by filtered blog title, case insensitive
+ * @router GET /api/blog/title/:title
+ * @access Public
+ */
+const getBlogsByFilteredBlogTitle = asyncHandler(async (req, res) => {
+    const blogs = await Blog.find({title: {'$regex': req.params.title, $options:'i'}})
+                            .populate('user', 'nickname icon')
+                            .populate('blogCategory', 'name')
+                            .populate('comments.user', 'nickname icon')
+
+    res.status(200).json(blogs)
+})
+
 module.exports = {
     getBlogs,
     getUserBlogs,
@@ -169,5 +186,6 @@ module.exports = {
     updateBlog,
     deleteBlog,
     getBlogsByCategoryId,
-    getBlogByBlogId
+    getBlogByBlogId,
+    getBlogsByFilteredBlogTitle
 }
