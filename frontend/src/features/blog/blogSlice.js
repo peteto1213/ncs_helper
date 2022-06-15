@@ -4,6 +4,8 @@ import blogService from './blogService'
 const initialState = {
     blogs: [],
     viewingBlog: '',
+    creatingBlog: {},
+    userBlogs: [],
     isError: false,
     isSuccess: false,
     isLoading:false,
@@ -76,6 +78,32 @@ export const commentBlog = createAsyncThunk('blog/commentBlog', async(body, thun
     }
 })
 
+//Create a blog - private
+export const createBlog = createAsyncThunk('/blog/createBlog', async(body, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token
+
+        return await blogService.createBlog(body, token)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message ) || error.message || error.toString()
+
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
+//Get User's blogs - private
+export const getUserBlogs = createAsyncThunk('blog/getUserBlogs', async(_, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token
+        
+        return await blogService.getUserBlogs(token)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message ) || error.message || error.toString()
+
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
 export const blogSlice = createSlice({
     name: "blog",
     initialState,
@@ -83,6 +111,8 @@ export const blogSlice = createSlice({
         reset: (state) => {
             state.blogs = []
             state.viewingBlog = ''
+            state.creatingBlog = {}
+            state.userBlogs = []
             state.isError = false
             state.isSuccess = false
             state.isLoading = false
@@ -164,6 +194,35 @@ export const blogSlice = createSlice({
                 state.isSuccess = true
                 state.message = action.payload
             })
+            .addCase(createBlog.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(createBlog.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.creatingBlog = action.payload
+            })
+            .addCase(createBlog.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.creatingBlog = {}
+            })
+            .addCase(getUserBlogs.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(getUserBlogs.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.userBlogs = action.payload
+            })
+            .addCase(getUserBlogs.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.userBlogs = []
+                state.message = action.payload
+            })
+
     }
 })
 

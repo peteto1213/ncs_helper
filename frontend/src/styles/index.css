@@ -1063,6 +1063,7 @@
       -ms-grid-row-align: center;
       align-self: center;
   margin: auto;
+  line-height: 2.5rem;
   margin-top: 4rem;
 }
 
@@ -1718,6 +1719,17 @@
       flex-wrap: wrap;
   gap: 1.8rem;
   width: 100%;
+}
+
+.my-blog .no-wordings {
+  color: gray;
+  font-size: 2.5rem;
+  text-align: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: auto;
+  line-height: 2.5rem;
 }
 
 .header {

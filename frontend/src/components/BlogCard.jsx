@@ -3,6 +3,8 @@ import {FaUser, FaCalendar, FaTag} from 'react-icons/fa'
 import {useNavigate} from 'react-router-dom'
 import image from '../resources/banner.jpg'
 
+import parser from 'html-react-parser'
+
 function BlogCard(props) {
   const navigate = useNavigate()
 
@@ -18,10 +20,14 @@ function BlogCard(props) {
    * @returns 
    */
   const trimContent = (blogContent) => {
-    let text = blogContent.split(' ')
+    //remove all html tags
+    let strippedString = blogContent.replace(/(<([^>]+)>)/gi, " ")
+    strippedString = strippedString.replace("&nbsp;", ' ')
+    
+    let text = strippedString.split(' ')
     let trimmedText = ''
     if(text.length <= 15){
-      return blogContent
+      return strippedString
     }else{
       for(let i = 0; i < 14; i++){
         trimmedText += " "
@@ -46,7 +52,7 @@ function BlogCard(props) {
           </div>
 
           <p className="paragraph">
-            {trimContent(props.blog.content)}...
+            {(trimContent(props.blog.content))}...
           </p>
 
           <button onClick={navigateSingleBlog} className="btn">Read More</button>

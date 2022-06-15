@@ -6,6 +6,8 @@ import { getBlogByBlogId, likeBlog, commentBlog, reset } from "../features/blog/
 import Spinner from "../components/Spinner";
 import { useNavigate } from "react-router-dom";
 
+import parser from 'html-react-parser'
+
 function SingleBlog() {
   const blogId = localStorage.getItem("viewBlogId");
   const dispatch = useDispatch();
@@ -116,7 +118,7 @@ function SingleBlog() {
               </span>
             </div>
 
-            <p className="text">{viewingBlog.content}</p>
+            <p className="text">{parser(viewingBlog.content)}</p>
           </div>
 
           <div className="comment-section">

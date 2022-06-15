@@ -25,4 +25,8 @@
     gap: 1.8rem;
     width: 100%;
   }
+
+  .no-wordings{
+    @include no-wordings();
+  }
 }

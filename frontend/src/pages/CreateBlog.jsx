@@ -1,10 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import{ FaEdit, FaPlusSquare } from 'react-icons/fa'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
-import { CKEditor } from '@ckeditor/ckeditor5-react';
+import { CKEditor } from '@ckeditor/ckeditor5-react'
 import parser from 'html-react-parser'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { getAllBlogCategories } from '../features/blogCategory/blogCategorySlice'
+import { createBlog, reset } from '../features/blog/blogSlice'
+import Spinner from '../components/Spinner'
+import { useNavigate } from 'react-router-dom'
+
 function CreateBlog() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { blogCategories } = useSelector((state) => state.blogCategory)
+  const { creatingBlog, isError, isLoading, message } = useSelector((state) => state.blog)
+  const { user } = useSelector((state) => state.auth)
+
+  useEffect(() => {
+    dispatch(getAllBlogCategories())
+
+    if(!user){
+      alert('You must login to view this page!')
+      navigate('/login')
+    }
+
+    if(isError){
+      alert(message)
+    }
+
+    return () => {
+      dispatch(reset())
+    }
+  }, [dispatch, isError, message, user, navigate])
 
   const [form, setForm] = useState({
     title: "",
@@ -30,10 +58,24 @@ function CreateBlog() {
       ...prevState,
       [name]: value
     })))
+    console.log(form);
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
+  const handleSubmit = () => {
+    const body = {
+      title: form.title,
+      content: text,
+      blogCategory: form.blogCategory
+    }
+
+    dispatch(createBlog(body))
+    if(!message){
+      navigate('/allBlogs')
+    }
+  }
+
+  if(isLoading){
+    return <Spinner />
   }
 
   return (
@@ -89,9 +131,10 @@ function CreateBlog() {
               required
             >
               <option value="">===Choose a blog category===</option>
-              <option value="leisure">Leisure</option>
-              <option value="soft-skills">Soft-skills</option>
-              <option value="interviews">Interviews</option>
+              {/* Blog Categories map here */}
+              {blogCategories.map(category =>
+                  <option value={category._id}>{category.name}</option>
+                )}
             </select>
           </div>
 

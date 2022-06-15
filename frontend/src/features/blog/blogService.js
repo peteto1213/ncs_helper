@@ -38,13 +38,39 @@ const commentBlog = async(body) => {
     return response.data
 }
 
+const createBlog = async(body, token) => {
+    const config = {
+        headers:{
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.post(BLOG_URL, body, config)
+
+    return response.data
+}
+
+const getUserBlogs = async(token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.get(`${BLOG_URL}/user/myBlogs`, config)
+
+    return response.data
+}
+
 const blogService = {
     getAllBlogs,
     getBlogsByCategoryId,
     getBlogsByFilteredBlogTitle,
     getBlogByBlogId,
     likeBlog,
-    commentBlog
+    commentBlog,
+    createBlog,
+    getUserBlogs
 }
 
 export default blogService
