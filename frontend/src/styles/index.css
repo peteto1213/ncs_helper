@@ -256,6 +256,7 @@
   color: darkcyan;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
+  width: 100%;
 }
 
 .admin-dashboard .content {
@@ -2100,10 +2101,40 @@
   width: 100%;
 }
 
-.blog-card .blog-content .title {
+.blog-card .blog-content .first-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.blog-card .blog-content .first-row .title {
   font-size: 2.3rem;
   text-transform: capitalize;
   margin-bottom: 0.7rem;
+}
+
+.blog-card .blog-content .first-row .trash-icon {
+  color: white;
+  background: purple;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.blog-card .blog-content .first-row .trash-icon:hover {
+  opacity: 0.7;
 }
 
 .blog-card .blog-content .details {
@@ -2320,7 +2351,7 @@ html {
   font-size: 62.5%;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
+  scroll-padding-top: 10rem;
 }
 
 ::-webkit-scrollbar {

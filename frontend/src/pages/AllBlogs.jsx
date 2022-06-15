@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import {useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-import {FaJava, FaStream, FaSearch, FaRegPlusSquare} from 'react-icons/fa'
+import {FaJava, FaStream, FaSearch, FaRegPlusSquare, FaTrash} from 'react-icons/fa'
 import BlogCard from '../components/BlogCard'
 import {getAllBlogs, getBlogsByCategoryId, getBlogsByFilteredBlogTitle, reset} from '../features/blog/blogSlice'
 import {getAllBlogCategories} from '../features/blogCategory/blogCategorySlice'

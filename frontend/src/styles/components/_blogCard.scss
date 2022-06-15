@@ -22,10 +22,28 @@
         height: 100%;
         width: 100%;
 
-        .title {
-            font-size: 2.3rem;
-            text-transform: capitalize;
-            margin-bottom: 0.7rem;
+        .first-row{
+            @include customFlex(row, flex-start, space-between);
+            width: 100%;
+
+            .title {
+                font-size: 2.3rem;
+                text-transform: capitalize;
+                margin-bottom: 0.7rem;
+            }
+
+            .trash-icon{
+                color: white;
+                background: purple;
+                font-size: 2rem;
+                padding: 1rem 2rem;
+                border-radius: 1rem;
+                cursor: pointer;
+                
+                &:hover{
+                    opacity: 0.7;
+                }
+            }
         }
 
         .details {

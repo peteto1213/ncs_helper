@@ -1,12 +1,12 @@
 import React from "react";
-import {FaUser, FaCalendar, FaTag} from 'react-icons/fa'
+import {FaUser, FaCalendar, FaTag, FaTrash} from 'react-icons/fa'
 import {useNavigate} from 'react-router-dom'
 import image from '../resources/banner.jpg'
-
-import parser from 'html-react-parser'
+import { useSelector } from 'react-redux'
 
 function BlogCard(props) {
   const navigate = useNavigate()
+  const { user } = useSelector((state) => state.auth)
 
   const navigateSingleBlog = () => {
     navigate('/singleBlog')
@@ -43,7 +43,14 @@ function BlogCard(props) {
         <img src={image} alt="" />
 
         <div className="blog-content">
-          <h3 className="title">{props.blog.title}</h3>
+          <div className="first-row">
+            <h3 className="title">{props.blog.title}</h3>
+            {(user.userType === "admin") &&
+              <div className="trash-icon">
+                <FaTrash />
+              </div>
+            }
+          </div>
 
           <div className="details">
             <span><FaUser className="icon" />{props.blog.user.nickname}</span>

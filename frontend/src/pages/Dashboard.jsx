@@ -7,7 +7,8 @@ import {
   FaMicroblog,
   FaLock,
   FaBars,
-  FaFolderPlus
+  FaFolderPlus,
+  FaCoffee
 } from "react-icons/fa";
 import collaboration from "../resources/collaboration.png";
 import blog from "../resources/blog.jpg";
@@ -20,6 +21,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import Spinner from "../components/Spinner";
 import { reset, getAllUsers } from "../features/admin/adminSlice";
+import { getAllBlogCategories } from '../features/blogCategory/blogCategorySlice'
 //Table imports
 import UserTable from "../components/UserTable";
 import CourseTable from "../components/CourseTable";
@@ -31,6 +33,8 @@ function Dashboard() {
   const { users, isLoading, isError, message } = useSelector(
     (state) => state.admin
   );
+  const { blogCategories } = useSelector((state) => state.blogCategory)
+
   const [error, setError] = useState("");
 
   const { user } = useSelector((state) => state.auth);
@@ -44,6 +48,7 @@ function Dashboard() {
     } else {
       setUserType(user.userType); //identify which layout to show
       dispatch(getAllUsers());
+      dispatch(getAllBlogCategories());
     }
     //Clearer function of useEffect upon leaving the dashboard
     return () => {
@@ -137,7 +142,7 @@ function Dashboard() {
         <div className="admin-dashboard">
           <div className={menuClass ? "menu" : "menu active"}>
             <div className="logo">
-              <img src={robot} alt="" />
+              <a href="#"><img src={robot} alt="" /></a>
               <h2>Admin Dashboard</h2>
             </div>
 
@@ -154,6 +159,10 @@ function Dashboard() {
                 <FaMicroblog className="icon" />{" "}
                 <a href="#blog">Manage Blogs</a>
               </li>
+              <li>
+                <FaCoffee className="icon" />{" "}
+                <Link to="/myBlog">My Blogs</Link>
+              </li>
               <li onClick={navigateChangePassword}>
                 <FaLock className="icon" /> <a href="#">Change Password</a>
               </li>
@@ -164,7 +173,7 @@ function Dashboard() {
             <div className="nav">
               <FaBars onClick={toggleMenu} id="menu-btn" className="icon" />
             </div>
-            <h3 className="i-name">
+            <h3 className="i-name" id="#">
               Website Details
             </h3>
 
@@ -186,7 +195,7 @@ function Dashboard() {
               <div className="val-box">
                 <FaMicroblog className="icon" />
                 <div>
-                  <h3>3</h3>
+                  <h3>{blogCategories.length}</h3>
                   <span>Blog Categories</span>
                 </div>
               </div>
@@ -236,7 +245,9 @@ function Dashboard() {
                   </tr>
                 </thead>
                 {/* Blog Map here */}
-                <BlogTable />
+                {blogCategories.map(category => 
+                    <BlogTable category={category}/>
+                )}
               </table>
             </div>
           </div>

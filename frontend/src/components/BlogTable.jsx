@@ -1,19 +1,22 @@
 import React from "react";
 
-function BlogTable() {
+function BlogTable(props) {
+
+  const { category } = props
+
   return (
     <>
       <tbody>
         <tr>
           <td className="people">
             <div className="people-de">
-              <h5>Leisure</h5>
+              <h5>{category.name}</h5>
               <p></p>
             </div>
           </td>
 
           <td className="people-des">
-            <h5>Things besides techical skills</h5>
+            <h5>{category.description}</h5>
             <p></p>
           </td>
 
