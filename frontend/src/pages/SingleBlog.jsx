@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaRegThumbsUp, FaTag, FaThumbsUp } from "react-icons/fa";
+import { FaRegThumbsUp, FaTag, FaThumbsUp, FaUndoAlt } from "react-icons/fa";
 import SingleComment from "../components/SingleComment";
 import { useDispatch, useSelector } from "react-redux";
 import { getBlogByBlogId, likeBlog, commentBlog, reset } from "../features/blog/blogSlice";
@@ -69,6 +69,10 @@ function SingleBlog() {
       content: content
     }
     dispatch(commentBlog(body))
+  }
+
+  const navigateBlogSection = () => {
+    navigate('/allBlogs')
   }
 
   return (
@@ -143,6 +147,11 @@ function SingleBlog() {
               ))}
             </div>
           </div>
+
+          <button onClick={navigateBlogSection} className="back-btn">
+            <FaUndoAlt />
+            <span> return to select blogs</span>
+          </button>
         </div>
       ) : (
         <section>

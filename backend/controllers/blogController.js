@@ -197,7 +197,7 @@ const likeBlog = asyncHandler(async (req, res) => {
     //Check if user id exist
     if(!user){
         res.status(400)
-        throw new Error("No user detected to perform this action")
+        throw new Error("Please login to perform this action")
     }
     //Check if the user has already liked the post
     let array = blog.likeCount
@@ -235,7 +235,7 @@ const commentBlog = asyncHandler(async (req, res) => {
     //Check if user id exist
     if(!user){
         res.status(400)
-        throw new Error("No user detected to perform this action")
+        throw new Error("You have to login to perform this action")
     }
     //Check if content of the comment exist
     if(!content){
@@ -247,7 +247,7 @@ const commentBlog = asyncHandler(async (req, res) => {
     await array.push({
         user: user,
         content: content,
-        createdAt: new Date().toString('en-US')
+        createdAt: new Date()
     })
 
     const commentedBlog = await Blog.findByIdAndUpdate(req.body.id, {comments: array}, {new: true})

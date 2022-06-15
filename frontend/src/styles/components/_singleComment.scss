@@ -17,12 +17,23 @@
     .text {
         @include customFlex(column, flex-start, flex-start);
 
-        .author {
-            font-size: 1.8rem;
+        .headline{
+            @include customFlex(row, center, flex-start);
             margin-bottom: 0.7rem;
 
-            span {
-                font-size: 1.3rem;
+            .author {
+                font-size: 1.8rem;
+            }
+
+            .author.active{
+                color: white;
+                background: $secondaryColor;
+                border-radius: 1rem;
+                padding: 0 0.7rem;
+            }
+
+            .date{
+                font-size: 1.4rem;
                 color: gray;
             }
         }
