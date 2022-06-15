@@ -10,7 +10,7 @@ connectDB()
 
 const app = express()
 
-//Get the body of the request in json format
+//Get the body of the request in json format - for error middleware
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))  
 

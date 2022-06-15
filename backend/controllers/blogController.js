@@ -179,6 +179,44 @@ const getBlogsByFilteredBlogTitle = asyncHandler(async (req, res) => {
     res.status(200).json(blogs)
 })
 
+/**
+ * @author Pete To
+ * @description Like a blog post, one user can only like once
+ * @router PUT /api/blog/likeBlog
+ * @access Public
+ */
+const likeBlog = asyncHandler(async (req, res) => {
+    //Check if the targeted blog exists or not
+    const blog = await Blog.findById(req.body.id)
+    const user = req.body.user
+
+    if(!blog){
+        res.status(400)
+        throw new Error("Blog not found")
+    }
+    //Check if user id exist
+    if(!user){
+        res.status(400)
+        throw new Error("No user detected to perform this action")
+    }
+    //Check if the user has already liked the post
+    let array = blog.likeCount
+    for(let i = 0; i < array.length; i++){
+        if(array[i]._id == user){
+            res.status(400)
+            throw new Error("You have already liked this blog")
+        }
+    }
+    array.push(user)
+    
+    const likedBlog = await Blog.findByIdAndUpdate(req.body.id, {likeCount: array}, {new: true})
+                                .populate('user', 'nickname icon')
+                                .populate('blogCategory', 'name')
+                                .populate('comments.user', 'nickname icon')
+
+    res.status(200).json(likedBlog)
+})
+
 module.exports = {
     getBlogs,
     getUserBlogs,
@@ -187,5 +225,6 @@ module.exports = {
     deleteBlog,
     getBlogsByCategoryId,
     getBlogByBlogId,
-    getBlogsByFilteredBlogTitle
+    getBlogsByFilteredBlogTitle,
+    likeBlog
 }

@@ -26,11 +26,18 @@ const getBlogByBlogId = async(blogId) => {
     return response.data
 }
 
+const likeBlog = async(body) => {
+    const response = await axios.put(`${BLOG_URL}/likeBlog`, body)
+
+    return response.data
+}
+
 const blogService = {
     getAllBlogs,
     getBlogsByCategoryId,
     getBlogsByFilteredBlogTitle,
-    getBlogByBlogId
+    getBlogByBlogId,
+    likeBlog
 }
 
 export default blogService

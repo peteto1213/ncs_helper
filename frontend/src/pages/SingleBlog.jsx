@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { FaRegThumbsUp, FaTag } from "react-icons/fa";
+import { FaRegThumbsUp, FaTag, FaThumbsUp } from "react-icons/fa";
 import SingleComment from "../components/SingleComment";
 import { useDispatch, useSelector } from "react-redux";
-import { getBlogByBlogId, reset } from "../features/blog/blogSlice";
+import { getBlogByBlogId, likeBlog, reset } from "../features/blog/blogSlice";
 import Spinner from "../components/Spinner";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +10,7 @@ function SingleBlog() {
   const blogId = localStorage.getItem("viewBlogId");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { viewingBlog, isError, isLoading, message, isSuccess } = useSelector(
+  const { viewingBlog, isError, isLoading, message } = useSelector(
     (state) => state.blog
   );
   const { user } = useSelector((state) => state.auth);
@@ -28,10 +28,29 @@ function SingleBlog() {
     return () => {
       dispatch(reset());
     };
-  }, [dispatch, user, navigate, isError, message]);
+  }, [dispatch, user, navigate, isError, message])
+
+  //check a user has liked a blog or not
+  const checkLikedBefore = (array) => {
+    for(let i = 0; i < array.length; i++){
+      if(array[i]._id == user._id){
+        return true
+      }
+    }
+    return false
+  }
 
   if (isLoading) {
     return <Spinner />;
+  }
+
+  //Handle User like a blog
+  const handleLikeBlog = () => {
+    const body = {
+      id: blogId,
+      user: user._id
+    }
+    dispatch(likeBlog(body))
   }
 
   return (
@@ -40,9 +59,20 @@ function SingleBlog() {
         <div className="single-blog">
           <div className="content">
             <div className="top-section">
+              {/* Like blog functionality */}
               <div className="like">
-                <FaRegThumbsUp className="icon" />
-                {viewingBlog.likeCount.length} ThumbsUp
+                {checkLikedBefore(viewingBlog.likeCount) ? 
+                  <>
+                    <FaThumbsUp className="icon-liked" />
+                    {viewingBlog.likeCount.length} You have liked this blog!
+                  </>
+                  :
+                  <>
+                    <FaRegThumbsUp onClick={handleLikeBlog} className="icon" />
+                    {viewingBlog.likeCount.length} ThumbsUp
+                  </>
+                }
+
               </div>
               <div className="category">
                 <FaTag className="icon" />

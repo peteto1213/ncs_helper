@@ -54,6 +54,17 @@ export const getBlogByBlogId = createAsyncThunk('blog/getBlogByBlogId', async(bl
     }
 })
 
+//Like a blog
+export const likeBlog = createAsyncThunk('blog/likeBlog', async(body, thunkAPI) => {
+    try {
+        return await blogService.likeBlog(body)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message ) || error.message || error.toString()
+
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
 export const blogSlice = createSlice({
     name: "blog",
     initialState,
@@ -118,6 +129,16 @@ export const blogSlice = createSlice({
                 state.viewingBlog = action.payload
             })
             .addCase(getBlogByBlogId.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            })
+            .addCase(likeBlog.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.viewingBlog = action.payload
+            })
+            .addCase(likeBlog.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
