@@ -32,12 +32,19 @@ const likeBlog = async(body) => {
     return response.data
 }
 
+const commentBlog = async(body) => {
+    const response = await axios.put(`${BLOG_URL}/commentBlog`, body)
+
+    return response.data
+}
+
 const blogService = {
     getAllBlogs,
     getBlogsByCategoryId,
     getBlogsByFilteredBlogTitle,
     getBlogByBlogId,
-    likeBlog
+    likeBlog,
+    commentBlog
 }
 
 export default blogService

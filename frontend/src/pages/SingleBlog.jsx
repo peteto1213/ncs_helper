@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegThumbsUp, FaTag, FaThumbsUp } from "react-icons/fa";
 import SingleComment from "../components/SingleComment";
 import { useDispatch, useSelector } from "react-redux";
-import { getBlogByBlogId, likeBlog, reset } from "../features/blog/blogSlice";
+import { getBlogByBlogId, likeBlog, commentBlog, reset } from "../features/blog/blogSlice";
 import Spinner from "../components/Spinner";
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +14,8 @@ function SingleBlog() {
     (state) => state.blog
   );
   const { user } = useSelector((state) => state.auth);
+
+  const [content, setContent] = useState('')
 
   useEffect(() => {
     dispatch(getBlogByBlogId(blogId));
@@ -51,6 +53,22 @@ function SingleBlog() {
       user: user._id
     }
     dispatch(likeBlog(body))
+  }
+
+  //Handle User submit comment a blog
+
+  const handleCommentChange = (event) => {
+    setContent(event.target.value)
+  }
+
+  const handleSubmitComment = (event) => {
+    event.preventDefault()
+    const body = {
+      id: blogId,
+      user: user._id,
+      content: content
+    }
+    dispatch(commentBlog(body))
   }
 
   return (
@@ -106,9 +124,11 @@ function SingleBlog() {
                   rows="4"
                   column="50"
                   placeholder="type your comments here..."
+                  value={content}
+                  onChange={handleCommentChange}
                   required
                 />
-                <button className="btn">submit</button>
+                <button onClick={handleSubmitComment} className="btn">submit</button>
               </form>
             </div>
 
@@ -119,7 +139,7 @@ function SingleBlog() {
             <div className="comments">
               {/* Comments map here */}
               {viewingBlog.comments.map((comment) => (
-                <SingleComment />
+                <SingleComment comment={comment}/>
               ))}
             </div>
           </div>

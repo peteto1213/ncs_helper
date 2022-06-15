@@ -207,7 +207,7 @@ const likeBlog = asyncHandler(async (req, res) => {
             throw new Error("You have already liked this blog")
         }
     }
-    array.push(user)
+    await array.push(user)
     
     const likedBlog = await Blog.findByIdAndUpdate(req.body.id, {likeCount: array}, {new: true})
                                 .populate('user', 'nickname icon')
@@ -215,6 +215,47 @@ const likeBlog = asyncHandler(async (req, res) => {
                                 .populate('comments.user', 'nickname icon')
 
     res.status(200).json(likedBlog)
+})
+
+/**
+ * @author Pete To
+ * @description Comment a blog post
+ * @router PUT /api/blog/commentBlog
+ * @access Public
+ */
+const commentBlog = asyncHandler(async (req, res) => {
+    const blog = await Blog.findById(req.body.id)
+    const user = req.body.user
+    const content = req.body.content
+    //Check if the targeted blog exists or not
+    if(!blog){
+        res.status(400)
+        throw new Error("Blog not found")
+    }
+    //Check if user id exist
+    if(!user){
+        res.status(400)
+        throw new Error("No user detected to perform this action")
+    }
+    //Check if content of the comment exist
+    if(!content){
+        res.status(400)
+        throw new Error("Content of comment is empty")
+    }
+
+    let array = blog.comments
+    await array.push({
+        user: user,
+        content: content,
+        createdAt: new Date().toString('en-US')
+    })
+
+    const commentedBlog = await Blog.findByIdAndUpdate(req.body.id, {comments: array}, {new: true})
+                                .populate('user', 'nickname icon')
+                                .populate('blogCategory', 'name')
+                                .populate('comments.user', 'nickname icon')
+    
+    res.status(200).json(commentedBlog)
 })
 
 module.exports = {
@@ -226,5 +267,6 @@ module.exports = {
     getBlogsByCategoryId,
     getBlogByBlogId,
     getBlogsByFilteredBlogTitle,
-    likeBlog
+    likeBlog,
+    commentBlog
 }
