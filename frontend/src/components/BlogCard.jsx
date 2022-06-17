@@ -22,7 +22,7 @@ function BlogCard(props) {
   const trimContent = (blogContent) => {
     //remove all html tags
     let strippedString = blogContent.replace(/(<([^>]+)>)/gi, " ")
-    strippedString = strippedString.replace("&nbsp;", ' ')
+    strippedString = strippedString.replace(/&nbsp;/g, ' ')
     
     let text = strippedString.split(' ')
     let trimmedText = ''

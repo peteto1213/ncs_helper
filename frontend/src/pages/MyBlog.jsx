@@ -47,7 +47,7 @@ function MyBlog() {
         <div className="myblog-container">
           {/* My Blog Card map here */}
           {userBlogs.map(blog => 
-              <MyBlogCard blog={blog}/>
+              <MyBlogCard key={blog._id} blog={blog}/>
             )}
         </div>
         :

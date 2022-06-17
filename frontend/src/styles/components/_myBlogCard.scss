@@ -48,7 +48,12 @@
     .date {
         font-size: 1.8rem;
         color: $secondaryColor;
+        margin-bottom: 1rem;
+    }
+
+    .date.update{
         margin-bottom: 2rem;
+        color: purple;
     }
 
     .actions {

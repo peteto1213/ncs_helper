@@ -5,6 +5,7 @@ const initialState = {
     blogs: [],
     viewingBlog: '',
     creatingBlog: {},
+    updatedBlog: {},
     userBlogs: [],
     isError: false,
     isSuccess: false,
@@ -104,6 +105,19 @@ export const getUserBlogs = createAsyncThunk('blog/getUserBlogs', async(_, thunk
     }
 })
 
+//User update own blog - private
+export const updateBlog = createAsyncThunk('blog/updateBlog', async(body, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token
+
+        return await blogService.updateBlog(body.id, {content: body.content}, token)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message ) || error.message || error.toString()
+
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
 export const blogSlice = createSlice({
     name: "blog",
     initialState,
@@ -112,6 +126,7 @@ export const blogSlice = createSlice({
             state.blogs = []
             state.viewingBlog = ''
             state.creatingBlog = {}
+            state.updatedBlog = {}
             state.userBlogs = []
             state.isError = false
             state.isSuccess = false
@@ -220,6 +235,19 @@ export const blogSlice = createSlice({
                 state.isLoading = false
                 state.isError = true
                 state.userBlogs = []
+                state.message = action.payload
+            })
+            .addCase(updateBlog.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(updateBlog.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.updatedBlog = action.payload
+            })
+            .addCase(updateBlog.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
                 state.message = action.payload
             })
 

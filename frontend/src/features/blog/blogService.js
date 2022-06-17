@@ -62,6 +62,18 @@ const getUserBlogs = async(token) => {
     return response.data
 }
 
+const updateBlog = async(id, content, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer: ${token}`
+        }
+    }
+
+    const response = await axios.put(`${BLOG_URL}/${id}`, content, config)
+
+    return response.data
+}
+
 const blogService = {
     getAllBlogs,
     getBlogsByCategoryId,
@@ -70,7 +82,8 @@ const blogService = {
     likeBlog,
     commentBlog,
     createBlog,
-    getUserBlogs
+    getUserBlogs,
+    updateBlog
 }
 
 export default blogService

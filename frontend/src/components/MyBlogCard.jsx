@@ -1,10 +1,20 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom'
 import { FaPen, FaTrashAlt, FaThumbsUp, FaTag } from "react-icons/fa";
 import image from '../resources/banner.jpg'
 
 function MyBlogCard(props) {
-
+  const navigate = useNavigate()
   const { blog } = props
+
+  const navigateEditBlog = () => {
+    navigate('/editBlog', {state: { 
+      id: blog._id,
+      title: blog.title,
+      content: blog.content,
+      blogCategory: blog.blogCategory
+    }})
+  }
 
   return (
     <>
@@ -26,9 +36,10 @@ function MyBlogCard(props) {
         </p>
 
         <h4 className="date">Created At: {new Date(blog.createdAt).toLocaleString('en-US')}</h4>
+        <h4 className="date update">Updated At: {new Date(blog.updatedAt).toLocaleString('en-US')}</h4>
 
         <div className="actions">
-          <button className="edit-btn">
+          <button onClick={navigateEditBlog} className="edit-btn">
             <FaPen className="icon" />
             edit
           </button>

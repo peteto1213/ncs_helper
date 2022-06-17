@@ -2269,7 +2269,12 @@
 .myblog-card .date {
   font-size: 1.8rem;
   color: #1dae8d;
+  margin-bottom: 1rem;
+}
+
+.myblog-card .date.update {
   margin-bottom: 2rem;
+  color: purple;
 }
 
 .myblog-card .actions {
