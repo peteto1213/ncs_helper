@@ -1645,6 +1645,24 @@
   background: #1dae8d;
 }
 
+.create-blog .back-btn {
+  color: white;
+  background: rgba(119, 175, 162, 0.7);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 2rem;
+  border: none;
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+  margin-top: 4rem;
+}
+
+.create-blog .back-btn:hover {
+  color: gray;
+  background: rgba(193, 235, 225, 0.7);
+}
+
 @media (max-width: 768px) {
   .create-blog form {
     padding: 3rem 5rem;
@@ -2341,6 +2359,123 @@
   .myblog-card {
     width: 98%;
   }
+}
+
+.modal {
+  display: none;
+}
+
+.modal.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 4rem;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal.active .modal-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  text-align: center;
+  background: white;
+  width: 80%;
+  padding: 2rem 0;
+}
+
+.modal.active .modal-content .close {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-right: 2rem;
+  margin-top: -2rem;
+  font-size: 5rem;
+  color: gray;
+  cursor: pointer;
+}
+
+.modal.active .modal-content .close:hover {
+  color: black;
+}
+
+.modal.active .modal-content p {
+  font-size: 3rem;
+}
+
+.modal.active .modal-content p .action-text {
+  color: #21c9a2;
+}
+
+.modal.active .modal-content .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.modal.active .modal-content .buttons button {
+  padding: 1rem 3rem;
+  font-size: 3rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+
+.modal.active .modal-content .buttons .yes {
+  background: #1c8d76;
+}
+
+.modal.active .modal-content .buttons .yes:hover {
+  background-color: #21c9a2;
+}
+
+.modal.active .modal-content .buttons .no {
+  background: #bd8d95;
+}
+
+.modal.active .modal-content .buttons .no:hover {
+  background-color: #ecb1ba;
+  color: gray;
 }
 
 * {

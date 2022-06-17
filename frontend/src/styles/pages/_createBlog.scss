@@ -64,6 +64,11 @@
         }
 
     }
+
+    .back-btn{
+        @include back-btn();
+        margin-top: 4rem;
+    }
 }
 
 @media (max-width: 768px) {

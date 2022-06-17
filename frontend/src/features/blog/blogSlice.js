@@ -118,6 +118,19 @@ export const updateBlog = createAsyncThunk('blog/updateBlog', async(body, thunkA
     }
 })
 
+//User delete own blog - private
+export const deleteBlog = createAsyncThunk('/blog/deleteBlog', async(id, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token
+
+        return await blogService.deleteBlog(id, token)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message ) || error.message || error.toString()
+
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
 export const blogSlice = createSlice({
     name: "blog",
     initialState,
@@ -246,6 +259,19 @@ export const blogSlice = createSlice({
                 state.updatedBlog = action.payload
             })
             .addCase(updateBlog.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            })
+            .addCase(deleteBlog.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(deleteBlog.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                localStorage.setItem("deletedBlog", JSON.stringify(action.payload))
+            })
+            .addCase(deleteBlog.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

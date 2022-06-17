@@ -93,3 +93,19 @@ $box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
     margin: auto;
     line-height: 2.5rem;
 }
+
+@mixin back-btn(){
+    color: white;
+    background: $lightColorHover;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 2rem;
+    border: none;
+    transition: all 0.1s ease;
+
+    &:hover{
+        color: gray;
+        background: $lightColor;
+    }
+}

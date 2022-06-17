@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import { FaPen, FaTrashAlt, FaThumbsUp, FaTag } from "react-icons/fa";
 import image from '../resources/banner.jpg'
 
+
+import ModalBox from "./ModalBox";
+
 function MyBlogCard(props) {
   const navigate = useNavigate()
+  const [modalState, setModalState] = useState(false)
   const { blog } = props
 
   const navigateEditBlog = () => {
@@ -16,9 +20,20 @@ function MyBlogCard(props) {
     }})
   }
 
+  const deleteBlog = () => {  
+    setModalState(true)
+  }
+
   return (
     <>
       <div className="myblog-card">
+        {modalState && 
+          <ModalBox 
+            action={`delete blog - "${blog.title}"`}
+            deleteType='blog'
+            id={blog._id}
+          />
+        }
         <div className="like">
             <h2>{blog.likeCount.length}</h2>
             <span> </span>
@@ -43,7 +58,7 @@ function MyBlogCard(props) {
             <FaPen className="icon" />
             edit
           </button>
-          <button className="delete-btn">
+          <button onClick={deleteBlog} className="delete-btn">
             <FaTrashAlt className="icon" />
             delete
           </button>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import{ FaEdit, FaTag } from 'react-icons/fa'
+import{ FaEdit, FaTag, FaFastBackward } from 'react-icons/fa'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import { CKEditor } from '@ckeditor/ckeditor5-react'
 import parser from 'html-react-parser'
@@ -16,6 +16,10 @@ function EditBlog() {
     const [preview, setPreview] = useState(false)
     const { state } = useLocation()
     const { updatedBlog, isError, isLoading, message, isSuccess } = useSelector((state) => state.blog)
+
+    const navigateMyBlog = () => {
+      navigate('/myBlog')
+    }
 
     //get blog details by state passed in
     const { id, title, content, blogCategory } = state
@@ -119,6 +123,8 @@ function EditBlog() {
 
           <button className='btn'>Update Blog Content</button>
         </form>
+
+        <button onClick={navigateMyBlog} className='back-btn'><FaFastBackward /> Select other blogs</button>
     </section>
   )
 }

@@ -112,10 +112,10 @@ const deleteBlog = asyncHandler( async (req, res) => {
     //Check if the blog belongs to this user or not
     if(blog.user.toString() !== user.id){
         res.status(401)
-        throw new Error('Not authorized to update this blog')
+        throw new Error('Not authorized to delete this blog')
     }
 
-    await blog.remove()
+    await Blog.findByIdAndRemove(req.params.id)
     
     res.status(200).json({id: req.params.id})
 })
