@@ -63,8 +63,7 @@ function SingleBlog() {
     setContent(event.target.value)
   }
 
-  const handleSubmitComment = (event) => {
-    event.preventDefault()
+  const handleSubmitComment = () => {
     const body = {
       id: blogId,
       user: user._id,

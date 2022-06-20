@@ -16,7 +16,8 @@ function MyBlog() {
     dispatch(getUserBlogs())
 
     if(isError){
-      alert('message')
+      alert(message)
+      navigate('/')
     }
 
     return () => {

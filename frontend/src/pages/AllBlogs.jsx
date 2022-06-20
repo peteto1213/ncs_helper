@@ -60,6 +60,7 @@ function AllBlogs() {
     dispatch(getAllBlogCategories())
     if(isError){
       alert(message)
+      navigate('/')
     }
 
     return () => {

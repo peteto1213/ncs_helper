@@ -15,9 +15,11 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))  
 
 //route of different collections
+app.use('/api/course', require('./routes/courseRoutes'))
 app.use('/api/blogCategory', require('./routes/blogCategoryRoutes'))
 app.use('/api/blog', require('./routes/blogRoutes'))
 app.use('/api/user', require('./routes/userRoutes'))
+
 
 //error handling that override the default errorHandler in Express
 app.use(errorHandler)

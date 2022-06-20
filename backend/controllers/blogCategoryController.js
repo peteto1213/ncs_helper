@@ -19,9 +19,17 @@ const getBlogCategories = asyncHandler( async (req, res) => {
  * @access Private, Admin
  */
 const createBlogCategory = asyncHandler( async (req, res) => {
+    //check if any empty field exists
     if(!req.body.name || !req.body.description){
         res.status(400)
         throw new Error('Please add a name and description to the blog category')
+    }
+
+    //check if the blog category name duplicates
+    const repeatedBlogCategory = await BlogCategory.findOne({name: req.body.name})
+    if(repeatedBlogCategory){
+        res.status(400)
+        throw new Error('The category name has been registered')
     }
 
     const blogCategory = await BlogCategory.create({
