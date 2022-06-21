@@ -61,8 +61,28 @@ const updateCourse = asyncHandler(async (req, res) => {
     res.status(201).json(updatedCourse)
 })
 
+/**
+ * @author Pete To
+ * @description Delete an existing course
+ * @router DELETE /api/course/:id
+ * @access Private, admin
+ */
+const deleteCourse = asyncHandler(async (req, res) => {
+    //Check if the targeted course exist
+    const course = await Course.findById(req.params.id)
+    if(!course){
+        res.status(404)
+        throw new Error('Course not found')
+    }
+
+    await Course.findByIdAndRemove(req.params.id)
+
+    res.status(200).json(req.params.id)
+})
+
 module.exports = {
     getAllCourses,
     createCourse,
-    updateCourse
+    updateCourse,
+    deleteCourse
 }

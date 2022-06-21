@@ -1,5 +1,4 @@
 const multer = require('multer')
-const path = require('path')
 
 //create a storage machine in the frontend folder for the user icons
 const storage = multer.diskStorage({
