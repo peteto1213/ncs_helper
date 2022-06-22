@@ -20,7 +20,7 @@ app.use('/api/blogCategory', require('./routes/blogCategoryRoutes'))
 app.use('/api/blog', require('./routes/blogRoutes'))
 app.use('/api/user', require('./routes/userRoutes'))
 app.use('/api/subtopic', require('./routes/subtopicRoutes'))
-
+app.use('/api/guide', require('./routes/guideRoutes'))
 
 //error handling that override the default errorHandler in Express
 app.use(errorHandler)

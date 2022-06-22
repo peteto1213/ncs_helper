@@ -10,6 +10,7 @@ router.get('/', getBlogs)
 router.get('/category/:id', getBlogsByCategoryId)
 router.get('/:id', getBlogByBlogId)
 router.get('/title/:title', getBlogsByFilteredBlogTitle)
+
 //public write
 router.put('/likeBlog', likeBlog)
 router.put('/commentBlog', commentBlog)

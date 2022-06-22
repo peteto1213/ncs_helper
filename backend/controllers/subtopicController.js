@@ -145,8 +145,6 @@ const deleteLearningResourceOfSubtopic = asyncHandler(async (req, res) => {
 })
 
 
-
-
 module.exports = {
     getAllSubtopics,
     getSubtopicsByCourseId,
