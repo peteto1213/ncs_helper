@@ -1,5 +1,5 @@
 const express = require('express')
-const { getAllSubtopics, getSubtopicsByCourseId, createSubtopic, addLearningResourceToSubtopic, deleteLearningResourceOfSubtopic } = require('../controllers/subtopicController')
+const { getAllSubtopics, getSubtopicsByCourseId, createSubtopic, addLearningResourceToSubtopic, deleteLearningResourceOfSubtopic, updateSubtopic, deleteSubtopic } = require('../controllers/subtopicController')
 const { protect, checkAdminPermission } = require('../middleware/authMiddleware')
 
 const router = express.Router()
@@ -14,6 +14,8 @@ router.delete('/learningResource/:id', protect, deleteLearningResourceOfSubtopic
 
 //admin permission route
 router.post('/', protect, checkAdminPermission, createSubtopic)
+router.put('/:id', protect, checkAdminPermission, updateSubtopic)
+router.delete('/:id', protect, checkAdminPermission, deleteSubtopic)
 
 
 module.exports = router

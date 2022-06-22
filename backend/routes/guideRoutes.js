@@ -1,5 +1,5 @@
 const express = require('express')
-const { getAllGuides, getGuidesBySubtopicId, createGuide } = require('../controllers/guideController')
+const { getAllGuides, getGuidesBySubtopicId, createGuide, editGuide, deleteGuide, getGuidesByUserId, likeGuide, commentGuide } = require('../controllers/guideController')
 const { protect, checkAdminPermission } = require('../middleware/authMiddleware')
 
 const router = express.Router()
@@ -10,5 +10,11 @@ router.get('/subtopic', getGuidesBySubtopicId)
 
 //Private access routes
 router.post('/', protect, createGuide)
+router.put('/:id', protect, editGuide)
+router.delete('/:id', protect, deleteGuide)
+router.get('/userGuide', protect, getGuidesByUserId)
+
+router.put('/likeGuide/:id', protect, likeGuide)
+router.put('/commentGuide/:id', protect, commentGuide)
 
 module.exports = router

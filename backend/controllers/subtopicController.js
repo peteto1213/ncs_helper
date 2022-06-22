@@ -37,47 +37,11 @@ const getSubtopicsByCourseId = asyncHandler(async (req, res) => {
 
 /**
  * @author Pete To
- * @description Create a new subtopic
- * @router POST /api/subtopic
- * @access Private, admin
- */
-const createSubtopic = asyncHandler(async (req, res) => {
-    //Check if any field is missing
-    if(!req.body.name || !req.body.description || !req.body.course){
-        res.status(400)
-        throw new Error('Please complete all the required fields')
-    }
-
-    //Check if the course exists or not
-    const course = await Course.findById(req.body.course)
-    if(!course){
-        res.status(404)
-        throw new Error('Course not found')
-    }
-
-    const subtopic = await Subtopic.create({
-        name: req.body.name,
-        description: req.body.description,
-        resources: [],
-        course: req.body.course
-    })
-
-    res.status(200).json(subtopic)
-})
-
-/**
- * @author Pete To
  * @description Add a learning resource to the subtopic
  * @router PUT /api/subtopic/learningResource
  * @access Private
  */
 const addLearningResourceToSubtopic = asyncHandler(async (req, res) => {
-    //Check if any field is missing
-    if(!req.body.title || !req.body.link || !req.body.type || !req.body.subtopic){
-        res.status(400)
-        throw new Error('Please complete all the required fields')
-    }
-
     //Check if the subtopic exists or not
     const subtopic = await Subtopic.findById(req.body.subtopic)
     if(!subtopic){
@@ -85,7 +49,13 @@ const addLearningResourceToSubtopic = asyncHandler(async (req, res) => {
         throw new Error('Subtopic not found')
     }
 
-    //Check if the title duplicates or not 
+    //Check if any field is missing
+    if(!req.body.title || !req.body.link || !req.body.type || !req.body.subtopic){
+        res.status(400)
+        throw new Error('Please complete all the required fields')
+    }
+
+    //Check if the title duplicates existing resources or not 
     const resources = subtopic.resources
     for(let i = 0; i < resources.length; i++){
         if(resources[i].title === req.body.title){
@@ -144,11 +114,80 @@ const deleteLearningResourceOfSubtopic = asyncHandler(async (req, res) => {
     }
 })
 
+/**
+ * @author Pete To
+ * @description Create a new subtopic
+ * @router POST /api/subtopic
+ * @access Private, admin
+ */
+const createSubtopic = asyncHandler(async (req, res) => {
+    //Check if any field is missing
+    if(!req.body.name || !req.body.description || !req.body.course){
+        res.status(400)
+        throw new Error('Please complete all the required fields')
+    }
+
+    //Check if the course exists or not
+    const course = await Course.findById(req.body.course)
+    if(!course){
+        res.status(404)
+        throw new Error('Course not found')
+    }
+
+    const subtopic = await Subtopic.create({
+        name: req.body.name,
+        description: req.body.description,
+        resources: [],
+        course: req.body.course
+    })
+
+    res.status(200).json(subtopic)
+})
+
+/**
+ * @author Pete To
+ * @description Edit an existing subtopic
+ * @router PUT /api/subtopic/:id
+ * @access Private, admin
+ */
+const updateSubtopic = asyncHandler(async (req, res) => {
+    //Check if the subtopic exists
+    const subtopic = await Subtopic.findById(req.params.id)
+    if(!subtopic){
+        res.status(404)
+        throw new Error('Subtopic not found')
+    }
+
+    const updatedSubtopic = await Subtopic.findByIdAndUpdate(req.params.id, req.body, {new: true})
+
+    res.status(200).json(updatedSubtopic)
+})
+
+/**
+ * @author Pete To
+ * @description Delete an existing subtopic
+ * @router DELETE /api/subtopic/:id
+ * @access Private, admin
+ */
+const deleteSubtopic = asyncHandler(async (req, res) => {
+    //Check if the subtopic exists
+    const subtopic = await Subtopic.findById(req.params.id)
+    if(!subtopic){
+        res.status(404)
+        throw new Error('Subtopic not found')
+    }
+
+    await Subtopic.findByIdAndRemove(req.params.id)
+
+    res.status(200).json(req.params.id)
+})
 
 module.exports = {
     getAllSubtopics,
     getSubtopicsByCourseId,
     createSubtopic,
     addLearningResourceToSubtopic,
-    deleteLearningResourceOfSubtopic
+    deleteLearningResourceOfSubtopic,
+    updateSubtopic,
+    deleteSubtopic
 }
