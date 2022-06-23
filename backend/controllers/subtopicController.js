@@ -37,6 +37,23 @@ const getSubtopicsByCourseId = asyncHandler(async (req, res) => {
 
 /**
  * @author Pete To
+ * @description Get a subtopic by subtopic id
+ * @router GET /api/subtopic/:id
+ * @access Public
+ */
+const getSubtopicBySubtopicId = asyncHandler(async (req, res) => {
+    //check if the subtopic exists
+    const subtopic = await Subtopic.findById(req.params.id)
+    if(!subtopic){
+        res.status(404)
+        throw new Error('Subtopic not found')
+    }
+
+    res.status(200).json(subtopic)
+})
+
+/**
+ * @author Pete To
  * @description Add a learning resource to the subtopic
  * @router PUT /api/subtopic/learningResource
  * @access Private
@@ -185,6 +202,7 @@ const deleteSubtopic = asyncHandler(async (req, res) => {
 module.exports = {
     getAllSubtopics,
     getSubtopicsByCourseId,
+    getSubtopicBySubtopicId,
     createSubtopic,
     addLearningResourceToSubtopic,
     deleteLearningResourceOfSubtopic,

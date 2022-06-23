@@ -31,10 +31,33 @@ const getGuidesBySubtopicId = asyncHandler(async (req, res) => {
     }
 
     const guides = await Guide.find({subtopic: req.body.suptopic})
-                                .populate('comments.user', 'nickname icon')
+                            .populate('comments.user', 'nickname icon')
+                            .populate('subtopic', 'name')
+                            .populate('user', 'nickname icon')
 
     res.status(200).json(guides)
 })
+
+/**
+ * @author Pete To
+ * @description Get a guide details by guide id 
+ * @router GET /api/guide/:id
+ * @access Public
+ */
+const getGuideByGuideId = asyncHandler(async (req, res) => {
+    //Check if the guide exists
+    const guide = await Guide.findById(req.params.id)
+                            .populate('comments.user', 'nickname icon')
+                            .populate('subtopic', 'name')
+                            .populate('user', 'nickname icon')
+    if(!guide){
+        res.status(404)
+        throw new Error('Guide not found')
+    }
+    
+    res.status(200).json(guide)
+})
+
 
 /**
  * @author Pete To
@@ -222,6 +245,7 @@ const commentGuide = asyncHandler(async (req, res) => {
 module.exports = {
     getAllGuides,
     getGuidesBySubtopicId,
+    getGuideByGuideId,
     createGuide,
     editGuide,
     deleteGuide,
