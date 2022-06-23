@@ -14,6 +14,7 @@ function AllBlogs() {
   const dispatch = useDispatch()
   const {blogs, isLoading, isError, message} = useSelector((state) => state.blog)
   const {blogCategories} = useSelector((state) => state.blogCategory)
+  const { user } = useSelector((state) => state.auth)
 
   const [menuState, setMenuState] = useState(true)
 
@@ -56,6 +57,11 @@ function AllBlogs() {
 
   //render one time once entered this page
   useEffect(() => {
+    if(!user){
+      alert('Please login to proceed')
+      navigate('/login')
+    }
+
     dispatch(getAllBlogs())
     dispatch(getAllBlogCategories())
     if(isError){
@@ -66,7 +72,7 @@ function AllBlogs() {
     return () => {
       dispatch(reset())
     }
-  }, [isError, message, reset, dispatch])
+  }, [isError, message, reset, dispatch, navigate])
 
   if(isLoading){
     return <Spinner />
