@@ -1,0 +1,18 @@
+@import '../variables';
+
+.all-course{
+    @include customFlex(column, flex-start, flex-start);
+
+    .heading{
+        width: 100%;
+    }
+
+    .course-card-container{
+        @include customFlex(row, flex-start, flex-start);
+        gap: 1.5rem;
+        width: 100%;
+        padding: 1rem 1.5rem;
+        flex-wrap: wrap;
+    }
+
+}

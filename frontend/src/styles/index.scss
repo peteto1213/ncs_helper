@@ -11,6 +11,7 @@
 @import './pages/singleBlog';
 @import './pages/createBlog';
 @import './pages/myBlog';
+@import './pages/allCourses';
 
 // Components import
 @import './components/header';
@@ -19,6 +20,7 @@
 @import './components/blogCard';
 @import './components/myBlogCard';
 @import './components/modalBox';
+@import './components/courseCard';
 
 *{
     margin: 0;

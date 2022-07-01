@@ -57,6 +57,7 @@ function AllBlogs() {
 
   //render one time once entered this page
   useEffect(() => {
+    //if not logged in, navigate to login page
     if(!user){
       alert('Please login to proceed')
       navigate('/login')

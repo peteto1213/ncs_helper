@@ -12,6 +12,7 @@ import SingleBlog from './pages/SingleBlog';
 import CreateBlog from './pages/CreateBlog';
 import MyBlog from './pages/MyBlog';
 import EditBlog from './pages/EditBlog';
+import AllCourses from './pages/AllCourses';
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
             <Route path='/createBlog' element={<CreateBlog/>} />
             <Route path='/myBlog' element={<MyBlog/>} />
             <Route path='/editBlog' element={<EditBlog/>} />
+
+            <Route path='/allCourses' element={<AllCourses/>} />
+
 
             {/* Default: Redirect to home */}
             <Route path="*" element={<Navigate to="/" replace />}/>
