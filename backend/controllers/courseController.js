@@ -15,6 +15,23 @@ const getAllCourses = asyncHandler(async (req, res) => {
 
 /**
  * @author Pete To
+ * @description Get individual course details by course id
+ * @router GET /api/course/:id
+ * @access Public
+ */
+const getCourseByCourseId = asyncHandler(async (req, res) => {
+    //Check if the course exists
+    const course = await Course.findById(req.params.id)
+    if(!course){
+        res.status(404)
+        throw new Error("Course not found, please check anothter course")
+    }
+
+    res.status(200).json(course)
+})
+
+/**
+ * @author Pete To
  * @description Create a new course
  * @router POST /api/course
  * @access Private, admin
@@ -84,5 +101,6 @@ module.exports = {
     getAllCourses,
     createCourse,
     updateCourse,
-    deleteCourse
+    deleteCourse,
+    getCourseByCourseId
 }

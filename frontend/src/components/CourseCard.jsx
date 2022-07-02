@@ -1,12 +1,17 @@
 import React from "react";
 
 function CourseCard() {
+
+  const navigateCourseDetails = () => {
+    console.log("navigated");
+  }
+
   return (
     <>
-      <div className="course-card">
+      <div onClick={navigateCourseDetails} className="course-card">
         <h3>CSC8011 - Introduction to Software Development</h3>
         <p>1st Java module</p>
-        <button className="btn">Browse materials</button>
+        <button className="btn">Browse subtopics</button>
       </div>
     </>
   );
