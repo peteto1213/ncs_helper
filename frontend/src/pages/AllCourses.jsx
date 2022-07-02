@@ -11,6 +11,7 @@ function AllCourses() {
         </div>
 
         <div className="course-card-container">
+          {/* Courses map here */}
           <CourseCard />
           <CourseCard />
         </div>

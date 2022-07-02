@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
-// Pages import
 @import './variables';
+// Pages import
 @import './pages/home';
 @import './pages/dashboard';
 @import './pages/register';
@@ -12,6 +12,7 @@
 @import './pages/createBlog';
 @import './pages/myBlog';
 @import './pages/allCourses';
+@import './pages/singleCourse';
 
 // Components import
 @import './components/header';
@@ -21,6 +22,7 @@
 @import './components/myBlogCard';
 @import './components/modalBox';
 @import './components/courseCard';
+@import './components/subtopicCard';
 
 *{
     margin: 0;

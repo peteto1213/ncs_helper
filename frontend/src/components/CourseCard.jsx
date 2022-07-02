@@ -1,9 +1,10 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom'
 
-function CourseCard() {
-
+function CourseCard(props) {
+  const navigate = useNavigate()
   const navigateCourseDetails = () => {
-    console.log("navigated");
+    navigate('/singleCourse')
   }
 
   return (

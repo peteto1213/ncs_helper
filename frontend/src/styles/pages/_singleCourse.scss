@@ -1,0 +1,41 @@
+@import '../variables';
+
+.single-course{
+
+    .heading{
+        width: 100%;
+    }
+
+    .subtopic-container{
+        margin: 0 7%;
+        @include customFlex(column, flex-start, flex-start);
+        gap: 2rem;
+
+        .btn{
+            transition: all 0.2s linear;
+            @include button($secondaryColor, $secondaryColorLighter);
+
+            .icon{
+                font-size: 1.7rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .single-course {
+        margin: 0 -4%;
+
+        .subtopic-container {
+            margin: 0 5%;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .single-course{
+        .subtopic-container{
+            margin: 0;
+        }
+    }
+}

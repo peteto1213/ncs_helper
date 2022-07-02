@@ -1,0 +1,121 @@
+@import '../variables';
+
+.subtopic-card {
+    width: 100%;
+    @include customFlex(column, flex-start, flex-start);
+
+    .bar {
+        width: 100%;
+        @include customFlex(row, center, space-between);
+        color: $secondaryColor;
+        border: 0.2rem solid $secondaryColorLighter;
+        border-radius: 1rem;
+        box-shadow: $box-shadow;
+        padding: 1rem 1.5rem;
+        transition: all 0.2s linear;
+        cursor: pointer;
+
+        h1 {
+            font-size: 2.5rem;
+            @include customFlex(row, center, flex-start);
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            span {
+                font-size: 2rem;
+                background: $secondaryColor;
+                color: white;
+                padding: 0.6rem 1.2rem;
+                border-radius: 1.5rem;
+                margin-right: 2rem;
+            }
+        }
+
+        .icon {
+            font-size: 3rem;
+        }
+
+        &:hover {
+            background: $secondaryColorLighter;
+            color: whitesmoke;
+        }
+    }
+
+    .bar.active {
+        background: $secondaryColorLighter;
+        color: whitesmoke;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .resources {
+        width: 100%;
+        border-top: 1rem solid $lightColor;
+        // Display none
+        transition: all 0.5s ease-in-out;
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+
+        table {
+            margin: 1rem 0;
+            background: #fdfdfd;
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            display: table;
+            border-color: gray;
+            text-align: center;
+            font-size: 1.7rem;
+
+            thead {
+                background-color: transparent;
+                vertical-align: middle;
+                color: $primaryColor;
+                font-weight: 700;
+
+                tr {
+                    display: table-row;
+
+                    th {
+                        border: 1px solid #dbdbdb;
+                        padding: 0.5rem 0;
+                        vertical-align: top;
+                    }
+                }
+            }
+
+            tbody {
+                display: table-row-group;
+                vertical-align: middle;
+                border-color: inherit;
+                color: $secondaryColor;
+
+                tr {
+                    display: table-row;
+                    vertical-align: inherit;
+                    border-color: inherit;
+
+                    td {
+                        border: 1px solid #dbdbdb;
+                        padding: 1rem 0;
+                        vertical-align: top;
+
+                        a {
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .resources.active {
+        opacity: 1;
+        height: auto;
+    }
+}
