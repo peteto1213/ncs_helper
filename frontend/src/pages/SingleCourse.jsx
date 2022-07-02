@@ -1,6 +1,6 @@
 import React from 'react'
 import SubtopicCard from '../components/SubtopicCard'
-import { FaFastBackward } from 'react-icons/fa'
+import { FaFastBackward, FaFolderPlus } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 
 function SingleCourse() {
@@ -11,6 +11,10 @@ function SingleCourse() {
         navigate('/allCourses')
     }
 
+    const navigateAddResources = () => {
+        navigate('/addResources')
+    }
+
   return (
     <section className='single-course'>
         <div className="heading">
@@ -18,6 +22,7 @@ function SingleCourse() {
         </div>
 
         <div className="subtopic-container">
+            <button onClick={navigateAddResources} className='add-btn'><FaFolderPlus /> Contribute to CSC8011</button>
             {/* Subtopc maps here */}
             <SubtopicCard />
             <SubtopicCard />

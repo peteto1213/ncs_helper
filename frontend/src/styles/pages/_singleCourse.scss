@@ -11,6 +11,22 @@
         @include customFlex(column, flex-start, flex-start);
         gap: 2rem;
 
+        .add-btn{
+            transition: all 0.2s linear;
+            padding: 0.75rem 1.5rem;
+            font-size: 1.7rem;
+            cursor: pointer;
+            background: none;
+            border: 0.1rem solid $lightColor;
+            border-radius: 1rem;
+            color: gray;
+
+            &:hover{
+                background: $lightColorHover;
+                color: whitesmoke;
+            }
+        }
+
         .btn{
             transition: all 0.2s linear;
             @include button($secondaryColor, $secondaryColorLighter);

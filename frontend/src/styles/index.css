@@ -1814,6 +1814,23 @@
   gap: 2rem;
 }
 
+.single-course .subtopic-container .add-btn {
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.7rem;
+  cursor: pointer;
+  background: none;
+  border: 0.1rem solid rgba(193, 235, 225, 0.7);
+  border-radius: 1rem;
+  color: gray;
+}
+
+.single-course .subtopic-container .add-btn:hover {
+  background: rgba(119, 175, 162, 0.7);
+  color: whitesmoke;
+}
+
 .single-course .subtopic-container .btn {
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
