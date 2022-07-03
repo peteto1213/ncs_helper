@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import SubtopicCard from '../components/SubtopicCard'
-import { FaFastBackward, FaFolderPlus } from 'react-icons/fa'
+import { FaFastBackward, FaFolderPlus, FaSadTear } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -50,9 +50,9 @@ function SingleCourse() {
         </div>
 
         <div className="subtopic-container">
-            <button onClick={navigateAddResources} className='add-btn'><FaFolderPlus /> Contribute to CSC8011</button>
+            <button onClick={navigateAddResources} className='add-btn'><FaFolderPlus /> Contribute to {viewingCourse.courseCode}</button>
             {/* Subtopc maps here */}
-            {subtopics.map(subtopic =>
+            {subtopics.length > 0 && subtopics.map(subtopic =>
                 <SubtopicCard 
                     name = {subtopic.name}
                     description = {subtopic.description}
@@ -60,6 +60,15 @@ function SingleCourse() {
                     course = {subtopic.course}
                 />
             )}
+            {/* No subtopics for the course, display corresponding message */}
+            {subtopics.length <= 0 && 
+                <>
+                    <div className="empty-message">
+                        <FaSadTear className='icon' />
+                        <h3>There is currently no subtopic for this course...</h3>
+                    </div>
+                </>
+            }
 
             <button onClick={navigateCourses} className='btn'><FaFastBackward className='icon' /> Back to Select Courses</button>
         </div>

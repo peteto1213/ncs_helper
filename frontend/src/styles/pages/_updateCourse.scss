@@ -1,0 +1,40 @@
+@import "../variables";
+
+.update-course {
+    @include customFlex(column, flex-start, flex-start);
+
+  .heading {
+    width: 100%;
+  }
+
+  form {
+    @include customFlex(column, flex-start, flex-start);
+    gap: 2rem;
+    width: 100%;
+    padding: 3rem 2rem;
+    box-shadow: $box-shadow;
+
+    .input-field {
+      @include inputField();
+    }
+
+    .btn {
+      @include button($primaryColor, $secondaryColor);
+      margin-top: -2rem;
+    }
+  }
+
+  .back-btn{
+    margin-top: 3rem;
+    font-size: 2rem;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    background: $secondaryColor;
+    padding: 1.5rem 3rem;
+    cursor: pointer;
+    color: white;
+    &:hover{
+        background: $secondaryColorLighter;
+    }
+  }
+}

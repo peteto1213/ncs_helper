@@ -23,7 +23,7 @@ function BlogTable(props) {
 
           <td>
             <a className="edit" href="#">
-              <FaPen className="icon" /> Edit
+              <FaPen className="icon" />
             </a>
           </td>
         </tr>

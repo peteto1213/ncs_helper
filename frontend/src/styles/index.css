@@ -439,7 +439,8 @@
   border-radius: 0.5rem;
   background: #1c8d76;
   color: white;
-  margin-right: 1.3rem;
+  cursor: pointer;
+  border: none;
 }
 
 .admin-dashboard .content .board .edit .icon {
@@ -455,6 +456,8 @@
   border-radius: 0.5rem;
   background: #c25fc2;
   color: white;
+  cursor: pointer;
+  border: none;
 }
 
 .admin-dashboard .content .board .delete .icon {
@@ -1885,6 +1888,44 @@
   font-size: 1.7rem;
 }
 
+.single-course .subtopic-container .empty-message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  text-align: center;
+  margin: 3rem 0;
+  border-radius: 1rem;
+  width: 100%;
+  padding: 2.5rem 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(gray), to(lightgray));
+  background: linear-gradient(gray, lightgray);
+  color: whitesmoke;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.single-course .subtopic-container .empty-message .icon {
+  font-size: 5rem;
+  margin-bottom: 2rem;
+}
+
+.single-course .subtopic-container .empty-message h3 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
 @media (max-width: 768px) {
   .single-course {
     margin: 0 -4%;
@@ -1971,12 +2012,13 @@
   max-width: 100%;
   font-size: 2rem;
   margin-top: 1rem;
-  padding: 1rem 0.5rem;
+  padding: 1rem 2rem 1rem 1rem;
   border-radius: 0.5rem;
 }
 
-.add-resources form .input-field select option {
-  margin: 2rem 0;
+.add-resources form .input-field .error-text {
+  color: red;
+  font-style: italic;
 }
 
 .add-resources form .btn {
@@ -2026,6 +2068,105 @@
   .add-resources form {
     padding: 3rem 2rem;
   }
+}
+
+.update-course {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.update-course .heading {
+  width: 100%;
+}
+
+.update-course form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 2rem;
+  width: 100%;
+  padding: 3rem 2rem;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.update-course form .input-field {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.update-course form .input-field h3 {
+  font-size: 2rem;
+  margin-left: 0.5rem;
+  color: #1c8d76;
+}
+
+.update-course form .input-field h3 span {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.update-course form .input-field input {
+  margin: 1rem 0;
+  padding: 1.2rem;
+  font-size: 1.7rem;
+  color: #333;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #248f79;
+  width: 100%;
+}
+
+.update-course form .btn {
+  margin-top: 1rem;
+  display: inline-block;
+  background: #1c8d76;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem 3rem;
+  cursor: pointer;
+  font-size: 2rem;
+  border: none;
+  margin-top: -2rem;
+}
+
+.update-course form .btn:hover {
+  background: #1dae8d;
+}
+
+.update-course .back-btn {
+  margin-top: 3rem;
+  font-size: 2rem;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  background: #1dae8d;
+  padding: 1.5rem 3rem;
+  cursor: pointer;
+  color: white;
+}
+
+.update-course .back-btn:hover {
+  background: #21c9a2;
 }
 
 .header {

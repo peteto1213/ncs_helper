@@ -35,7 +35,7 @@ function SubtopicCard(props) {
                                 <tr>
                                     <td>{resource.title}</td>
                                     <td>{resource.type}</td>
-                                    <td><a href={resource.link}>Click here to view</a></td>
+                                    <td><a href={resource.link} target="_blank">Click here to view</a></td>
                                     <td>{resource.user.nickname}</td>
                                 </tr>
                             )}

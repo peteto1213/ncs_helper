@@ -35,6 +35,29 @@
                 font-size: 1.7rem;
             }
         }
+
+        .empty-message{
+            @include flexColumnCenter();
+            align-self: center;
+            text-align: center;
+            margin: 3rem 0;
+            border-radius: 1rem;
+            width: 100%;
+            padding: 2.5rem 0;
+            background: linear-gradient(gray, lightgray);
+            color: whitesmoke;
+            box-shadow: $box-shadow;
+            
+            .icon{
+                font-size: 5rem;
+                margin-bottom: 2rem;
+            }
+
+            h3{
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+        }
     }
 }
 

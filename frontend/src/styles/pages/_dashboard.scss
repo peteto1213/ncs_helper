@@ -258,7 +258,8 @@
                 border-radius: 0.5rem;
                 background: $primaryColor;
                 color: white;
-                margin-right: 1.3rem;
+                cursor: pointer;
+                border: none;
 
                 .icon{
                     font-size: 1.3rem;
@@ -274,6 +275,8 @@
                 border-radius: 0.5rem;
                 background: rgb(194, 95, 194);
                 color: white;
+                cursor: pointer;
+                border: none;
 
                 .icon {
                     font-size: 1.3rem;

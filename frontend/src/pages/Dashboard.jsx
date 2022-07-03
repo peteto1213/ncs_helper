@@ -22,6 +22,7 @@ import { useState } from "react";
 import Spinner from "../components/Spinner";
 import { reset, getAllUsers } from "../features/admin/adminSlice";
 import { getAllBlogCategories } from '../features/blogCategory/blogCategorySlice'
+import { getAllCourses } from '../features/course/courseSlice'
 //Table imports
 import UserTable from "../components/UserTable";
 import CourseTable from "../components/CourseTable";
@@ -34,6 +35,7 @@ function Dashboard() {
     (state) => state.admin
   );
   const { blogCategories } = useSelector((state) => state.blogCategory)
+  const { courses } = useSelector((state) => state.course)
 
   const [error, setError] = useState("");
 
@@ -49,6 +51,7 @@ function Dashboard() {
       setUserType(user.userType); //identify which layout to show
       dispatch(getAllUsers());
       dispatch(getAllBlogCategories());
+      dispatch(getAllCourses())
     }
     //Clearer function of useEffect upon leaving the dashboard
     return () => {
@@ -188,7 +191,7 @@ function Dashboard() {
               <div className="val-box">
                 <FaGraduationCap className="icon" />
                 <div>
-                  <h3>5</h3>
+                  <h3>{courses.length}</h3>
                   <span>Courses</span>
                 </div>
               </div>
@@ -231,7 +234,14 @@ function Dashboard() {
                   </tr>
                 </thead>
                 {/* Course Map here */}
-                <CourseTable />
+                {courses.map(course => 
+                  <CourseTable
+                    courseCode = {course.courseCode}
+                    name = {course.name}
+                    description = {course.description}
+                    courseId = {course._id}
+                  />
+                )}
               </table>
 
               <button className="btn"><FaFolderPlus />Add a New Blog Category</button>

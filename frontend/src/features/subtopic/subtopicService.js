@@ -8,8 +8,20 @@ const getSubtopicsByCourseId = async(courseId) => {
     return response.data
 }
 
+const addLearningResourceToSubtopic = async(body, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    const response = await axios.put(`${SUBTOPIC_URL}/learningResource`, body, config)
+
+    return response.data
+}
+
 const subtopicService = {
-    getSubtopicsByCourseId
+    getSubtopicsByCourseId,
+    addLearningResourceToSubtopic
 }
 
 export default subtopicService
