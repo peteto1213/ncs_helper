@@ -1,6 +1,7 @@
 import axios from "axios";
 const ALL_USERS_API = '/api/user/allUsers'
 const COURSE_API = '/api/course'
+const SUBTOPIC_API = '/api/subtopic'
 
 //get all users
 const getAllUsers = async(token) => {
@@ -34,9 +35,23 @@ const updateCourseByCourseId = async(body, token) => {
     return response.data
 }
 
-const goalService = {
+//add subtopic to a specific course (identified by course id)
+const createSubtopic = async(body, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.post(SUBTOPIC_API, body, config)
+
+    return response.data
+}
+
+const adminService = {
     getAllUsers,
-    updateCourseByCourseId
+    updateCourseByCourseId,
+    createSubtopic
 } 
 
-export default goalService
+export default adminService

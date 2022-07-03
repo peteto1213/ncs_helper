@@ -2109,6 +2109,7 @@
   padding: 3rem 2rem;
   -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
 }
 
 .update-course form .input-field {
@@ -2154,6 +2155,39 @@
   background: #1dae8d;
 }
 
+.update-course .content {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.update-course .content .subtopic-form {
+  width: 49%;
+}
+
+.update-course .content .subtopic-form.list .input-field {
+  margin: 0;
+}
+
+.update-course .content .subtopic-form.list .input-field .list-h3 {
+  text-decoration: underline;
+  color: green;
+}
+
 .update-course .back-btn {
   margin-top: 3rem;
   font-size: 2rem;
@@ -2167,6 +2201,12 @@
 
 .update-course .back-btn:hover {
   background: #21c9a2;
+}
+
+@media (max-width: 768px) {
+  .update-course .content .subtopic-form {
+    width: 100%;
+  }
 }
 
 .header {

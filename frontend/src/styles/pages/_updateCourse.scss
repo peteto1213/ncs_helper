@@ -13,6 +13,7 @@
     width: 100%;
     padding: 3rem 2rem;
     box-shadow: $box-shadow;
+    margin-bottom: 2rem;
 
     .input-field {
       @include inputField();
@@ -21,6 +22,28 @@
     .btn {
       @include button($primaryColor, $secondaryColor);
       margin-top: -2rem;
+    }
+  }
+
+  .content{
+    width: 100%;
+    @include customFlex(row, flex-start, flex-start);
+    flex-wrap: wrap;
+    gap: 1.5rem;
+
+    .subtopic-form {
+        width: 49%;
+    }
+
+    .subtopic-form.list{
+        .input-field{
+            margin: 0;
+
+            .list-h3{
+                text-decoration: underline;
+                color: green;
+            }
+        }
     }
   }
 
@@ -37,4 +60,14 @@
         background: $secondaryColorLighter;
     }
   }
+}
+
+@media (max-width: 768px) {
+    .update-course{
+        .content{
+            .subtopic-form{
+                width: 100%;
+            }
+        }
+    }
 }

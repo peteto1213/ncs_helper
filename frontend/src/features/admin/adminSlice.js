@@ -4,6 +4,7 @@ import adminService from './adminService'
 const initialState = {
     users: [],
     operatingCourse: {},
+    createdSubtopic: {},
     blogs: [],
     isError: false,
     isSuccess: false,
@@ -30,6 +31,21 @@ export const updateCourseByCourseId = createAsyncThunk('admin/updateCourseByCour
     try {
         const token = thunkAPI.getState().auth.user.token
         return await adminService.updateCourseByCourseId(body, token)
+
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message 
+        || error.toString()
+
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
+//create subtopic
+export const createSubtopic = createAsyncThunk('admin/createSubtopic', async(body, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token
+
+        return await adminService.createSubtopic(body, token)
 
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message) || error.message 
@@ -75,6 +91,20 @@ export const adminSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
                 state.operatingCourse = {}
+            })
+            .addCase(createSubtopic.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(createSubtopic.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.createdSubtopic = action.payload
+            })
+            .addCase(createSubtopic.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.createdSubtopic = {}
             })
     }
 })
