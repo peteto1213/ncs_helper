@@ -11,6 +11,7 @@ const Course = require('../models/courseModel')
 const getAllSubtopics = asyncHandler(async (req, res) => {
     const subtopics = await Subtopic.find()
                                     .populate('course', 'courseCode name')
+                                    .populate('resources.user', 'nickname icon')
 
     res.status(200).json(subtopics)
 })
@@ -31,6 +32,7 @@ const getSubtopicsByCourseId = asyncHandler(async (req, res) => {
 
     const subtopics = await Subtopic.find({course: req.params.id})
                                     .populate('course', 'courseCode name')
+                                    .populate('resources.user', 'nickname icon')
 
     res.status(200).json(subtopics)
 })
@@ -149,6 +151,13 @@ const createSubtopic = asyncHandler(async (req, res) => {
     if(!course){
         res.status(404)
         throw new Error('Course not found')
+    }
+
+    //Check if the name of the subtopic has repeated
+    const repeatedSubtopic = await Subtopic.findOne({name: req.body.name})
+    if(repeatedSubtopic){
+        res.status(400)
+        throw new Error('This subtopic has been registered')
     }
 
     const subtopic = await Subtopic.create({

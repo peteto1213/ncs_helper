@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
+import { FaPen, FaBan } from 'react-icons/fa'
 
 function UserTable(props) {
   //Exception handling for no user data
@@ -37,12 +38,12 @@ function UserTable(props) {
             <p>{props.user.userType}</p>
           </td>
 
-          <td>
+          <td className="button-role">
             <a className="edit" href="#">
-              Edit
+              <FaPen className="icon" /> Edit
             </a>
             <a className="delete" href="#">
-              Delete
+              <FaBan className="icon" /> Ban
             </a>
           </td>
         </tr>

@@ -3,15 +3,17 @@ import { useNavigate } from 'react-router-dom'
 
 function CourseCard(props) {
   const navigate = useNavigate()
+
   const navigateCourseDetails = () => {
+    localStorage.setItem('viewCourseId', props.courseId)
     navigate('/singleCourse')
   }
 
   return (
     <>
       <div onClick={navigateCourseDetails} className="course-card">
-        <h3>CSC8011 - Introduction to Software Development</h3>
-        <p>1st Java module</p>
+        <h3>{props.courseCode} - {props.name}</h3>
+        <p>{props.description}</p>
         <button className="btn">Browse subtopics</button>
       </div>
     </>

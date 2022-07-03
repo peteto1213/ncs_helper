@@ -1,4 +1,5 @@
 import React from "react";
+import { FaPen } from 'react-icons/fa'
 
 function BlogTable(props) {
 
@@ -22,10 +23,7 @@ function BlogTable(props) {
 
           <td>
             <a className="edit" href="#">
-              Edit
-            </a>
-            <a className="delete" href="#">
-              Delete
+              <FaPen className="icon" /> Edit
             </a>
           </td>
         </tr>

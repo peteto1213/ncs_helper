@@ -46,6 +46,7 @@
                 text-align: center;
                 font-size: 3rem;
                 color: $primaryColor;
+                margin-bottom: 2rem;
             }
 
             .preview-wording{
@@ -56,6 +57,10 @@
                 &:hover{
                     text-decoration: underline;
                 }
+            }
+
+            .preview-content{
+                font-size: 1.5rem
             }
         }
 

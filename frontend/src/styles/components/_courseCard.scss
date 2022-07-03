@@ -13,9 +13,11 @@
     h3{
         font-size: 2.5rem;
         margin-bottom: 1.2rem;
+        color: $primaryColor;
     }
     p{
-        font-size: 2rem;
+        font-size: 1.8rem;
+        color: gray;
     }
     .btn{
         display: none;
@@ -33,9 +35,17 @@
     &:hover{
         transform: scale(1.05);
         background: linear-gradient(gray, lightgray);
-        color: white;
+
         .btn{
             display: initial;
+        }
+
+        h3{
+            color: white;
+        }
+
+        p{
+            color: whitesmoke;
         }
     }
 }

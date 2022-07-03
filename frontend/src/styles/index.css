@@ -399,6 +399,25 @@
   padding: 1.5rem 2rem;
 }
 
+.admin-dashboard .content .board table tbody tr .button-role {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
 .admin-dashboard .content .board .active p {
   background: #d7fada;
   padding: 0.7rem 1.5rem;
@@ -423,6 +442,10 @@
   margin-right: 1.3rem;
 }
 
+.admin-dashboard .content .board .edit .icon {
+  font-size: 1.3rem;
+}
+
 .admin-dashboard .content .board .edit:hover {
   background: #1dae8d;
 }
@@ -432,6 +455,10 @@
   border-radius: 0.5rem;
   background: #c25fc2;
   color: white;
+}
+
+.admin-dashboard .content .board .delete .icon {
+  font-size: 1.3rem;
 }
 
 .admin-dashboard .content .board .delete:hover {
@@ -1616,6 +1643,7 @@
   text-align: center;
   font-size: 3rem;
   color: #1c8d76;
+  margin-bottom: 2rem;
 }
 
 .create-blog form .preview .preview-wording {
@@ -1627,6 +1655,10 @@
 
 .create-blog form .preview .preview-wording:hover {
   text-decoration: underline;
+}
+
+.create-blog form .preview .preview-content {
+  font-size: 1.5rem;
 }
 
 .create-blog form .btn {
@@ -1865,6 +1897,134 @@
 @media (max-width: 500px) {
   .single-course .subtopic-container {
     margin: 0;
+  }
+}
+
+.add-resources {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.add-resources .heading {
+  width: 100%;
+}
+
+.add-resources form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 2rem;
+  width: 100%;
+  padding: 3rem 10rem;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.add-resources form .input-field {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.add-resources form .input-field h3 {
+  font-size: 2rem;
+  margin-left: 0.5rem;
+  color: #1c8d76;
+}
+
+.add-resources form .input-field h3 span {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.add-resources form .input-field input {
+  margin: 1rem 0;
+  padding: 1.2rem;
+  font-size: 1.7rem;
+  color: #333;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #248f79;
+  width: 100%;
+}
+
+.add-resources form .input-field select {
+  max-width: 100%;
+  font-size: 2rem;
+  margin-top: 1rem;
+  padding: 1rem 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.add-resources form .input-field select option {
+  margin: 2rem 0;
+}
+
+.add-resources form .btn {
+  margin-top: 1rem;
+  display: inline-block;
+  background: #1c8d76;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem 3rem;
+  cursor: pointer;
+  font-size: 2rem;
+  border: none;
+}
+
+.add-resources form .btn:hover {
+  background: #1dae8d;
+}
+
+.add-resources .back-btn {
+  color: white;
+  background: rgba(119, 175, 162, 0.7);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 2rem;
+  border: none;
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+  margin-top: 4rem;
+}
+
+.add-resources .back-btn:hover {
+  color: gray;
+  background: rgba(193, 235, 225, 0.7);
+}
+
+@media (max-width: 768px) {
+  .add-resources {
+    margin: 0 -4%;
+  }
+  .add-resources form {
+    padding: 3rem 5rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .add-resources form {
+    padding: 3rem 2rem;
   }
 }
 
@@ -2624,10 +2784,12 @@
 .course-card h3 {
   font-size: 2.5rem;
   margin-bottom: 1.2rem;
+  color: #1c8d76;
 }
 
 .course-card p {
-  font-size: 2rem;
+  font-size: 1.8rem;
+  color: gray;
 }
 
 .course-card .btn {
@@ -2649,11 +2811,18 @@
           transform: scale(1.05);
   background: -webkit-gradient(linear, left top, left bottom, from(gray), to(lightgray));
   background: linear-gradient(gray, lightgray);
-  color: white;
 }
 
 .course-card:hover .btn {
   display: initial;
+}
+
+.course-card:hover h3 {
+  color: white;
+}
+
+.course-card:hover p {
+  color: whitesmoke;
 }
 
 @media (max-width: 768px) {
@@ -2883,6 +3052,10 @@ html {
 
 .container section .heading h1 {
   font-size: 4rem;
+}
+
+.container section .heading .icon {
+  margin: 0 1rem;
 }
 
 @media (max-width: 991px) {

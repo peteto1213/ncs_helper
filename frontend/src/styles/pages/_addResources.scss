@@ -1,0 +1,60 @@
+@import '../variables';
+
+.add-resources{
+    @include customFlex(column, flex-start, flex-start);
+
+    .heading{
+        width: 100%;
+    }
+
+        form {
+            @include customFlex(column, flex-start, flex-start);
+            gap: 2rem;
+            width: 100%;
+            padding: 3rem 10rem;
+            box-shadow: $box-shadow;
+    
+            .input-field {
+                @include inputField();
+    
+                select {
+                    max-width: 100%;
+                    font-size: 2rem;
+                    margin-top: 1rem;
+                    padding: 1rem 0.5rem;
+                    border-radius: 0.5rem;
+
+                    option{
+                        margin: 2rem 0;
+                    }
+                }
+            }
+    
+            .btn {
+                @include button($primaryColor, $secondaryColor);
+            }
+    
+        }
+    
+        .back-btn {
+            @include back-btn();
+            margin-top: 4rem;
+        }
+}
+
+@media (max-width: 768px) {
+    .add-resources {
+        margin: 0 -4%;
+        form {
+            padding: 3rem 5rem;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .add-resources {
+        form {
+            padding: 3rem 2rem;
+        }
+    }
+}

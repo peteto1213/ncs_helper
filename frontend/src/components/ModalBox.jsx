@@ -10,6 +10,7 @@ function ModalBox(props) {
 
   const [modalState, setModalState] = useState("modal active");
 
+  //Refresh the page one time
   function refreshPage() {
     window.location.reload(false);
   }

@@ -224,6 +224,11 @@
                         td{
                             padding: 1.5rem 2rem;
                         }
+                        .button-role{
+                            @include customFlex(row, flex-start, flex-start);
+                            flex-wrap: wrap;
+                            gap: 1.5rem;
+                        }
                     }
                 }
             }
@@ -254,6 +259,11 @@
                 background: $primaryColor;
                 color: white;
                 margin-right: 1.3rem;
+
+                .icon{
+                    font-size: 1.3rem;
+                }
+
                 &:hover {
                     background: $secondaryColor;
                 }
@@ -264,6 +274,11 @@
                 border-radius: 0.5rem;
                 background: rgb(194, 95, 194);
                 color: white;
+
+                .icon {
+                    font-size: 1.3rem;
+                }
+
                 &:hover{
                     background: rgb(201, 116, 201);
                 }

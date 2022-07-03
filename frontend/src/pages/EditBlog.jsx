@@ -105,7 +105,7 @@ function EditBlog() {
             {preview?
               <>
                 <h1 className='title'>{form.title}</h1>
-                {parser(text)}
+                <div className='preview-content'>{parser(text)}</div>
               </> 
               : 
               ""

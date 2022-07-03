@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FaAngleDown } from 'react-icons/fa'
 
-function SubtopicCard() {
+function SubtopicCard(props) {
 
     const [resourcesDisplay, setResourcesDisplay] = useState(false)
 
@@ -13,7 +13,7 @@ function SubtopicCard() {
     <>
         <div className="subtopic-card">
                 <div onClick={toggleResourcesDisplay} className={resourcesDisplay ? "bar active" : "bar"}>
-                    <h1><span>Subtopic</span> Introduction to tooling for version control </h1>
+                    <h1><span>Subtopic</span> {props.name} </h1>
                     <FaAngleDown className='icon' />
                 </div>
 
@@ -31,12 +31,14 @@ function SubtopicCard() {
 
                         <tbody>
                             {/* Resources map here */}
-                            <tr>
-                                <td>Git and Git Hub</td>
-                                <td>Website</td>
-                                <td><a href="www.github.com">www.github.com</a></td>
-                                <td>Pete To</td>
-                            </tr>
+                            {props.resources.map(resource => 
+                                <tr>
+                                    <td>{resource.title}</td>
+                                    <td>{resource.type}</td>
+                                    <td><a href={resource.link}>Click here to view</a></td>
+                                    <td>{resource.user.nickname}</td>
+                                </tr>
+                            )}
 
                         </tbody>
 

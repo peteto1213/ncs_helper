@@ -13,6 +13,7 @@
 @import './pages/myBlog';
 @import './pages/allCourses';
 @import './pages/singleCourse';
+@import './pages/addResources';
 
 // Components import
 @import './components/header';
@@ -63,8 +64,13 @@ html{
             border-radius: 0.5rem;
             color: $black;
             margin-bottom: 1.5rem;
+
             h1{
                 font-size: 4rem;
+            }
+
+            .icon{
+                margin: 0 1rem;
             }
         }
     }

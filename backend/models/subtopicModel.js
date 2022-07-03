@@ -8,32 +8,33 @@ const subtopicSchema = mongoose.Schema({
     },
     description: {
         type: String,
-        required: true
+        required: true,
+        sparse: true
     },
-    resources: [
-        {
-            title: {
-                type: String,
-                unique: true,
-                required: true
+    resources: {
+        sparse: true,
+        type:[
+            {
+                title: {
+                    type: String,
+                    sparse: true
+                },
+                link: {
+                    type: String,
+                    sparse: true
+                },
+                type: {
+                    type: String,
+                    sparse: true
+                },
+                user: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'User',
+                    sparse: true
+                }
             },
-            link: {
-                type: String,
-                unique: true,
-                required: true
-            },
-            type: {
-                type: String,
-                unique: true,
-                required: true
-            },
-            user: {
-                type: mongoose.Schema.Types.ObjectId,
-                required: true,
-                ref: 'User'
-            }
-        }
-    ],
+        ],
+    },
     course: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
