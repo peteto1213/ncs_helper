@@ -98,8 +98,8 @@ const addLearningResourceToSubtopic = asyncHandler(async (req, res) => {
 /**
  * @author Pete To
  * @description Delete a learning resource of the subtopic
- * @router DELETE /api/subtopic/learningResource/:id
- * @access Private
+ * @router PUT /api/subtopic/learningResource/:id
+ * @access Private, Admin
  */
 const deleteLearningResourceOfSubtopic = asyncHandler(async (req, res) => {
     //Check if the subtopic exists or not
@@ -120,17 +120,12 @@ const deleteLearningResourceOfSubtopic = asyncHandler(async (req, res) => {
         res.status(400)
         throw new Error('Learning resource not found')
     }
-    //Check if the learning resource belongs to this user
-    if(targetedResource.user != req.user.id){
-        res.status(400)
-        throw new Error('Not authorized to delete this resource')
-    }else{
-        const newArray = await resources.filter(resource => resource._id != req.params.id)
 
-        const updatedSubtopic = await Subtopic.findByIdAndUpdate(req.body.subtopic, {resources: newArray}, {new: true})
+    const newArray = await resources.filter(resource => resource._id != req.params.id)
 
-        res.status(200).json(updatedSubtopic)
-    }
+    const updatedSubtopic = await Subtopic.findByIdAndUpdate(req.body.subtopic, {resources: newArray}, {new: true})
+
+    res.status(200).json(updatedSubtopic)
 })
 
 /**

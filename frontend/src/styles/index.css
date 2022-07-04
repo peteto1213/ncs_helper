@@ -3163,11 +3163,26 @@
 .subtopic-card .resources table tbody tr td {
   border: 1px solid #dbdbdb;
   padding: 1rem 0;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .subtopic-card .resources table tbody tr td a:hover {
   text-decoration: underline;
+}
+
+.subtopic-card .resources table tbody tr td .icon {
+  color: white;
+  background: purple;
+  padding: 0.5rem 0.7rem;
+  border-radius: 1rem;
+  font-size: 1.7rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  border: none;
+}
+
+.subtopic-card .resources table tbody tr td .icon:hover {
+  opacity: 0.7;
 }
 
 .subtopic-card .resources.active {

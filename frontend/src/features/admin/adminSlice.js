@@ -5,6 +5,7 @@ const initialState = {
     users: [],
     operatingCourse: {},
     createdSubtopic: {},
+    deleteLearningResourceAction: false,
     blogs: [],
     isError: false,
     isSuccess: false,
@@ -44,8 +45,26 @@ export const updateCourseByCourseId = createAsyncThunk('admin/updateCourseByCour
 export const createSubtopic = createAsyncThunk('admin/createSubtopic', async(body, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token
-
         return await adminService.createSubtopic(body, token)
+
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message 
+        || error.toString()
+
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
+//delete resource of a subtopic
+export const deleteLearningResourceOfSubtopic = createAsyncThunk('admin/deleteLearningResourceOfSubtopic', async(body, thunkAPI) => {
+    try {
+        const token = body.token
+        const newBody = {
+            subtopic: body.subtopic
+        }
+        const id = body.resourceId
+
+        return await adminService.deleteLearningResourceOfSubtopic(id, newBody, token)
 
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message) || error.message 
@@ -105,6 +124,19 @@ export const adminSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
                 state.createdSubtopic = {}
+            })
+            .addCase(deleteLearningResourceOfSubtopic.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(deleteLearningResourceOfSubtopic.fulfilled, (state) => {
+                state.isLoading = false
+                state.deleteLearningResourceAction = true
+            })
+            .addCase(deleteLearningResourceOfSubtopic.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.deleteLearningResourceAction = false
             })
     }
 })

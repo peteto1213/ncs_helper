@@ -29,14 +29,14 @@ function SingleCourse() {
         if(!user){
             navigate('/login')
         }
+
+        if(isError){
+            alert(message)
+        }
         
         dispatch(getCourseByCourseId(localStorage.getItem('viewCourseId')))
         dispatch(getSubtopicsByCourseId(localStorage.getItem('viewCourseId')))
 
-        //clean-up action
-        return () => {
-            dispatch(reset())
-        }
     }, [dispatch, navigate, isError, message, user])
 
     if(isLoading){
@@ -53,11 +53,13 @@ function SingleCourse() {
             <button onClick={navigateAddResources} className='add-btn'><FaFolderPlus /> Contribute to {viewingCourse.courseCode}</button>
             {/* Subtopc maps here */}
             {subtopics.length > 0 && subtopics.map(subtopic =>
-                <SubtopicCard 
+                <SubtopicCard
+                    key = {subtopic._id} 
                     name = {subtopic.name}
                     description = {subtopic.description}
                     resources = {subtopic.resources}
                     course = {subtopic.course}
+                    id = {subtopic._id}
                 />
             )}
             {/* No subtopics for the course, display corresponding message */}

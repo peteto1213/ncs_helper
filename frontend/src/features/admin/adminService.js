@@ -48,10 +48,24 @@ const createSubtopic = async(body, token) => {
     return response.data
 }
 
+//delete a resource from a subtopic
+const deleteLearningResourceOfSubtopic = async(id, body, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.put(`${SUBTOPIC_API}/learningResource/${id}`, body, config)
+
+    return response.data
+}
+
 const adminService = {
     getAllUsers,
     updateCourseByCourseId,
-    createSubtopic
+    createSubtopic,
+    deleteLearningResourceOfSubtopic
 } 
 
 export default adminService

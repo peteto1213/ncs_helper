@@ -11,12 +11,12 @@ router.get('/:id', getSubtopicBySubtopicId)
 
 //private route
 router.put('/learningResource', protect, addLearningResourceToSubtopic)
-router.delete('/learningResource/:id', protect, deleteLearningResourceOfSubtopic)
 
 //admin permission route
 router.post('/', protect, checkAdminPermission, createSubtopic)
 router.put('/:id', protect, checkAdminPermission, updateSubtopic)
 router.delete('/:id', protect, checkAdminPermission, deleteSubtopic)
+router.put('/learningResource/:id', protect, checkAdminPermission, deleteLearningResourceOfSubtopic)
 
 
 module.exports = router
