@@ -19,6 +19,7 @@ $primaryFont: 'Josefin Sans',sans-serif;
 $border: 0.1rem solid rgba(0,0,0,0.2);
 $box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
 
+
 @mixin flexRowCenter {
     display: flex;
     flex-direction: row;

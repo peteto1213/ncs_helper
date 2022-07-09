@@ -1,0 +1,61 @@
+@import '../variables';
+
+.guide-card {
+    @include customFlex(row, center, space-between);
+    width: 100%;
+    padding: 1.5rem 3rem;
+    border: 0.1rem solid $secondaryColor;
+    border-radius: 1.5rem;
+    font-size: 2rem;
+    color: $primaryColor;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+
+    .right-element {
+        @include customFlex(row, center, flex-start);
+        gap: 2rem;
+        font-size: 1.8rem;
+
+        .author {
+            color: $secondaryColor;
+        }
+
+        .date {
+            color: $lightColorHover;
+        }
+    }
+
+    &:hover {
+        color: white;
+        background: $secondaryColor;
+
+        .right-element {
+            .author {
+                color: white;
+            }
+
+            .date {
+                color: white;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .guide-card{
+        .left-element {
+            .guide-topic {
+                font-size: 1.8rem;
+            }
+        }
+        
+        .right-element {
+        
+            .author,
+            .date {
+                font-size: 1.6rem;
+            }
+        }
+    }
+    
+}

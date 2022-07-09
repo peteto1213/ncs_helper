@@ -1,6 +1,6 @@
 @import '../variables';
 
-.all-blogs{
+.all-guides{
     @include customFlex(column, flex-start, flex-start);
 
     #stream {
@@ -14,29 +14,8 @@
 
     .content{
         @include customFlex(row, flex-start, flex-start);
+        gap: 2rem;
         width: 100%;
-
-        .blog-container{
-            @include customFlex(column, flex-start, flex-start);
-            gap: 1.5rem;
-            width: 70%;
-            margin-right: 1.1rem;
-
-            .btn{
-                @include button($lightColor, $lightColorHover);
-                color: gray;
-                margin-top: auto;
-                transition: all 0.1s linear;
-                &:hover{
-                    color: whitesmoke;
-                }
-            }
-
-            .no-wordings{
-                @include no-wordings();
-                margin-top: 4rem;
-            }
-        }
 
         .sidebar{
             @include customFlex(column, flex-start, flex-start);
@@ -85,7 +64,7 @@
                     width: 100%;
                     margin-bottom: 1.3rem;
                 }
-                .blog-category{
+                .category{
                     width: 100%;
                     font-size: 2rem;
                     padding: 1.5rem 1rem;
@@ -100,11 +79,33 @@
                 }
             }
         }
+
+        .guide-container{
+            @include customFlex(column, flex-start, flex-start);
+            gap: 1.5rem;
+            width: 70%;
+            margin-right: 1.1rem;
+
+            .btn{
+                @include button($lightColor, $lightColorHover);
+                color: gray;
+                margin-top: auto;
+                transition: all 0.1s linear;
+                &:hover{
+                    color: whitesmoke;
+                }
+            }
+
+            .no-wordings{
+                @include no-wordings();
+                margin-top: 4rem;
+            }
+        }
     }
 }
 
 @media (max-width: 768px) {
-    .all-blogs{
+    .all-guides{
         #stream{
             display: initial;
             cursor: pointer;
@@ -115,35 +116,24 @@
             }
         }
 
-        .heading{
-           .icon{
-               margin-left: 2rem;
-           }
-        }
-
         .content{
-            .blog-container{
+            .guide-container{
                 width: 98%;
-                .blog-card{
-                    img{
-                        width: 40%;
-                    }
-                }
             }
 
             .sidebar{
                 position: absolute;
-                right: -45rem;
+                left: -45rem;
                 transition: all .5s;
             }
 
             .sidebar.active{
                 display: initial;
                 position: absolute;
-                right: 0;
+                left: 0;
                 background: whitesmoke;
                 border-radius: 1.5rem;
-                padding: 3rem 0 0 5rem;
+                padding: 3rem 3rem 0 2rem;
                 margin-top: -2rem;
                 z-index: 1000;
             }

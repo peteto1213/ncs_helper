@@ -50,7 +50,7 @@ function Header() {
         <nav className={menu? "navbar active" : "navbar"}>
             <Link to='/dashboard' onClick={hideMenu}><FaRocket />Dashboard</Link>
             <Link to='/allCourses' onClick={hideMenu}><FaGraduationCap />Courses</Link>
-            <Link to='/collaboration' onClick={hideMenu}><FaRobot />Collaboration</Link>
+            <Link to='/allGuides' onClick={hideMenu}><FaRobot />Collaboration</Link>
             <Link to='/allBlogs' onClick={hideMenu}><FaCoffee />Blogs</Link>
         </nav>
 

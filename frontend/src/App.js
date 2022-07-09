@@ -16,6 +16,7 @@ import AllCourses from './pages/AllCourses';
 import SingleCourse from './pages/SingleCourse';
 import AddResources from './pages/AddResources';
 import UpdateCourse from './pages/UpdateCourse';
+import AllGuides from './pages/AllGuides';
 
 function App() {
   return (
@@ -47,6 +48,8 @@ function App() {
             <Route path='/singleCourse' element={<SingleCourse/>} />
             <Route path='/addResources' element={<AddResources/>} />
             <Route path='/updateCourse' element={<UpdateCourse/>} />
+
+            <Route path='/allGuides' element={<AllGuides/>} />
 
 
             {/* Default: Redirect to home */}

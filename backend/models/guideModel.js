@@ -13,11 +13,13 @@ const guideSchema = mongoose.Schema({
         {
             question: {
                 type: String,
-                required: true
+                required: true,
+                sparse: true
             },
             answer: {
                 type: String,
-                required: true
+                required: true,
+                sparse: true
             }
         }
     ],
@@ -33,14 +35,17 @@ const guideSchema = mongoose.Schema({
         {
             user: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'User'
+                ref: 'User',
+                sparse: true
             },
             content: {
                 type: String,
-                required: true
+                required: true,
+                sparse: true
             },
             createdAt: {
-                type: String
+                type: String,
+                sparse: true
             }
         }
     ],
