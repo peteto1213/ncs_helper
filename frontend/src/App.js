@@ -17,6 +17,8 @@ import SingleCourse from './pages/SingleCourse';
 import AddResources from './pages/AddResources';
 import UpdateCourse from './pages/UpdateCourse';
 import AllGuides from './pages/AllGuides';
+import SingleGuide from './pages/SingleGuide';
+import CreateGuide from './pages/CreateGuide';
 
 function App() {
   return (
@@ -50,6 +52,8 @@ function App() {
             <Route path='/updateCourse' element={<UpdateCourse/>} />
 
             <Route path='/allGuides' element={<AllGuides/>} />
+            <Route path='/singleGuide' element={<SingleGuide/>} />
+            <Route path='/createGuide' element={<CreateGuide/>} />
 
 
             {/* Default: Redirect to home */}

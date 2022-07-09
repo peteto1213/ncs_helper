@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { FaRegHandshake, FaSearch, FaPlus, FaCaretRight, FaStream } from 'react-icons/fa'
 import GuideCard from '../components/GuideCard'
 
 function AllGuides() {
-
+    const navigate = useNavigate()
     const [sidebarDisplay, setSidebarDisplay] = useState(false)
 
     const toggleSidebar = () => {
         setSidebarDisplay(!sidebarDisplay)
+    }
+
+    const navigateCreateGuide = () => {
+        navigate('/createGuide')
     }
 
   return (
@@ -38,7 +43,7 @@ function AllGuides() {
             </div>
 
             <div className="guide-container">
-                <button className='btn'><FaPlus /> contribute new guide</button>
+                <button onClick={navigateCreateGuide} className='btn'><FaPlus /> contribute new guide</button>
 
                 {/* Guide card maps here */}
                 <GuideCard />

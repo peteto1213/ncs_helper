@@ -1,10 +1,17 @@
 import React from "react";
 import { FaUser, FaCalendarCheck } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
 function GuideCard() {
+  const navigate = useNavigate()
+
+  const navigateSingleGuide = () => {
+    navigate('/singleGuide')
+  }
+
   return (
     <>
-      <div className="guide-card">
+      <div onClick={navigateSingleGuide} className="guide-card">
         <div className="left-element">
           <h3 className="guide-topic">Lorem ipsum dolor sit.</h3>
         </div>

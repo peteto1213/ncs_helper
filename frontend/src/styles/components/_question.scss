@@ -1,0 +1,40 @@
+@import '../variables';
+
+.question-container {
+    width: 100%;
+    margin-top: 2rem;
+    border: 0.1rem solid $lightColor;
+    padding: 1.5rem;
+    font-size: 1.8rem;
+
+    h3 {
+        color: $primaryColor;
+    }
+
+    .question {
+        margin-bottom: 1rem;
+    }
+
+    .answer.active{
+        display: initial;
+    }
+
+    .answer{
+        display: none;
+    }
+
+    .show-btn {
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        background: $secondaryColor;
+        color: white;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}

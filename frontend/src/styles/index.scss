@@ -19,6 +19,8 @@
 @import './pages/addResources';
 @import './pages/updateCourse';
 @import './pages/allguides';
+@import './pages/singleGuide';
+@import './pages/createGuide';
 
 // Components import
 @import './components/header';
@@ -30,6 +32,7 @@
 @import './components/courseCard';
 @import './components/subtopicCard';
 @import './components/guideCard';
+@import './components/question';
 
 *{
     margin: 0;
@@ -85,6 +88,16 @@ html{
 @media(max-width: 991px){
     html{
         font-size: 55%;
+    }
+
+    .container{
+        section{
+            .heading{
+                h1{
+                    font-size: 3.3rem;
+                }
+            }
+        }
     }
 }
 
