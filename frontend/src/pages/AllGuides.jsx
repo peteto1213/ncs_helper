@@ -120,7 +120,20 @@ function AllGuides() {
                     guides.map(guide =>
                         <GuideCard
                             key={guide._id}
+<<<<<<< HEAD
                             guide={guide}
+=======
+                            id = {guide._id}
+                            name={guide.name}
+                            content={guide.content}
+                            guideQuestions={guide.guideQuestions}
+                            likeCount={guide.likeCount}
+                            comments={guide.comments}
+                            createdAt={guide.createdAt}
+                            author = {guide.user.nickname}
+                            icon = {guide.user.icon}
+                            subtopic = {guide.subtopic}
+>>>>>>> 34999f37f6f05e41191d4a43900dc63ba2363502
                         />
                     )
                     :
