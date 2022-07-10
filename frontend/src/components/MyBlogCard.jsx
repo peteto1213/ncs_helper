@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { FaPen, FaTrashAlt, FaThumbsUp, FaTag } from "react-icons/fa";
 import image from '../resources/banner.jpg'
 
-
 import ModalBox from "./ModalBox";
 
 function MyBlogCard(props) {

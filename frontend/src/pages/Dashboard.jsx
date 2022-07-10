@@ -99,7 +99,7 @@ function Dashboard() {
                 Manage or publish your created guides according to different
                 courses in the program to help others!
               </p>
-              <Link to="/collaboration">Manage</Link>
+              <Link to="/myGuide">Manage</Link>
             </div>
 
             <div className="card">

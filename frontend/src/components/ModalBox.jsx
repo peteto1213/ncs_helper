@@ -26,6 +26,9 @@ function ModalBox(props) {
         dispatch(deleteBlog(props.id));
         alert("Blog deleted successfully!");
 
+      case "guide":
+        alert("Guide deleted successfully!")
+
       default:
         refreshPage();
     }

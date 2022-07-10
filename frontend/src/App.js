@@ -19,6 +19,8 @@ import UpdateCourse from './pages/UpdateCourse';
 import AllGuides from './pages/AllGuides';
 import SingleGuide from './pages/SingleGuide';
 import CreateGuide from './pages/CreateGuide';
+import MyGuide from './pages/MyGuide';
+import EditGuide from './pages/EditGuide';
 
 function App() {
   return (
@@ -54,6 +56,8 @@ function App() {
             <Route path='/allGuides' element={<AllGuides/>} />
             <Route path='/singleGuide' element={<SingleGuide/>} />
             <Route path='/createGuide' element={<CreateGuide/>} />
+            <Route path='/myGuide' element={<MyGuide/>} />
+            <Route path='/editGuide' element={<EditGuide/>} />
 
 
             {/* Default: Redirect to home */}
