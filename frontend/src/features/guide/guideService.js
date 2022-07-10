@@ -27,7 +27,6 @@ const getGuideByGuideId = async(id) => {
     return response.data
 }
 
-<<<<<<< HEAD
 const likeGuide = async(guideId, token) => {
     const config = {
         headers:{
@@ -52,19 +51,13 @@ const commentGuide = async(guideId, content, token) => {
     return response.data
 }
 
-=======
->>>>>>> 34999f37f6f05e41191d4a43900dc63ba2363502
 const guideService = {
     getAllGuides,
     getGuidesBySubtopicId,
     getGuidesByFilteredGuideName,
-<<<<<<< HEAD
     getGuideByGuideId,
     likeGuide,
     commentGuide
-=======
-    getGuideByGuideId
->>>>>>> 34999f37f6f05e41191d4a43900dc63ba2363502
 }
 
 export default guideService

@@ -3,11 +3,7 @@ import guideService from './guideService'
 
 const initialState = {
     guides: [],
-<<<<<<< HEAD
     viewingGuide: "",
-=======
-    viewingGuide: {},
->>>>>>> 34999f37f6f05e41191d4a43900dc63ba2363502
     isSuccess: false,
     isError: false,
     isLoading: false,
@@ -63,7 +59,6 @@ export const getGuideByGuideId = createAsyncThunk('/guide/getGuideByGuideId', as
     }
 })
 
-<<<<<<< HEAD
 //like guide
 export const likeGuide = createAsyncThunk('/guide/likeGuide', async(guideId, thunkAPI) => {
     try {
@@ -93,8 +88,6 @@ export const commentGuide = createAsyncThunk('/guide/commentGuide', async(body, 
     }
 })
 
-=======
->>>>>>> 34999f37f6f05e41191d4a43900dc63ba2363502
 export const guideSlice = createSlice({
     name: 'guide',
     initialState,
@@ -145,20 +138,15 @@ export const guideSlice = createSlice({
                 state.message = action.payload
                 state.guides = []
             })
-<<<<<<< HEAD
             .addCase(getGuideByGuideId.pending, (state) => {
                 state.isLoading = true
             })
             .addCase(getGuideByGuideId.fulfilled, (state, action) => {
                 state.isLoading = false
-=======
-            .addCase(getGuideByGuideId.fulfilled, (state, action) => {
->>>>>>> 34999f37f6f05e41191d4a43900dc63ba2363502
                 state.isSuccess = true
                 state.viewingGuide = action.payload
             })
             .addCase(getGuideByGuideId.rejected, (state, action) => {
-<<<<<<< HEAD
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
@@ -182,11 +170,6 @@ export const guideSlice = createSlice({
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
-=======
-                state.isError = true
-                state.message = action.payload
-                state.viewingGuide = {}
->>>>>>> 34999f37f6f05e41191d4a43900dc63ba2363502
             })
     }
 
