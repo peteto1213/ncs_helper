@@ -5,6 +5,7 @@ import blogReducer from '../features/blog/blogSlice';
 import blogCategoryReducer from '../features/blogCategory/blogCategorySlice';
 import courseReducer from '../features/course/courseSlice';
 import subtopicReducer from '../features/subtopic/subtopicSlice';
+import guideReducer from '../features/guide/guideSlice';
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     blog: blogReducer,
     blogCategory: blogCategoryReducer,
     course: courseReducer,
-    subtopic: subtopicReducer
+    subtopic: subtopicReducer,
+    guide: guideReducer,
   },
 });

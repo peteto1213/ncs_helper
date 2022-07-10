@@ -2,6 +2,12 @@ import axios from 'axios'
 
 const SUBTOPIC_URL = '/api/subtopic'
 
+const getAllSubtopics = async() => {
+    const response = await axios.get(SUBTOPIC_URL)
+
+    return response.data
+}
+
 const getSubtopicsByCourseId = async(courseId) => {
     const response = await axios.get(`${SUBTOPIC_URL}/course/${courseId}`)
 
@@ -21,7 +27,8 @@ const addLearningResourceToSubtopic = async(body, token) => {
 
 const subtopicService = {
     getSubtopicsByCourseId,
-    addLearningResourceToSubtopic
+    addLearningResourceToSubtopic,
+    getAllSubtopics
 }
 
 export default subtopicService

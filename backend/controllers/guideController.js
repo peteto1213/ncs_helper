@@ -11,7 +11,9 @@ const User = require('../models/userModel')
  */
 const getAllGuides = asyncHandler(async (req, res) => {
     const guides = await Guide.find()
-                            .populate('comments.user', 'nickname icon')
+                            .populate('subtopic', 'name')
+                            .populate('user', 'nickname icon')
+                            
 
     res.status(200).json(guides)
 })
@@ -19,18 +21,18 @@ const getAllGuides = asyncHandler(async (req, res) => {
 /**
  * @author Pete To
  * @description Get guides according to subtopic 
- * @router GET /api/guide/subtopic
+ * @router GET /api/guide/subtopic/:id
  * @access Public
  */
 const getGuidesBySubtopicId = asyncHandler(async (req, res) => {
     //Check if the subtopic exists or not
-    const subtopic = await Subtopic.findById(req.body.subtopic)
+    const subtopic = await Subtopic.findById(req.params.id)
     if(!subtopic){
         res.status(404)
         throw new Error('subtopic not found')
     }
 
-    const guides = await Guide.find({subtopic: req.body.suptopic})
+    const guides = await Guide.find({subtopic: req.params.id})
                             .populate('comments.user', 'nickname icon')
                             .populate('subtopic', 'name')
                             .populate('user', 'nickname icon')
@@ -241,6 +243,19 @@ const commentGuide = asyncHandler(async (req, res) => {
     res.status(200).json(updatedGuide)
 })
 
+/**
+ * @author Pete To
+ * @description Get guides by filtered guide name, case insensitive
+ * @router GET /api/guide/name/:name
+ * @access Public
+ */
+const getGuidesByFilteredGuideName = asyncHandler(async (req, res) => {
+    const guides = await Guide.find({name: {'$regex': req.params.name, $options:'i'}})
+                            .populate('user', 'nickname icon')
+
+    res.status(200).json(guides)
+})
+
 
 module.exports = {
     getAllGuides,
@@ -251,5 +266,6 @@ module.exports = {
     deleteGuide,
     getGuidesByUserId,
     likeGuide,
-    commentGuide
+    commentGuide,
+    getGuidesByFilteredGuideName
 }

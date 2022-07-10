@@ -2751,6 +2751,9 @@
   .single-guide .content .top-section .like {
     margin-left: -1rem;
   }
+  .single-guide .content .top-section .category {
+    width: 50%;
+  }
 }
 
 .create-guide {

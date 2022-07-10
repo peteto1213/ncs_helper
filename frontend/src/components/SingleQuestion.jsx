@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaRegQuestionCircle, FaRegSmile } from 'react-icons/fa'
 
-function Question() {
+function Question(props) {
 
   const [showAnswer, setShowAnswer] = useState(false)
 
@@ -18,8 +18,7 @@ function Question() {
             Question
           </h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-            dignissimos ad nemo asperiores fugiat aspernatur?
+            {props.question}
           </p>
         </div>
         <button onClick={toggleShowAnswer} className="show-btn">{showAnswer? "hide answer" : "show answer"}</button>
@@ -29,8 +28,7 @@ function Question() {
             Answer
           </h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
-            neque consequatur unde, eum tempore optio.
+            {props.answer}
           </p>
         </div>
       </div>

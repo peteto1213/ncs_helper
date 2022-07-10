@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { FaRegThumbsUp, FaTag, FaUndoAlt, FaThumbsUp } from "react-icons/fa";
-import SingleComment from "../components/SingleComment";
+import SingleGuideComment from "../components/SingleGuideComment";
 import SingleQuestion from "../components/SingleQuestion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+
+import { useSelector, useDispatch } from 'react-redux'
+import { getGuideByGuideId } from '../features/guide/guideSlice'
 
 function SingleGuide() {
+  const location = useLocation();
+  const dispatch = useDispatch()
+  const { user } = useSelector((state) => state.auth)
+  const guideId = localStorage.getItem('viewingGuide')
+
+  const { guide } = location.state
 
   const navigate = useNavigate();
 
@@ -19,6 +28,13 @@ function SingleGuide() {
     navigate('/allGuides')
   }
 
+  useEffect(() => {
+    if(!user){
+      navigate('/login')
+    }
+    dispatch(getGuideByGuideId(guideId))
+  }, [dispatch, user, navigate])
+
   return (
     <>
       <div className="single-guide">
@@ -27,34 +43,44 @@ function SingleGuide() {
               {/* Like blog functionality */}
               <div className="like">
                 <FaRegThumbsUp className="icon" />
-                ThumbsUp
+                {guide.likeCount.length}ThumbsUp
               </div>
 
               <div className="category">
                 <FaTag className="icon" />
-                Version control system
+                {guide.subtopic.name}
               </div>
               
             </div>
 
-            <h1 className="title">Lorem ipsum dolor sit.</h1>
+            <h1 className="title">{guide.name}</h1>
 
             <div className="details">
               <img
                 className="icon"
-                src=""
+                src={`${process.env.PUBLIC_URL}/userIcons/${guide.icon}`}
                 alt=""
               />
-              <span className="author">Pete</span>
+              <span className="author">{guide.author}</span>
               <span className="date">
-                09/07/2022
+                {new Date(guide.createdAt).toLocaleString("en-US")}
               </span>
             </div>
 
-            <p className="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam debitis beatae officiis! Possimus, libero. Blanditiis iste excepturi ipsum quos omnis officiis debitis, incidunt error possimus maiores temporibus sequi, eveniet sunt adipisci explicabo! Illum sed, saepe suscipit vero dolore nisi ipsam nam maiores impedit, aperiam ullam aliquam quia dolor itaque quis?</p>
+            <p className="text">
+              {guide.content}
+            </p>
 
             {/* Question maps here */}
-            <SingleQuestion />
+            {
+              guide.guideQuestions.map(element =>
+                <SingleQuestion
+                  key = {element._id}
+                  question = {element.question}
+                  answer = {element.answer}
+                />
+              )
+            }
           </div>
 
           <div className="comment-section">
@@ -75,12 +101,16 @@ function SingleGuide() {
             </div>
 
             <h3 className="comment-number">
-              0 Comment(s)
+              {guide.comments.length} Comment(s)
             </h3>
 
             <div className="comments">
               {/* Comments map here */}
-              {/* <SingleComment /> */}
+              {
+                guide.comments.map(comment =>
+                  <SingleGuideComment comment={comment} />
+                )
+              }
             </div>
           </div>
 
