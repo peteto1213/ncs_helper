@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import subtopicService from './subtopicService'
 
 const initialState = {
+    allSubtopics: [],
     subtopics: [],
     updatedSubtopic: {},
     isLoading: false,
@@ -9,6 +10,17 @@ const initialState = {
     isError: false,
     message: ''
 }
+
+
+export const getAllSubtopics = createAsyncThunk('/subtopic/getAllSubtopics', async(_, thunkAPI) => {
+    try {
+        return await subtopicService.getAllSubtopics()
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+
+        return thunkAPI.rejectWithValue(message)
+    }
+})
 
 export const getSubtopicsByCourseId = createAsyncThunk('subtopic/getSubtopicsByCourseId', async (courseId, thunkAPI) => {
     try {
@@ -47,6 +59,14 @@ const subtopicSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            .addCase(getAllSubtopics.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.allSubtopics = action.payload
+            })
+            .addCase(getAllSubtopics.rejected, (state, action) => {
+                state.isLoading = false
+                state.message = action.payload
+            })
             .addCase(getSubtopicsByCourseId.pending, (state) => {
                 state.isLoading = true
             })

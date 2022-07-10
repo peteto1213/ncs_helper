@@ -1,66 +1,142 @@
 import React, { useEffect, useState } from "react";
 import { FaRegThumbsUp, FaTag, FaUndoAlt, FaThumbsUp } from "react-icons/fa";
-import SingleComment from "../components/SingleComment";
+import SingleGuideComment from "../components/SingleGuideComment";
 import SingleQuestion from "../components/SingleQuestion";
 import { useNavigate } from "react-router-dom";
 
-function SingleGuide() {
+import { useSelector, useDispatch } from 'react-redux'
+import { getGuideByGuideId, likeGuide, commentGuide, reset } from '../features/guide/guideSlice'
+import Spinner from "../components/Spinner";
 
+import parser from 'html-react-parser'
+
+function SingleGuide() {
+  const guideId = localStorage.getItem('viewGuideId')
+
+  const dispatch = useDispatch()
   const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth)
+  const { viewingGuide, isError, isLoading, message } = useSelector((state) => state.guide)
 
   const [content, setContent] = useState('')
+
+  useEffect(() => {
+    if(!user){
+      navigate('/login')
+    }
+
+    dispatch(getGuideByGuideId(guideId))
+
+    if(isError){
+      alert(message)
+    }
+
+  }, [dispatch, user, navigate, isError, message, guideId])
 
   //Handle User submit comment a guide
   const handleCommentChange = (event) => {
     setContent(event.target.value)
   }
 
+  const handleSubmitComment = () => {
+
+    let body = {
+      guideId: guideId,
+      content: content
+    }
+
+    dispatch(commentGuide(body))
+  }
+
   const navigateGuideSection = () => {
     navigate('/allGuides')
   }
 
+  //check a user has liked a blog or not
+  const checkLikedBefore = (array) => {
+    for(let i = 0; i < array.length; i++){
+      if(array[i]._id == user._id){
+        return true
+      }
+    }
+    return false
+  }
+
+  const [acceptLike, setAcceptLike] = useState(true)
+
+  const handleLikeGuide = () => {
+    dispatch(likeGuide(guideId))
+    setAcceptLike(false)
+  }
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  console.log(viewingGuide);
+
   return (
     <>
-      <div className="single-guide">
+      {viewingGuide ? (
+        <div className="single-guide">
           <div className="content">
             <div className="top-section">
               {/* Like blog functionality */}
               <div className="like">
-                <FaRegThumbsUp className="icon" />
-                ThumbsUp
+                {checkLikedBefore(viewingGuide.likeCount) || !acceptLike ? 
+                  <>
+                    <FaThumbsUp className="icon-liked" />
+                    {viewingGuide.likeCount.length} You have liked this blog!
+                  </>
+                  :
+                  <>
+                    <FaRegThumbsUp onClick={handleLikeGuide} className="icon" />
+                    {viewingGuide.likeCount.length} ThumbsUp
+                  </>
+                }
               </div>
 
               <div className="category">
                 <FaTag className="icon" />
-                Version control system
+                {viewingGuide.subtopic.name}
               </div>
               
             </div>
 
-            <h1 className="title">Lorem ipsum dolor sit.</h1>
+            <h1 className="title">{viewingGuide.name}</h1>
 
             <div className="details">
               <img
                 className="icon"
-                src=""
+                src={`${process.env.PUBLIC_URL}/userIcons/${viewingGuide.user.icon}`}
                 alt=""
               />
-              <span className="author">Pete</span>
+              <span className="author">{viewingGuide.user.nickname}</span>
               <span className="date">
-                09/07/2022
+                {new Date(viewingGuide.createdAt).toLocaleString("en-US")}
               </span>
             </div>
 
-            <p className="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam debitis beatae officiis! Possimus, libero. Blanditiis iste excepturi ipsum quos omnis officiis debitis, incidunt error possimus maiores temporibus sequi, eveniet sunt adipisci explicabo! Illum sed, saepe suscipit vero dolore nisi ipsam nam maiores impedit, aperiam ullam aliquam quia dolor itaque quis?</p>
+            <p className="text">
+              {parser(viewingGuide.content)}
+            </p>
 
             {/* Question maps here */}
-            <SingleQuestion />
+            {
+              viewingGuide.guideQuestions.map(element =>
+                <SingleQuestion
+                  key = {element._id}
+                  question = {element.question}
+                  answer = {element.answer}
+                />
+              )
+            }
           </div>
 
           <div className="comment-section">
             <div className="add-comment">
               <h3>Add a comment to this guide</h3>
-              <form>
+              <form onSubmit={handleSubmitComment}>
                 <textarea
                   name="newComment"
                   rows="4"
@@ -75,12 +151,16 @@ function SingleGuide() {
             </div>
 
             <h3 className="comment-number">
-              0 Comment(s)
+              {viewingGuide.comments.length} Comment(s)
             </h3>
 
             <div className="comments">
               {/* Comments map here */}
-              {/* <SingleComment /> */}
+              {
+                viewingGuide.comments.map(comment =>
+                  <SingleGuideComment comment={comment} />
+                )
+              }
             </div>
           </div>
 
@@ -88,7 +168,15 @@ function SingleGuide() {
             <FaUndoAlt />
             <span> return to select guides</span>
           </button>
-        </div>
+          </div>
+      ) : (
+        <section>
+          <div className="heading">
+            <h1>Error - 404: Oops! Blog not found...</h1>
+          </div>
+        </section>
+      )
+      }
     </>
   );
 }
