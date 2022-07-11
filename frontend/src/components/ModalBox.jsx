@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { deleteBlog } from "../features/blog/blogSlice";
+import { deleteGuide } from "../features/guide/guideSlice";
 import Spinner from "./Spinner";
 
 function ModalBox(props) {
@@ -27,6 +28,7 @@ function ModalBox(props) {
         alert("Blog deleted successfully!");
 
       case "guide":
+        dispatch(deleteGuide(props.id))
         alert("Guide deleted successfully!")
 
       default:

@@ -5,9 +5,10 @@ import guideImage from '../resources/guide.jpg';
 
 import ModalBox from "./ModalBox";
 
-function MyGuideCard() {
+function MyGuideCard(guide) {
     const navigate = useNavigate()
   const [modalState, setModalState] = useState(false)
+  const { id, name, subtopic, createdAt, updatedAt, likeCount } = guide
 
 
   const deleteGuide = () => {  
@@ -15,7 +16,10 @@ function MyGuideCard() {
   }
 
   const navigateEditGuide = () => {
-    navigate('/editGuide')
+    localStorage.setItem('viewGuideId', id)
+    navigate('/editGuide', {state:{
+      guide: guide
+    }})
   }
 
   return (
@@ -23,12 +27,13 @@ function MyGuideCard() {
       <div className="myblog-card">
         {modalState && 
           <ModalBox 
-            action={`delete guide - "guide name"`}
+            action={`delete guide - ${name}`}
             deleteType='guide'
+            id={id}
           />
         }
         <div className="like">
-            <h2>0</h2>
+            <h2>{likeCount}</h2>
             <span> </span>
             <FaThumbsUp />
         </div>
@@ -36,15 +41,15 @@ function MyGuideCard() {
         <img src={guideImage} alt="" />
 
         <h3>
-          Title: <span>Title</span>
+          Title: <span>{name}</span>
         </h3>
 
         <p>
-          <FaTag />Subtopic: subtopic
+          <FaTag />Subtopic: {subtopic}
         </p>
 
-        <h4 className="date">Created At: date</h4>
-        <h4 className="date update">Updated At: date</h4>
+        <h4 className="date">Created At: {new Date(createdAt).toLocaleString('en-US')}</h4>
+        <h4 className="date update">Last Update: {new Date(updatedAt).toLocaleString('en-US')}</h4>
 
         <div className="actions">
           <button onClick={navigateEditGuide} className="edit-btn">

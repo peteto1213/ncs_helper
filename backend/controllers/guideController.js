@@ -152,7 +152,7 @@ const deleteGuide = asyncHandler(async (req, res) => {
 /**
  * @author Pete To
  * @description Get guides according to user id
- * @router GET /api/guide/userGuide
+ * @router GET /api/guide/user/myGuides
  * @access Private
  */
 const getGuidesByUserId = asyncHandler(async (req, res) => {
@@ -162,9 +162,12 @@ const getGuidesByUserId = asyncHandler(async (req, res) => {
         res.status(404)
         throw new Error('User not found')
     }
+    console.log(req.user.id);
 
     const userGuides = await Guide.find({user: req.user.id})
                                     .populate('comments.user', 'nickname icon')
+                                    .populate('subtopic', 'name')
+                                
     res.status(200).json(userGuides)
 })
 

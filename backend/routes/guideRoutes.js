@@ -14,7 +14,7 @@ router.get('/name/:name', getGuidesByFilteredGuideName)
 router.post('/', protect, createGuide)
 router.put('/:id', protect, editGuide)
 router.delete('/:id', protect, deleteGuide)
-router.get('/userGuide', protect, getGuidesByUserId)
+router.get('/user/myGuides', protect, getGuidesByUserId)
 
 router.put('/likeGuide/:id', protect, likeGuide)
 router.put('/commentGuide/:id', protect, commentGuide)

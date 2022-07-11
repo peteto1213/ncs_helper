@@ -51,13 +51,65 @@ const commentGuide = async(guideId, content, token) => {
     return response.data
 }
 
+const createGuide = async(body, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.post(GUIDE_API, body, config)
+
+    return response.data
+}
+
+const getGuidesByUserId = async(token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.get(`${GUIDE_API}/user/myGuides`, config)
+
+    return response.data
+}
+
+const editGuide = async(id, body, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.put(`${GUIDE_API}/${id}`, body, config)
+
+    return response.data
+}
+
+const deleteGuide = async(id, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.delete(`${GUIDE_API}/${id}`, config)
+
+    return response.data
+}
+
 const guideService = {
     getAllGuides,
     getGuidesBySubtopicId,
     getGuidesByFilteredGuideName,
     getGuideByGuideId,
     likeGuide,
-    commentGuide
+    commentGuide,
+    createGuide,
+    getGuidesByUserId,
+    editGuide,
+    deleteGuide
 }
 
 export default guideService
