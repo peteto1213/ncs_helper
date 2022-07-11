@@ -18,7 +18,8 @@ function MyGuideCard(guide) {
   const navigateEditGuide = () => {
     localStorage.setItem('viewGuideId', id)
     navigate('/editGuide', {state:{
-      guide: guide
+      id: id
+      
     }})
   }
 

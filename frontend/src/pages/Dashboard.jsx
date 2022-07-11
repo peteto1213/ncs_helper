@@ -166,6 +166,10 @@ function Dashboard() {
                 <FaCoffee className="icon" />{" "}
                 <Link to="/myBlog">My Blogs</Link>
               </li>
+              <li>
+                <FaGraduationCap className="icon" />{" "}
+                <Link to="/myGuide">My Guides</Link>
+              </li>
               <li onClick={navigateChangePassword}>
                 <FaLock className="icon" /> <a href="#">Change Password</a>
               </li>

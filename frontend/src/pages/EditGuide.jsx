@@ -18,7 +18,7 @@ function EditGuide() {
   const { viewingGuide, isError, isLoading, message } = useSelector(
     (state) => state.guide
   );
-
+  const { id } = location.state
   const guideId = localStorage.getItem("viewGuideId");
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function EditGuide() {
       navigate("/login");
     }
 
-    dispatch(getGuideByGuideId(guideId));
+    dispatch(getGuideByGuideId(id));
 
     if (isError) {
       alert(message);
@@ -53,7 +53,7 @@ function EditGuide() {
   const handleEditGuide = (event) => {
     event.preventDefault();
     let body = {
-      id: guideId,
+      id: id,
       content: text,
     };
 
