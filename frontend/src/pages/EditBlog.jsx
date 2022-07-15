@@ -52,6 +52,7 @@ function EditBlog() {
             navigate('/myBlog')
         }else{
             alert('Please do not leave the content empty')
+            navigate('/myBlog')
         }
 
     }

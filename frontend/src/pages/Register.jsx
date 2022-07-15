@@ -45,6 +45,9 @@ function Register() {
     else if(!email.includes("@newcastle.ac.uk")){
       setError("*Please enter a valid Newcastle University email address")
     }
+    else if(password.length < 8 || password2.length < 8){
+      setError("*Password should contain at least 8 characters/numbers")
+    }
     else{
       const userData = {
         email: email, 
@@ -53,6 +56,9 @@ function Register() {
       }
 
       dispatch(register(userData))
+      if(!isError){
+        alert('User registered successfully!')
+      }
     }
   }
 

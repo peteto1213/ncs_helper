@@ -52,7 +52,7 @@ function SingleGuide() {
     navigate('/allGuides')
   }
 
-  //check a user has liked a blog or not
+  //check a user has liked a guide or not
   const checkLikedBefore = (array) => {
     for(let i = 0; i < array.length; i++){
       if(array[i]._id == user._id){
@@ -81,12 +81,12 @@ function SingleGuide() {
         <div className="single-guide">
           <div className="content">
             <div className="top-section">
-              {/* Like blog functionality */}
+              {/* Like guide functionality */}
               <div className="like">
                 {checkLikedBefore(viewingGuide.likeCount) || !acceptLike ? 
                   <>
                     <FaThumbsUp className="icon-liked" />
-                    {viewingGuide.likeCount.length} You have liked this blog!
+                    {viewingGuide.likeCount.length} You have liked this guide!
                   </>
                   :
                   <>
@@ -172,7 +172,7 @@ function SingleGuide() {
       ) : (
         <section>
           <div className="heading">
-            <h1>Error - 404: Oops! Blog not found...</h1>
+            <h1>Error - 404: Oops! Guide not found...</h1>
           </div>
         </section>
       )

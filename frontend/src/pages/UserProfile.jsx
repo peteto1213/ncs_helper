@@ -90,6 +90,7 @@ function UserProfile() {
                 name='nickname'
                 onChange={handleNicknameChange}
                 value={nickname}
+                required
               />
             </div>
 

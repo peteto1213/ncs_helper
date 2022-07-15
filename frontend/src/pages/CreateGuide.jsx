@@ -101,7 +101,7 @@ function CreateGuide() {
               name='title'
               value={form.title}
               onChange={handleFormChange}
-              placeholder='blog title...'
+              placeholder='guide title...'
               required
             />
           </div>
