@@ -21,6 +21,7 @@ import SingleGuide from './pages/SingleGuide';
 import CreateGuide from './pages/CreateGuide';
 import MyGuide from './pages/MyGuide';
 import EditGuide from './pages/EditGuide';
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
             <Route path='/myGuide' element={<MyGuide/>} />
             <Route path='/editGuide' element={<EditGuide/>} />
 
+            <Route path='contact' element={<Contact/>}/>
 
             {/* Default: Redirect to home */}
             <Route path="*" element={<Navigate to="/" replace />}/>

@@ -1,0 +1,38 @@
+@import '../variables';
+
+.contact{
+
+    .heading{
+        width: 100%;
+    }
+
+    form{
+        margin: 2rem 5rem;
+        padding: 2rem 5rem;
+        border: $border;
+        box-shadow: $box-shadow;
+
+        .input-field{
+            @include inputField();
+
+            textarea{
+                width: 100%;
+                padding: 0.5rem 0 0 0.5rem;
+                font-size: 1.8rem;
+            }
+        }
+
+        .btn{
+            @include button($primaryColor, $secondaryColor);
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .contact{
+        form{
+            margin: 0;
+            padding: 2rem;
+        }
+    }
+}

@@ -59,12 +59,11 @@ function AllBlogs() {
   useEffect(() => {
     //if not logged in, navigate to login page
     if(!user){
-      alert('Please login to proceed')
       navigate('/login')
+    }else{
+      dispatch(getAllBlogs())
+      dispatch(getAllBlogCategories())
     }
-
-    dispatch(getAllBlogs())
-    dispatch(getAllBlogCategories())
     if(isError){
       alert(message)
       navigate('/')

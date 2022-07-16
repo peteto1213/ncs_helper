@@ -136,7 +136,7 @@ function Dashboard() {
                 Tell us how you feel about this web application, we are welcome
                 to hear!
               </p>
-              <Link to="/feedback">Send Feedback</Link>
+              <Link to="/contact">Send Feedback</Link>
             </div>
           </div>
         </section>
