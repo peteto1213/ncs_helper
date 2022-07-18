@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import {FaRobot, FaGraduationCap, FaCoffee, FaRocket, FaUser, FaRegPaperPlane, FaTimes, FaSignOutAlt} from 'react-icons/fa'
-import {Link, useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import icon from '../resources/header_icon.png'
 import {useSelector, useDispatch} from 'react-redux'
 import {logout, reset} from '../features/auth/authSlice'
@@ -27,7 +27,7 @@ function Header() {
     }
 
     const navigateProfile = () => {
-        navigate('/userProfile')
+        navigate(`/userProfile/${user._id}`)
     }
 
     const handleLogout = () => {

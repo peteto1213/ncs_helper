@@ -121,6 +121,7 @@ function AllGuides() {
                         <GuideCard
                             key={guide._id}
                             guide={guide}
+                            id={guide._id}
                         />
                     )
                     :

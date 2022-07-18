@@ -39,23 +39,23 @@ function App() {
                     
             <Route path='/register' element={<Register/>} />
 
-            <Route path='/userProfile' element={<UserProfile/>} />
+            <Route path='/userProfile/:id' element={<UserProfile/>} />
 
             <Route path='/changePassword' element={<ChangePassword/>} />
 
             <Route path='/allBlogs' element={<AllBlogs/>} />
-            <Route path='/singleBlog' element={<SingleBlog/>} />
+            <Route path='/singleBlog/:blogId' element={<SingleBlog/>} />
             <Route path='/createBlog' element={<CreateBlog/>} />
             <Route path='/myBlog' element={<MyBlog/>} />
             <Route path='/editBlog' element={<EditBlog/>} />
 
             <Route path='/allCourses' element={<AllCourses/>} />
-            <Route path='/singleCourse' element={<SingleCourse/>} />
+            <Route path='/singleCourse/:courseId' element={<SingleCourse/>} />
             <Route path='/addResources' element={<AddResources/>} />
             <Route path='/updateCourse' element={<UpdateCourse/>} />
 
             <Route path='/allGuides' element={<AllGuides/>} />
-            <Route path='/singleGuide' element={<SingleGuide/>} />
+            <Route path='/singleGuide/:guideId' element={<SingleGuide/>} />
             <Route path='/createGuide' element={<CreateGuide/>} />
             <Route path='/myGuide' element={<MyGuide/>} />
             <Route path='/editGuide' element={<EditGuide/>} />

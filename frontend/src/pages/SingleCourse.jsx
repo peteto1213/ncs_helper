@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import SubtopicCard from '../components/SubtopicCard'
 import { FaFastBackward, FaFolderPlus, FaSadTear } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { getSubtopicsByCourseId, reset } from '../features/subtopic/subtopicSlice'
@@ -12,6 +12,7 @@ function SingleCourse() {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const params = useParams()
 
     const { subtopics, isLoading, isError, message } = useSelector((state) => state.subtopic)
     const { user } = useSelector((state) => state.auth)
@@ -34,8 +35,8 @@ function SingleCourse() {
             alert(message)
         }
         
-        dispatch(getCourseByCourseId(localStorage.getItem('viewCourseId')))
-        dispatch(getSubtopicsByCourseId(localStorage.getItem('viewCourseId')))
+        dispatch(getCourseByCourseId(params.courseId))
+        dispatch(getSubtopicsByCourseId(params.courseId))
 
     }, [dispatch, navigate, isError, message, user])
 

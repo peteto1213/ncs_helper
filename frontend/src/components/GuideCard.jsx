@@ -6,7 +6,7 @@ function GuideCard(props) {
   const navigate = useNavigate()
 
   const navigateSingleGuide = () => {
-    navigate('/singleGuide', {state:{
+    navigate(`/singleGuide/${props.id}`, {state:{
       guide: props.guide
     }})
     localStorage.setItem('viewGuideId', props.guide._id)

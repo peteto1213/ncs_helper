@@ -6,7 +6,7 @@ function CourseCard(props) {
 
   const navigateCourseDetails = () => {
     localStorage.setItem('viewCourseId', props.courseId)
-    navigate('/singleCourse')
+    navigate(`/singleCourse/${props.courseId}`)
   }
 
   return (

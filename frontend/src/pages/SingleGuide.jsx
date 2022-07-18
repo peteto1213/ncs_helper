@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaRegThumbsUp, FaTag, FaUndoAlt, FaThumbsUp } from "react-icons/fa";
 import SingleGuideComment from "../components/SingleGuideComment";
 import SingleQuestion from "../components/SingleQuestion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { useSelector, useDispatch } from 'react-redux'
 import { getGuideByGuideId, likeGuide, commentGuide, reset } from '../features/guide/guideSlice'
@@ -12,6 +12,7 @@ import parser from 'html-react-parser'
 
 function SingleGuide() {
   const guideId = localStorage.getItem('viewGuideId')
+  const params = useParams()
 
   const dispatch = useDispatch()
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ function SingleGuide() {
       navigate('/login')
     }
 
-    dispatch(getGuideByGuideId(guideId))
+    dispatch(getGuideByGuideId(params.guideId))
 
     if(isError){
       alert(message)
@@ -73,7 +74,6 @@ function SingleGuide() {
     return <Spinner />;
   }
 
-  console.log(viewingGuide);
 
   return (
     <>

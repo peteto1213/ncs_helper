@@ -9,7 +9,7 @@ function BlogCard(props) {
   const { user } = useSelector((state) => state.auth)
 
   const navigateSingleBlog = () => {
-    navigate('/singleBlog')
+    navigate(`/singleBlog/${props.blog._id}`)
     localStorage.setItem('viewBlogId', props.blog._id)
   }
 

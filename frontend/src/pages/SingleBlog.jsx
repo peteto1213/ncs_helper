@@ -4,7 +4,7 @@ import SingleComment from "../components/SingleComment";
 import { useDispatch, useSelector } from "react-redux";
 import { getBlogByBlogId, likeBlog, commentBlog, reset } from "../features/blog/blogSlice";
 import Spinner from "../components/Spinner";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import parser from 'html-react-parser'
 
@@ -12,6 +12,7 @@ function SingleBlog() {
   const blogId = localStorage.getItem("viewBlogId");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const params = useParams();
   const { viewingBlog, isError, isLoading, message } = useSelector(
     (state) => state.blog
   );
@@ -20,13 +21,14 @@ function SingleBlog() {
   const [content, setContent] = useState('')
 
   useEffect(() => {
-    dispatch(getBlogByBlogId(blogId));
+    dispatch(getBlogByBlogId(params.blogId));
     if (!user) {
       alert("You need to login to view this page!");
       navigate("/login");
     }
     if (isError) {
       alert(message);
+      navigateBlogSection()
     }
 
     return () => {

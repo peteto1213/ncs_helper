@@ -8,7 +8,6 @@ import Spinner from '../components/Spinner'
 function UserProfile() {
   const {user, isLoading, isSuccess, isError, message} = useSelector((state) => state.auth)
   const dispatch = useDispatch()
-  const path = '../../../uploads/'
 
   const[error, setError] = useState("123")
 
