@@ -4,8 +4,8 @@ import blogService from './blogService'
 const initialState = {
     blogs: [],
     viewingBlog: '',
-    creatingBlog: {},
-    updatedBlog: {},
+    creatingBlog: '',
+    updatedBlog: '',
     userBlogs: [],
     isError: false,
     isSuccess: false,
@@ -201,6 +201,7 @@ export const blogSlice = createSlice({
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
+                state.viewingBlog = null
             })
             .addCase(likeBlog.fulfilled, (state, action) => {
                 state.isLoading = false
@@ -234,7 +235,7 @@ export const blogSlice = createSlice({
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
-                state.creatingBlog = {}
+                state.creatingBlog = null
             })
             .addCase(getUserBlogs.pending, (state) => {
                 state.isLoading = true

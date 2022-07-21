@@ -214,6 +214,7 @@ export const guideSlice = createSlice({
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
+                state.viewingGuide = null
             })
             .addCase(likeGuide.fulfilled, (state, action) => {
                 state.isLoading = false
