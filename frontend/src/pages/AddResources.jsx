@@ -35,7 +35,7 @@ function AddResources() {
 
   const navigate = useNavigate();
   const navigateSingleCourse = () => {
-    navigate("/singleCourse");
+    navigate('/allCourses');
   };
 
   const [resourceForm, setResourceForm] = useState({
@@ -68,7 +68,7 @@ function AddResources() {
     if(validateLink(body.link)){
         dispatch(addLearningResourceToSubtopic(body))
         alert('Resource uploaded successfully!')
-        navigate('/singleCourse')
+        navigate('/allCourses')
     }else{
         setError("*Please provide a valid url for the resource")
     }

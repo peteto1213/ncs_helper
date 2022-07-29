@@ -1,0 +1,35 @@
+@import '../variables';
+
+.reference{
+
+    .heading{
+        width: 100%;
+    }
+
+    .reference-container{
+        @include customFlex(row, flex-start, flex-start);
+        width: 100%;
+
+        .single-reference{
+            border: $border;
+            box-shadow: $box-shadow;
+            width: 100%;
+            padding: 2rem 1rem;
+            border-radius: 1.5rem;
+            margin-bottom: 2rem;
+
+            .title{
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+                color: $primaryColorLighter;
+            }
+
+            .description{
+                font-size: 2rem;
+                color: gray;
+                line-height: 2.3rem;
+            }
+        }
+    }
+
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import {FaRobot, FaGraduationCap, FaCoffee, FaRocket, FaUser, FaRegPaperPlane, FaTimes, FaSignOutAlt} from 'react-icons/fa'
+import {FaRobot, FaGraduationCap, FaCoffee, FaRocket, FaUser, FaRegPaperPlane, FaTimes, FaSignOutAlt, FaBook} from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import icon from '../resources/header_icon.png'
 import {useSelector, useDispatch} from 'react-redux'
@@ -52,6 +52,7 @@ function Header() {
             <Link to='/allCourses' onClick={hideMenu}><FaGraduationCap />Courses</Link>
             <Link to='/allGuides' onClick={hideMenu}><FaRobot />Collaboration</Link>
             <Link to='/allBlogs' onClick={hideMenu}><FaCoffee />Blogs</Link>
+            <Link to='/reference' onClick={hideMenu}><FaBook />References</Link>
         </nav>
 
         <div className="icons">

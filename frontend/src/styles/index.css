@@ -3060,6 +3060,49 @@
   }
 }
 
+.reference .heading {
+  width: 100%;
+}
+
+.reference .reference-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+}
+
+.reference .reference-container .single-reference {
+  border: 0.1rem solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 2rem 1rem;
+  border-radius: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.reference .reference-container .single-reference .title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #248f79;
+}
+
+.reference .reference-container .single-reference .description {
+  font-size: 2rem;
+  color: gray;
+  line-height: 2.3rem;
+}
+
 .header {
   position: fixed;
   top: 0;
