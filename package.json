@@ -4,8 +4,8 @@
   "description": "A web application to help future student in the MSc in Computer Science program in Newcastle University, England",
   "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "server": "nodemon backend/server.js",
+    "start": "node ./backend/server.js",
+    "server": "node ./backend/server.js",
     "client": "npm start --prefix frontend"
   },
   "repository": {

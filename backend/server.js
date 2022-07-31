@@ -25,4 +25,8 @@ app.use('/api/guide', require('./routes/guideRoutes'))
 //error handling that override the default errorHandler in Express
 app.use(errorHandler)
 
+app.get('/', (req, res) => {
+    res.send('APP IS RUNNING');
+});
+
 app.listen(port, () => console.log(`Server running at port ${port}`))
