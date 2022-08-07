@@ -2,6 +2,7 @@ const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
+const nodemailer = require('nodemailer')
 
 /**
  * @author Pete To
@@ -181,11 +182,43 @@ const getAllUsers = asyncHandler(async (req, res) => {
     res.status(200).json(allUsers)
 })
 
+/**
+ * @author Pete To
+ * @description Admin permission granted - Get all user's info (excluding password)
+ * @router POST /api/user/resetPassword
+ * @access Public
+ */
+const sendEmailToResetPassword = asyncHandler(async (req, res) => {
+    transporter.sendMail(options, function(err, info){
+        if(err){
+            console.log(err);
+            return;
+        }
+        console.log("Sent: " + info.response);
+    })
+})
+
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth:{
+        user: process.env.EMAIL,
+        pass: process.env.EMAIL_PASSWORD
+    }
+})
+
+const options = {
+    from: process.env.EMAIL,
+    to: "peteto1213@gmail.com",
+    subject: "Reset your password for NCSHelper Account",
+    text: "Mailer text here"
+}
+
 module.exports = {
     registerUser,
     loginUser,
     getUserInfo,
     updateUserInfo,
     changePasswordByOldPassword,
-    getAllUsers
+    getAllUsers,
+    sendEmailToResetPassword
 }

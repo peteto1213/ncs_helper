@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {registerUser, loginUser, getUserInfo, updateUserInfo, changePasswordByOldPassword, getAllUsers} = require('../controllers/userController')
+const {registerUser, loginUser, getUserInfo, updateUserInfo, changePasswordByOldPassword, getAllUsers, sendEmailToResetPassword} = require('../controllers/userController')
 const {protect, checkAdminPermission} = require('../middleware/authMiddleware')
 const {upload} = require('../middleware/uploadMiddleware')
 
@@ -19,5 +19,8 @@ router.get('/allUsers', protect, checkAdminPermission, getAllUsers)
 router.put('/info', upload.single('icon'), protect, updateUserInfo)
 //Change user's password by old password
 router.put('/password', protect, changePasswordByOldPassword)
+
+//Forget password (reset)
+router.post('/resetPassword', sendEmailToResetPassword)
 
 module.exports = router
